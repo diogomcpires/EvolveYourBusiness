@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sites Profissionais e Cartões NFC | EvolveYourBusiness</title>
 <meta name="description" content="Cartões NFC para avaliações no Google, Instagram e Facebook, e sites profissionais para restaurantes, cafés, bares, cabeleireiros e estética, com envio para todo o país.">
-<meta name="theme-color" content="#1C38AE">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A1020">
 <meta property="og:title" content="EvolveYourBusiness · Sites e Cartões NFC">
 <meta property="og:description" content="Um toque no balcão, mais uma avaliação no Google. Cartões NFC desde 11 € por unidade e sites desde 400 €.">
 <meta property="og:type" content="website">
@@ -14,36 +15,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: azulejo-cobalt hero with a live "tap" demo, then paper sections on one centred 1160px column; prices as a two-track board; order builder that writes a WhatsApp message. */
+/* Single dark look on every device. Layout: azulejo-cobalt hero with a live "tap" demo, then paper sections on one centred 1160px column; prices as a two-track board; order builder that writes a WhatsApp message. */
 :root{
-  --paper:#F3F5FA; --surface:#FFFFFF; --ink:#0E1630; --muted:#56607C; --line:#D9DFEB; --soft:#E8ECF5;
-  --cobalt:#1E3CB4; --tram:#F4C21A; --tram-ink:#1B1606;
-  --hero:#1C38AE; --hero-deep:#13287F; --on-hero:#F3F5FF; --on-hero-muted:#C3CDF8; --on-hero-line:rgb(243 245 255 / .22); --on-hero-chip:rgb(243 245 255 / .12); --on-hero-chip-hover:rgb(243 245 255 / .2);
+  --paper:#0A1020; --surface:#111A31; --ink:#E9EDF8; --muted:#9CA7C6; --line:#24304F; --soft:#18223D;
+  --cobalt:#8AA0FF; --tram:#F4C21A; --tram-ink:#1B1606;
+  --hero:#162E95; --hero-deep:#0C1A5E; --on-hero:#F3F5FF; --on-hero-muted:#B9C5F6; --on-hero-line:rgb(243 245 255 / .22); --on-hero-chip:rgb(243 245 255 / .12); --on-hero-chip-hover:rgb(243 245 255 / .2);
   --hero-glow:rgb(244 194 26 / .20); --hero-shadow:rgb(5 12 45 / .55);
   --soft-screen:#E6EAF6; --m2-hero:#EFDCD5; --device:#0B0F1E; --device-edge:#2A3150; --screen-bg:#F6F7FB; --screen-ink:#11182E; --screen-muted:#6B7491; --star-off:#D3D8E5;
   --c-white:#FFFFFF; --c-white-fg:#0E1630; --c-ink:#0F1733; --c-ink-fg:#F3F5FF; --c-cobalt:#2141C2; --c-cobalt-fg:#FFFFFF; --c-tram:#F4C21A; --c-tram-fg:#1B1606;
   --qr-bg:#FFFFFF; --toast-bg:#FFFFFF; --toast-fg:#11182E; --toast-muted:#6B7491; --sheen-strong:rgb(255 255 255 / .45); --qr-ink:#0E1630; --sheen:rgb(255 255 255 / .14);
   --m1-bg:#141C14; --m1-bg2:#2B3A2B; --m1-fg:#F1E7D3; --m1-acc:#C9A35B; --m1-line:rgb(241 231 211 / .16);
   --m2-bg:#F7EEEA; --m2-fg:#3A2A2C; --m2-acc:#B9727F; --m2-line:rgb(58 42 44 / .12);
-  --shadow:0 1px 2px rgb(14 22 48 / .06), 0 18px 40px -18px rgb(14 22 48 / .28);
+  --shadow:0 1px 2px rgb(0 0 0 / .4), 0 20px 44px -18px rgb(0 0 0 / .7);
   --f-display:"Unbounded", "Arial Black", "Helvetica Neue", system-ui, sans-serif;
   --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --gut:clamp(16px, 4vw, 40px);
   --wrap:1160px;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#0A1020; --surface:#111A31; --ink:#E9EDF8; --muted:#9CA7C6; --line:#24304F; --soft:#18223D;
-    --cobalt:#8AA0FF; --hero:#162E95; --hero-deep:#0C1A5E; --on-hero-muted:#B9C5F6;
-    --shadow:0 1px 2px rgb(0 0 0 / .4), 0 20px 44px -18px rgb(0 0 0 / .7);
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#0A1020; --surface:#111A31; --ink:#E9EDF8; --muted:#9CA7C6; --line:#24304F; --soft:#18223D;
-  --cobalt:#8AA0FF; --hero:#162E95; --hero-deep:#0C1A5E; --on-hero-muted:#B9C5F6;
-  --shadow:0 1px 2px rgb(0 0 0 / .4), 0 20px 44px -18px rgb(0 0 0 / .7);
+
   color-scheme:dark;
 }
 
