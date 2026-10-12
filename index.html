@@ -8,9 +8,18 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0A1020">
 <meta property="og:title" content="EvolveYourBusiness · Sites e Cartões NFC">
-<meta property="og:description" content="Um toque no balcão, mais uma avaliação no Google. Cartões NFC desde 11 € por unidade e sites desde 400 €.">
+<meta property="og:description" content="Um toque no balcão, mais uma avaliação no Google. Cartões NFC desde 18 € e sites desde 400 €.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
+<link rel="canonical" href="https://evolveyourbusiness.pt/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjExIiBoZWlnaHQ9IjExIiBmaWxsPSIjMjE0MUMyIi8+PHBhdGggZD0iTTEzIDExVjBBMTEgMTEgMCAwIDEgMjQgMTFaIiBmaWxsPSIjRjRDMjFBIi8+PHBhdGggZD0iTTExIDEzVjI0QTExIDExIDAgMCAxIDAgMTNaIiBmaWxsPSIjRjRDMjFBIi8+PGNpcmNsZSBjeD0iMTguNSIgY3k9IjE4LjUiIHI9IjUuNSIgZmlsbD0iIzIxNDFDMiIvPjwvc3ZnPg==">
+<meta property="og:url" content="https://evolveyourbusiness.pt/">
+<meta property="og:image" content="https://evolveyourbusiness.pt/capa.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:site_name" content="EvolveYourBusiness">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "EvolveYourBusiness", "url": "https://evolveyourbusiness.pt/", "image": "https://evolveyourbusiness.pt/capa.jpg", "description": "Sites profissionais para telemóvel e computador e cartões NFC com QR code para avaliações no Google e redes sociais. Para restaurantes, cafés, bares, cabeleireiros, estética e muito mais.", "telephone": "+351937016773", "email": "evolveyourbusiness@gmail.com", "areaServed": {"@type": "Country", "name": "Portugal"}, "knowsLanguage": "pt-PT"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
@@ -318,6 +327,10 @@ p{margin:0}
 .board tr:last-child th,.board tr:last-child td{border-bottom:0}
 .board td{text-align:right;font:600 20px/1 var(--f-display);letter-spacing:-.01em}
 .note{margin-top:22px;color:var(--muted);font-size:15px;max-width:52em}
+.quote{display:grid;gap:12px;justify-items:start;margin-top:14px;padding-top:16px;border-top:1px dashed var(--line)}
+.quote strong{font:600 26px/1.15 var(--f-display);letter-spacing:-.02em;color:var(--ink)}
+.quote p{color:var(--muted);font-size:15px;max-width:34em}
+.quote .btn{margin-top:4px;white-space:normal;text-align:center}
 
 /* steps */
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:clamp(24px,3vw,32px)}
@@ -759,12 +772,16 @@ p{margin:0}
           <table class="board"><caption class="sr">Preços dos packs pequenos de cartões NFC</caption><tbody id="t-small"><tr><th scope="row">1 cartão</th><td>18 €</td></tr><tr><th scope="row">2 cartões<small>17 € cada</small></th><td>34 €</td></tr><tr><th scope="row">3 cartões<small>16 € cada</small></th><td>48 €</td></tr><tr><th scope="row">4 cartões<small>15 € cada</small></th><td>60 €</td></tr></tbody></table>
         </div>
         <div class="boardbox">
-          <h3>Packs grandes</h3>
+          <h3>5 ou mais cartões</h3>
           <p>Para restaurantes e espaços com várias mesas.</p>
-          <table class="board"><caption class="sr">Preços dos packs grandes de cartões NFC</caption><tbody id="t-large"><tr><th scope="row">5 cartões<small>14 € cada</small></th><td>70 €</td></tr><tr><th scope="row">10 cartões<small>13 € cada</small></th><td>130 €</td></tr><tr><th scope="row">15 cartões<small>12 € cada</small></th><td>180 €</td></tr><tr><th scope="row">20 cartões<small>11 € cada</small></th><td>220 €</td></tr></tbody></table>
+          <div class="quote">
+            <strong>Orçamento à medida</strong>
+            <p>O preço depende da quantidade e das plataformas que escolher. Diga-nos quantos cartões precisa e enviamos o preço por WhatsApp.</p>
+            <a class="btn btn--tram" href="#" data-wa="orcamento"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Pedir orçamento por WhatsApp</a>
+          </div>
         </div>
       </div>
-      <p class="note">Quanto mais cartões, menor o preço de cada um: de <span data-price="unit">18 €</span> até <span id="min-unit">11 €</span> por cartão. Pode misturar plataformas no mesmo pack, por exemplo Google nas mesas e Instagram no balcão.</p>
+      <p class="note">Pode misturar plataformas no mesmo pack, por exemplo Google nas mesas e Instagram no balcão.</p>
     </div>
   </section>
 
@@ -928,7 +945,7 @@ const CONFIG = {
   completo: 420,                       // site + 2 cartões (mais 20 € que o site sozinho)
   completoCards: 2,
   small: [[1,18],[2,34],[3,48],[4,60]],          // 18, 17, 16 e 15 € por cartão
-  large: [[5,70],[10,130],[15,180],[20,220]]     // 14, 13, 12 e 11 € por cartão
+  quoteFrom: 5                                   // a partir daqui: orçamento à medida
 };
 
 const PLATFORMS = [
@@ -954,14 +971,15 @@ document.querySelectorAll('[data-cfg]').forEach(el => { el.textContent = CONFIG[
 const each = (q,p) => Math.round(p / q * 100) / 100;
 const rows = list => list.map(([q,p]) => `<tr><th scope="row">${cards(q)}${q > 1 ? `<small>${eur(each(q,p))} cada</small>` : ''}</th><td>${eur(p)}</td></tr>`).join('');
 $('#t-small').innerHTML = rows(CONFIG.small);
-$('#t-large').innerHTML = rows(CONFIG.large);
 document.querySelectorAll('[data-wa="geral"]').forEach(a => {
   a.href = waLink('Olá! Vi o vosso site e gostava de saber mais sobre os sites e os cartões NFC.');
 });
+document.querySelectorAll('[data-wa="orcamento"]').forEach(a => {
+  a.href = waLink('Olá! Gostava de um orçamento para ' + CONFIG.quoteFrom + ' ou mais cartões NFC.\nQuantidade: \nPlataformas (Google, Instagram…): \nNegócio: ');
+  a.target = '_blank'; a.rel = 'noopener';
+});
 $('#year').textContent = new Date().getFullYear();
-const allPacks = [...CONFIG.small, ...CONFIG.large];
-const minUnit = Math.min(...allPacks.map(([q,p]) => each(q,p)));
-$('#min-unit').textContent = eur(minUnit);
+const allPacks = [...CONFIG.small];
 const twoValue = (allPacks.find(([q]) => q === CONFIG.completoCards) || [0, CONFIG.unit * CONFIG.completoCards])[1];
 $('#completo-deal').textContent = 'Por mais ' + eur(CONFIG.completo - CONFIG.site) + ' do que o site sozinho, leva ' + CONFIG.completoCards + ' cartões NFC à escolha, que valem ' + eur(twoValue) + '.';
 
@@ -983,12 +1001,13 @@ const KINDS = [
   {id:'site',     name:'Site',          sub:'desde ' + eur(CONFIG.site)},
   {id:'completo', name:'Pack completo', sub:'site + ' + CONFIG.completoCards + ' cartões · ' + eur(CONFIG.completo)}
 ];
-const PACKS = [...CONFIG.small, ...CONFIG.large];
+const PACKS = [...CONFIG.small, [CONFIG.quoteFrom, null]];   // null = orçamento à medida
+const qtyLabel = (q,p) => p == null ? q + ' ou mais' : cards(q);
 
 $('#kinds').innerHTML = KINDS.map((k,i) =>
   `<label class="chip" for="kind-${k.id}"><input type="radio" name="kind" id="kind-${k.id}" value="${k.id}"${i===0?' checked':''}><span>${k.name}<small>${k.sub}</small></span></label>`).join('');
 $('#qtys').innerHTML = PACKS.map(([q,p]) =>
-  `<label class="chip" for="qty-${q}"><input type="radio" name="qty" id="qty-${q}" value="${q}"${q===3?' checked':''}><span>${cards(q)}<small>${eur(p)}</small></span></label>`).join('');
+  `<label class="chip" for="qty-${q}"><input type="radio" name="qty" id="qty-${q}" value="${q}"${q===3?' checked':''}><span>${qtyLabel(q,p)}<small>${p == null ? 'orçamento' : eur(p)}</small></span></label>`).join('');
 $('#plats').innerHTML = PLATFORMS.map(p =>
   `<label class="chip chip--plat" for="plat-${p.id}"><input type="checkbox" name="plat" id="plat-${p.id}" value="${p.id}"${p.id==='google'||p.id==='instagram'?' checked':''}><span><svg class="ic" aria-hidden="true"><use href="#${p.icon}"/></svg>${p.name}</span></label>`).join('');
 
@@ -1026,8 +1045,13 @@ function render(){
   let total, note, lines = [];
   if (st.kind === 'cartoes'){
     const price = PACKS.find(([q]) => q === st.qty)[1];
-    total = eur(price); note = 'total';
-    lines.push('Pack de ' + cards(st.qty) + ' NFC — ' + eur(price));
+    if (price == null){
+      total = 'Orçamento'; note = 'à medida';
+      lines.push(st.qty + ' ou mais cartões NFC — pedido de orçamento (quantidade: por indicar)');
+    } else {
+      total = eur(price); note = 'total';
+      lines.push('Pack de ' + cards(st.qty) + ' NFC — ' + eur(price));
+    }
   } else if (st.kind === 'site'){
     total = eur(CONFIG.site); note = 'preço base';
     lines.push('Site profissional — desde ' + eur(CONFIG.site));
