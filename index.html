@@ -235,6 +235,14 @@ p{margin:0}
 .gallery figcaption{display:flex;justify-content:space-between;gap:12px;font-size:15px}
 .gallery figcaption b{font-weight:700}
 .gallery figcaption span{color:var(--muted)}
+.newcard{display:grid;gap:clamp(20px,3vw,36px);align-items:center;margin-top:clamp(26px,3vw,36px);padding:clamp(20px,3vw,32px);border-radius:24px;background:var(--soft);border:1px solid var(--line)}
+@media (min-width:760px){.newcard{grid-template-columns:minmax(0,360px) 1fr}}
+.newcard .card{box-shadow:var(--shadow)}
+.newcard__txt{display:grid;gap:10px;justify-items:start}
+.newcard__txt h3{font:600 clamp(22px,2.6vw,28px)/1.15 var(--f-display);letter-spacing:-.02em}
+.newcard__txt p{color:var(--muted);max-width:40em}
+.newcard__up{color:var(--ink)!important;font-weight:600}
+.badge{display:inline-block;padding:6px 12px;border-radius:99px;background:var(--tram);color:var(--tram-ink);font:800 12px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase}
 .spec{display:grid;gap:0;margin:clamp(40px,5vw,56px) 0 0;border-top:1px solid var(--line)}
 @media (min-width:760px){.spec{grid-template-columns:repeat(5,minmax(0,1fr))}}
 .spec div{padding:18px 18px 18px 0;border-bottom:1px solid var(--line)}
@@ -437,6 +445,7 @@ p{margin:0}
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-screen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8.5 21h7M12 17v4"/></g></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path stroke-linecap="round" d="M10.5 18.5h3"/></g></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10"/><path d="M17 21V3c-2.2 1.2-3.5 3.6-3.5 6.5V13H17"/></g></symbol>
     <symbol id="qr" viewBox="0 0 25 25"><path fill="currentColor" d="M0 0h7v1h-7zM8 0h1v1h-1zM11 0h2v1h-2zM14 0h3v1h-3zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h2v1h-2zM12 1h1v1h-1zM14 1h2v1h-2zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h2v1h-2zM11 2h1v1h-1zM13 2h2v1h-2zM16 2h1v1h-1zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h2v1h-2zM13 3h3v1h-3zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h6v1h-6zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM10 7h3v1h-3zM15 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM6 8h2v1h-2zM10 8h1v1h-1zM13 8h3v1h-3zM19 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM0 9h4v1h-4zM5 9h1v1h-1zM7 9h2v1h-2zM10 9h1v1h-1zM12 9h2v1h-2zM15 9h6v1h-6zM22 9h2v1h-2zM4 10h3v1h-3zM9 10h4v1h-4zM17 10h1v1h-1zM23 10h1v1h-1zM0 11h1v1h-1zM4 11h2v1h-2zM7 11h5v1h-5zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM21 11h1v1h-1zM0 12h3v1h-3zM4 12h3v1h-3zM8 12h1v1h-1zM10 12h1v1h-1zM12 12h2v1h-2zM16 12h3v1h-3zM21 12h1v1h-1zM23 12h1v1h-1zM1 13h1v1h-1zM3 13h1v1h-1zM7 13h2v1h-2zM10 13h1v1h-1zM12 13h1v1h-1zM15 13h1v1h-1zM20 13h1v1h-1zM23 13h1v1h-1zM0 14h2v1h-2zM4 14h1v1h-1zM6 14h4v1h-4zM12 14h3v1h-3zM16 14h1v1h-1zM20 14h3v1h-3zM24 14h1v1h-1zM2 15h2v1h-2zM7 15h1v1h-1zM9 15h4v1h-4zM14 15h3v1h-3zM21 15h1v1h-1zM23 15h1v1h-1zM0 16h2v1h-2zM4 16h3v1h-3zM8 16h2v1h-2zM13 16h8v1h-8zM23 16h1v1h-1zM8 17h1v1h-1zM13 17h4v1h-4zM20 17h1v1h-1zM24 17h1v1h-1zM0 18h7v1h-7zM8 18h2v1h-2zM11 18h1v1h-1zM15 18h2v1h-2zM18 18h1v1h-1zM20 18h4v1h-4zM0 19h1v1h-1zM6 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM15 19h2v1h-2zM20 19h1v1h-1zM22 19h2v1h-2zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM9 20h1v1h-1zM11 20h3v1h-3zM16 20h5v1h-5zM22 20h1v1h-1zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM9 21h1v1h-1zM12 21h1v1h-1zM17 21h2v1h-2zM21 21h1v1h-1zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM8 22h1v1h-1zM12 22h3v1h-3zM18 22h1v1h-1zM20 22h1v1h-1zM22 22h3v1h-3zM0 23h1v1h-1zM6 23h1v1h-1zM11 23h2v1h-2zM14 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM24 23h1v1h-1zM0 24h7v1h-7zM8 24h1v1h-1zM10 24h1v1h-1zM13 24h3v1h-3zM17 24h5v1h-5zM23 24h2v1h-2z"/></symbol>
   </defs>
 </svg>
@@ -645,6 +654,20 @@ p{margin:0}
           </div></div>
           <figcaption><b>WhatsApp</b><span>Contacto e reservas</span></figcaption>
         </figure>
+      </div>
+
+      <div class="newcard">
+        <div class="card card--white"><div class="card__in">
+          <div class="card__top"><span class="card__brand"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>Menu</span><svg class="card__nfc" aria-hidden="true"><use href="#i-nfc"/></svg></div>
+          <div class="card__mid"><div class="card__copy"><b>Veja o menu</b><span class="l2">no telemóvel</span></div><div class="card__qr"><svg viewBox="0 0 25 25"><use href="#qr"/></svg></div></div>
+          <div class="card__foot">Encoste o telemóvel ou leia o QR</div>
+        </div></div>
+        <div class="newcard__txt">
+          <span class="badge">Novo</span>
+          <h3>Cartão do menu</h3>
+          <p>O cliente senta-se, encosta o telemóvel e abre logo a ementa: pratos, preços e fotos, sempre atualizados e sem reimprimir menus.</p>
+          <p class="newcard__up">Ainda não tem menu online? Fazemos a página do seu menu como parte do site.</p>
+        </div>
       </div>
 
       <dl class="spec">
@@ -954,7 +977,8 @@ const PLATFORMS = [
   {id:'facebook',    name:'Facebook',    icon:'i-heart'},
   {id:'tripadvisor', name:'TripAdvisor', icon:'i-pin'},
   {id:'tiktok',      name:'TikTok',      icon:'i-play'},
-  {id:'whatsapp',    name:'WhatsApp',    icon:'i-chat'}
+  {id:'whatsapp',    name:'WhatsApp',    icon:'i-chat'},
+  {id:'menu',        name:'Menu',        icon:'i-menu'}
 ];
 
 const eur = n => n.toLocaleString('pt-PT') + ' €';
