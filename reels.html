@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="pt-PT"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:U;src:url(a/Unbounded.ttf);font-weight:200 900}
+@font-face{font-family:M;src:url(a/Manrope.ttf);font-weight:200 800}
+:root{--paper:#0A1020;--hero:#162E95;--deep:#0C1A5E;--ink:#E9EDF8;--muted:#9CA7C6;--cobalt:#8AA0FF;--blue:#2141C2;--tram:#F4C21A;--tink:#1B1606;--line:#24304F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:M;color:var(--ink);
+  background:radial-gradient(1200px 900px at 50% -8%, #1d3bb4 0%, #12257a 32%, rgba(10,16,32,0) 70%), var(--paper)}
+#grid{position:absolute;inset:0;background-image:radial-gradient(rgba(138,160,255,.13) 2px,transparent 2.4px);background-size:54px 54px;
+  -webkit-mask-image:linear-gradient(#000 0%,rgba(0,0,0,.35) 60%,transparent 100%)}
+.abs{position:absolute;will-change:transform,opacity}
+.c{left:0;right:0;text-align:center}
+.kick{font:800 30px/1 M;letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt)}
+.h{font:800 98px/1.04 U;letter-spacing:-.02em;color:#fff}
+.h.m{font-size:84px}.h.s{font-size:70px}.h.xs{font-size:58px}
+.y{color:var(--tram)}
+.sub{font:600 40px/1.35 M;color:var(--muted)}
+.hl{position:relative;display:inline-block}
+.hl::after{content:"";position:absolute;left:-4px;right:-4px;bottom:2px;height:16px;background:var(--tram);opacity:.28;border-radius:8px;z-index:-1}
+.logo{display:inline-grid;grid-template-columns:1fr 1fr;gap:5px;width:60px;height:60px;vertical-align:middle}
+.logo i{display:block}
+.logo i:nth-child(1){background:#2141C2}
+.logo i:nth-child(2){background:var(--tram);border-top-right-radius:100%}
+.logo i:nth-child(3){background:var(--tram);border-bottom-left-radius:100%}
+.logo i:nth-child(4){background:#2141C2;border-radius:50%}
+.brand{display:flex;align-items:center;justify-content:center;gap:18px;font:800 38px/1 M;color:#fff}
+.pill{display:inline-flex;align-items:center;gap:16px;padding:30px 54px;border-radius:999px;background:var(--tram);color:var(--tink);font:800 46px/1 M;box-shadow:0 18px 50px rgba(244,194,26,.35)}
+.handle{font:700 38px/1.3 M;color:#fff}
+.url{font:600 32px/1.3 M;color:var(--muted)}
+.photo{border-radius:44px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.55);border:4px solid rgba(255,255,255,.08)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover}
+/* phone */
+.phone{width:420px;height:860px;border-radius:64px;background:#0B0F1E;border:3px solid #2A3150;padding:16px;box-shadow:0 50px 110px rgba(0,0,0,.6),inset 0 0 0 2px #000}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:50px;overflow:hidden;background:#F6F7FB}
+.phone .notch{position:absolute;left:50%;top:14px;width:120px;height:32px;margin-left:-60px;background:#0B0F1E;border-radius:20px;z-index:5}
+.scr .bar{position:absolute;left:0;right:0;top:0;height:96px;background:#fff;z-index:4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font:700 19px/1 M;color:#6B7491;border-bottom:1px solid #E3E6EF}
+.scr .bar b{display:inline-flex;align-items:center;gap:8px;background:#EEF0F6;border-radius:30px;padding:8px 18px;color:#11182E}
+/* review ui */
+.rv{position:absolute;inset:0;padding:140px 34px 0;background:#fff;color:#11182E;text-align:center}
+.rv .av{width:110px;height:110px;border-radius:50%;margin:0 auto 18px;background:linear-gradient(135deg,#2141C2,#8AA0FF);display:flex;align-items:center;justify-content:center;font:800 44px U;color:#fff}
+.rv h4{font:800 32px/1.2 M}.rv p{font:600 21px/1.4 M;color:#6B7491;margin-top:8px}
+.stars{display:flex;justify-content:center;gap:12px;margin-top:34px}
+.stars svg{width:56px;height:56px}
+.rv .box{margin-top:30px;height:150px;border:2px solid #E3E6EF;border-radius:20px;text-align:left;padding:18px;font:600 21px/1.4 M;color:#9aa1b6}
+.rv .pub{margin:28px auto 0;width:220px;padding:18px 0;border-radius:40px;background:#2141C2;color:#fff;font:800 24px M}
+.rv .ok{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;font:800 30px/1.3 M;color:#11182E}
+.rv .ok .ck{width:130px;height:130px;border-radius:50%;background:#1E9E5A;display:flex;align-items:center;justify-content:center}
+/* result cards (search) */
+.res{width:860px;border-radius:30px;background:#fff;color:#11182E;padding:30px 34px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.res .nm{font:800 40px/1.2 M}.res .mt{display:flex;align-items:center;gap:10px;font:700 30px/1 M;color:#4a5370;margin-top:12px}
+.res .mt .st{color:#F4A51A;letter-spacing:2px}
+.res .bt{display:flex;gap:14px;margin-top:22px}
+.res .bt span{flex:1;text-align:center;padding:18px 0;border-radius:40px;border:2px solid #D7DCEA;font:800 26px M;color:#2141C2}
+.res .bt span.miss{border-style:dashed;border-color:#E0525A;color:#E0525A;background:#FFF2F2}
+.search{width:860px;border-radius:60px;background:#fff;color:#11182E;padding:28px 40px;font:600 36px M;display:flex;align-items:center;gap:22px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+/* big number */
+.num{width:150px;height:150px;border-radius:50%;background:var(--tram);color:var(--tink);font:800 84px/150px U;text-align:center;box-shadow:0 0 0 14px rgba(244,194,26,.18)}
+/* nfc card */
+.card{width:620px;height:390px;border-radius:40px;padding:40px 44px;position:relative;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.55);display:flex;flex-direction:column;justify-content:space-between}
+.card .top{display:flex;justify-content:space-between;align-items:center;font:800 32px M}
+.card .top span{display:flex;align-items:center;gap:14px}
+.card .mid{display:flex;justify-content:space-between;align-items:flex-end}
+.card .cp b{display:block;font:800 54px/1.05 U;white-space:nowrap}.card .cp i{display:block;font:700 34px/1.3 M;font-style:normal;opacity:.85;margin-top:10px}
+.card .qr{width:150px;height:150px;border-radius:18px;background:#fff;padding:12px}
+.card .ft{font:700 22px M;opacity:.7;letter-spacing:.04em}
+.k-ink{background:linear-gradient(150deg,#1a2342,#0d1328);color:#fff;border:2px solid #2A3150}
+.k-cob{background:linear-gradient(150deg,#2a4ee0,#1631a6);color:#fff}
+.k-white{background:linear-gradient(150deg,#ffffff,#e8ecf7);color:#0E1630}
+.k-tram{background:linear-gradient(150deg,#ffd23f,#f0b90b);color:#1B1606}
+.k-green{background:linear-gradient(150deg,#1f9e5f,#137445);color:#fff}
+.ripple{width:60px;height:60px;border-radius:50%;border:6px solid var(--tram);margin:-30px 0 0 -30px}
+.chip{display:inline-flex;align-items:center;gap:12px;padding:20px 30px;border-radius:999px;background:#fff;color:#11182E;font:800 32px M;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.chip svg{width:36px;height:36px}
+.step{display:flex;align-items:center;gap:30px;width:860px;padding:30px 36px;border-radius:32px;background:rgba(255,255,255,.06);border:2px solid rgba(138,160,255,.25);font:800 44px/1.2 M;color:#fff}
+.step .n{flex:none;width:86px;height:86px;border-radius:50%;background:var(--tram);color:var(--tink);font:800 46px/86px U;text-align:center}
+.price{display:flex;justify-content:space-between;align-items:center;width:820px;padding:28px 40px;border-radius:30px;background:rgba(255,255,255,.06);border:2px solid rgba(138,160,255,.25);font:700 46px M;color:#fff}
+.price b{font:800 56px U;color:var(--tram)}
+.ig{position:absolute;inset:96px 0 0;background:#fff;padding:20px}
+.ig .hd{display:flex;align-items:center;gap:18px;padding:10px 6px 22px}
+.ig .hd .pp{width:84px;height:84px;border-radius:50%;background:#d9dce6}
+.ig .hd .ln{flex:1}.ig .hd .ln i{display:block;height:16px;border-radius:8px;background:#e3e6ef;margin:10px 0}
+.ig .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.ig .gr i{display:block;aspect-ratio:1;background:#e3e6ef}
+.ig .gr i:nth-child(3n+1){background:#d6d9e3}.ig .gr i:nth-child(4n){background:#cfd3df}
+.lbl{font:800 26px M;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.flash{position:absolute;inset:0;background:#fff;pointer-events:none}
+</style></head>
+<body><div id="stage"><div id="grid"></div></div>
+<svg width="0" height="0" style="position:absolute">
+ <defs>
+  <symbol id="star" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.3 6.1 20.5l1.3-6.5L2.5 9.4l6.6-.8z"/></symbol>
+  <symbol id="nfc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 8.5a5 5 0 0 1 0 7M9.5 6a8.5 8.5 0 0 1 0 12M13 3.5a12 12 0 0 1 0 17"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+  <symbol id="search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></symbol>
+  <symbol id="user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M4 19l1.3-3.9A8 8 0 1 1 8.6 18.3z"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M16 3c-2 1.5-2.5 4-2.5 7h2.5v11"/></symbol>
+  <symbol id="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.5 5.6 3.5 9s-1 6.4-3.5 9c-2.5-2.6-3.5-5.6-3.5-9s1-6.4 3.5-9z"/></symbol>
+  <symbol id="qr" viewBox="0 0 25 25"><path d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM18 0h7v7h-7zm1 1v5h5V1zm1 1h3v3h-3zM0 18h7v7H0zm1 1v5h5v-5zm1 1h3v3H2zM9 0h2v2H9zm3 0h2v3h-2zm-3 3h2v3H9zm4 2h3v2h-3zM9 8h3v2H9zm5 0h2v3h-2zm-6 3h2v2H8zm4 0h2v3h-2zM0 9h2v2H0zm3 0h3v2H3zm15 0h2v3h-2zm4 0h3v2h-3zM9 14h3v2H9zm6 0h3v2h-3zm5 2h2v3h-2zm-5 2h3v2h-3zm-6 1h2v3H9zm3 2h2v4h-2zm7 1h3v3h-3zm4-2h2v2h-2zm-8 4h2v2h-2z"/></symbol>
+ </defs>
+</svg>
+<script>
+const S=document.getElementById('stage');
+const B=.45; let DUR=14.4; const E=[]; const CB=[];
+const R=+(new URLSearchParams(location.search).get('r')||1);
+function el(html,css){const d=document.createElement('div');d.className='abs '+(css||'');d.innerHTML=html;S.appendChild(d);return d}
+const ez={o:t=>1-Math.pow(1-t,3),io:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,l:t=>t,b:t=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)},e:t=>t===1?1:1-Math.pow(2,-10*t)};
+const D={o:1,x:0,y:0,s:1,r:0,b:0};
+function K(e,kf){if(R>=5){const ps=new Set();kf.forEach(k=>Object.keys(k[1]).forEach(q=>ps.add(q)));const last={};kf=kf.map(([tt,pr,ea])=>{const n={...pr};ps.forEach(q=>{if(n[q]===undefined)n[q]=(q in last)?last[q]:D[q];last[q]=n[q]});return [tt,n,ea]})}E.push({e,kf})}
+function val(kf,t,p){let prev=null;for(const [tt,pr,ea] of kf){if(pr[p]===undefined)continue;if(t<tt){if(!prev)return pr[p];const f=(ez[ea||'o'])((t-prev[0])/(tt-prev[0]));return prev[1]+(pr[p]-prev[1])*f}prev=[tt,pr[p]]}return prev?prev[1]:D[p]}
+function frame(t){for(const {e,kf} of E){const o=val(kf,t,'o'),x=val(kf,t,'x'),y=val(kf,t,'y'),s=val(kf,t,'s'),r=val(kf,t,'r'),b=val(kf,t,'b');
+  e.style.opacity=o;e.style.transform=`translate(${x}px,${y}px) scale(${s}) rotate(${r}deg)`;e.style.filter=b>0.05?`blur(${b}px)`:'none';e.style.visibility=o<0.003?'hidden':'visible'}
+  for(const f of CB)f(t)}
+// helpers
+function at(e,left,top,w){e.style.left=left+'px';e.style.top=top+'px';if(w)e.style.width=w+'px';return e}
+function lineIn(e,t0,t1,dy){dy=dy||70;K(e,[[t0,{o:0,y:dy,b:14}],[t0+.38,{o:1,y:0,b:0}],[t1,{o:1,y:0,b:0}],[t1+.3,{o:0,y:-60,b:10},'io']])}
+function popIn(e,t0,t1){K(e,[[t0,{o:0,s:.6}],[t0+.35,{o:1,s:1},'b'],[t1,{o:1,s:1}],[t1+.3,{o:0,s:.9},'io']])}
+function star(c){return `<svg style="color:${c}"><use href="#star" fill="currentColor"/></svg>`}
+const LOGO='<span class="logo"><i></i><i></i><i></i><i></i></span>';
+function brandFoot(t0,t1){const f=el(`<div class="brand">${LOGO}EvolveYourBusiness</div>`,'c');at(f,0,1690);K(f,[[t0,{o:0,y:30}],[t0+.4,{o:1,y:0}],[t1,{o:1}]]);return f}
+function flash(t){const f=el('','flash');f.style.left=0;f.style.top=0;f.style.width='1080px';f.style.height='1920px';K(f,[[t-.01,{o:0}],[t,{o:.55}],[t+.28,{o:0}]])}
+function phone(inner){return el(`<div class="phone"><div class="scr"><div class="notch"></div>${inner}</div></div>`)}
+function cardHTML(kind,icon,brand,big,small,stars){return `<div class="card ${kind}"><div class="top"><span><svg style="width:42px;height:42px"><use href="#${icon}"/></svg>${brand}</span><svg style="width:46px;height:46px"><use href="#nfc"/></svg></div>
+ <div class="mid"><div class="cp"><b>${big}</b><i>${small}</i>${stars?`<div style="margin-top:12px;display:flex;gap:6px">${[1,2,3,4,5].map(()=>'<svg style="width:34px;height:34px;color:#F4C21A"><use href="#star" fill="currentColor"/></svg>').join('')}</div>`:''}</div><div class="qr"><svg viewBox="0 0 25 25" style="width:100%;height:100%;color:#0E1630"><use href="#qr" fill="currentColor"/></svg></div></div>
+ <div class="ft">ENCOSTE O TELEMÓVEL OU LEIA O QR</div></div>`}
+function bgPhoto(src,t0,t1,op){const p=el(`<img src="${src}" style="width:100%;height:100%;object-fit:cover">`);at(p,0,0,1080);p.style.height='1920px';p.style.zIndex=0;
+  K(p,[[t0,{o:0,s:1.15}],[t0+.5,{o:op,s:1.1}],[t1,{o:op,s:1.0},'l'],[t1+.3,{o:0}]]);return p}
+
+/* ======================= R1: avaliações num toque ======================= */
+function r1(){DUR=14.4;
+ const k=el('<div class="kick">Restaurantes · Cabeleireiros · Lojas</div>','c');at(k,0,470);lineIn(k,.05,2.2,30);
+ const l1=el('<div class="h">O cliente</div>','c');at(l1,0,560);lineIn(l1,.1,2.25);
+ const l2=el('<div class="h">adorou.</div>','c');at(l2,0,670);lineIn(l2,.35,2.25);
+ const l3=el('<div class="h">Mas foi embora</div>','c');at(l3,0,830);lineIn(l3,.8,2.3);
+ const l4=el('<div class="h"><span class="y">sem avaliar.</span></div>','c');at(l4,0,940);lineIn(l4,1.15,2.3);
+ const s0=el('<div class="sub">Isto resolve-se com um toque.</div>','c');at(s0,0,1140);lineIn(s0,1.55,2.3,30);
+ // scene B: photo + phone tap
+ const ph=el('<div class="photo" style="width:900px;height:900px"><img src="a/produto.jpg"></div>');at(ph,90,300);
+ K(ph,[[2.6,{o:0,s:1.18,y:40}],[3.1,{o:1,s:1,y:0}],[4.25,{o:1,s:1}],[4.7,{o:0,s:.92,y:-60},'io']]);
+ const P=phone(`<div class="bar"><b>g.page/o-seu-negocio</b></div>
+   <div class="rv"><div class="av">S</div><h4>O seu negócio</h4><p>Partilhe a sua experiência</p>
+   <div class="stars" id="st">${[0,1,2,3,4].map(i=>`<svg id="s${i}" style="color:#D3D8E5"><use href="#star" fill="currentColor"/></svg>`).join('')}</div>
+   <div class="box" id="bx">Escreva a sua opinião…</div><div class="pub" id="pub">Publicar</div>
+   <div class="ok" id="ok"><div class="ck"><svg style="width:80px;height:80px;color:#fff"><use href="#check"/></svg></div>Obrigado pela<br>sua avaliação!</div></div>`);
+ at(P,330,520);
+ K(P,[[2.95,{o:0,x:420,y:760,r:14,s:.78}],[3.45,{o:1,x:-200,y:250,r:-10,s:.78},'o'],[3.65,{o:1,x:-208,y:268,r:-10,s:.78},'io'],[3.8,{o:1,x:-200,y:250,r:-10,s:.78}],[4.3,{o:1,x:-200,y:250,r:-10,s:.78}],[4.75,{o:1,x:0,y:0,r:0,s:1.32},'io'],[8.3,{o:1,x:0,y:0,r:0,s:1.32}],[8.65,{o:0,s:1.2,y:-80},'io']]);
+ const scr=P.querySelector('.scr');const rv=P.querySelector('.rv');
+ const lock=document.createElement('div');lock.style.cssText='position:absolute;inset:0;z-index:6;background:linear-gradient(160deg,#1d3bb4,#0a1020);color:#fff;text-align:center;padding-top:150px;font:800 92px/1 U';lock.innerHTML='12:30<div style="font:600 24px M;margin-top:14px;opacity:.75">sábado, 24 de outubro</div>';scr.appendChild(lock);
+ // ripples at contact (around card on photo)
+ for(let i=0;i<3;i++){const r=el('','ripple');at(r,330,850);K(r,[[3.66+i*.14,{o:0,s:.3}],[3.7+i*.14,{o:1,s:.6}],[4.35+i*.14,{o:0,s:4.6},'o']])}
+ const ok=P.querySelector('#ok');
+ CB.push(t=>{rv.style.opacity=t<3.75?0:1;lock.style.opacity=t<3.75?1:Math.max(0,1-(t-3.75)/.15); for(let i=0;i<5;i++){const ts=5.0+i*.225;const s=P.querySelector('#s'+i);const on=t>=ts;s.style.color=on?'#F4A51A':'#D3D8E5';const p=Math.min(1,Math.max(0,(t-ts)/.18));s.style.transform=`scale(${on?1+.35*Math.sin(Math.PI*p):1})`}
+   const tx='Comida excelente e atendimento muito simpático!';const n=Math.max(0,Math.min(tx.length,Math.floor((t-6.2)*38)));const bx=P.querySelector('#bx');bx.textContent=n>0?tx.slice(0,n):'Escreva a sua opinião…';bx.style.color=n>0?'#11182E':'#9aa1b6';
+   P.querySelector('#pub').style.transform=`scale(${t>7.45&&t<7.6?.92:1})`; ok.style.opacity=t<7.6?0:Math.min(1,(t-7.6)/.2)});
+ const cap1=el('<div class="h s">Encosta o telemóvel…</div>','c');at(cap1,0,190);K(cap1,[[3.3,{o:0,y:40}],[3.65,{o:1,y:0}],[4.5,{o:1}],[4.75,{o:0}]]);
+ const cap2=el('<div class="h s">…e <span class="y">avalia</span> em segundos.</div>','c');at(cap2,0,1690);K(cap2,[[4.8,{o:0,y:40}],[5.15,{o:1,y:0}],[8.2,{o:1}],[8.5,{o:0}]]);
+ const capT=el('<div class="h s"><span class="y">1 toque.</span></div>','c');at(capT,0,250);K(capT,[[4.8,{o:0,y:-30}],[5.15,{o:1,y:0}],[8.2,{o:1}],[8.5,{o:0}]]);
+ // scene C: three statements
+ bgPhoto('a/cartoes-reais.jpg',8.45,11.6,.18);
+ const st=[['Sem','aplicações.'],['Sem','pedir a cada cliente.'],['Mais','estrelas no Google.']];
+ st.forEach((s,i)=>{const e=el(`<div class="h m">${s[0]} <span class="y">${s[1]}</span></div>`,'c');at(e,0,560+i*230);K(e,[[8.7+i*.6,{o:0,x:-120,b:16}],[9.05+i*.6,{o:1,x:0,b:0}],[11.25,{o:1}],[11.55,{o:0,y:-50},'io']])});
+ // CTA
+ flash(11.7);
+ const cp=el('<div class="photo" style="width:760px;height:690px"><img src="a/placa.jpg"></div>');at(cp,160,250);K(cp,[[11.7,{o:0,s:.85,r:-6}],[12.1,{o:1,s:1,r:-3},'b'],[14.4,{o:1,s:1.03,r:-2},'l']]);
+ const k2=el('<div class="kick">Cartões NFC + QR</div>','c');at(k2,0,1010);K(k2,[[11.9,{o:0}],[12.2,{o:1}]]);
+ const pr=el('<div class="h m">a partir de <span class="y">18 €</span></div>','c');at(pr,0,1070);K(pr,[[12.0,{o:0,y:40}],[12.35,{o:1,y:0}]]);
+ const bt=el('<span class="pill">Envie mensagem</span>','c');at(bt,0,1250);K(bt,[[12.3,{o:0,s:.7}],[12.65,{o:1,s:1},'b']]);
+ const hd=el('<div class="handle">@evolveyourbusiness2026</div><div class="url">evolveyourbusiness.pt</div>','c');at(hd,0,1440);K(hd,[[12.5,{o:0,y:20}],[12.85,{o:1,y:0}]]);
+ brandFoot(12.6,14.4);
+ return {sfx:[['impact',0],['pop',.1],['pop',.35],['pop',.8],['pop',1.15],['whoosh',2.45],['impact',2.7],['whoosh',3.0],['tap',3.66],['ding',3.75],['whoosh',4.45],
+   ['tick',5.0],['tick',5.225],['tick',5.45],['tick',5.675],['tick',5.9],['type',6.2],['click',7.45],['ding',7.6],['whoosh',8.4],['impact',8.7],['pop',8.7],['pop',9.3],['pop',9.9],['riser',11.1],['impact',11.7],['pop',12.3],['pop',12.65]],reveal:2.7,prog:0}
+}
+
+/* ======================= R2: 3 erros no Google ======================= */
+function r2(){DUR=15.3;
+ const big=el('<div style="font:800 900px/1 U;color:rgba(138,160,255,.08)">3</div>','c');at(big,0,380);K(big,[[0,{o:0,s:1.3}],[.5,{o:1,s:1}],[2.0,{o:1,s:.95}],[2.3,{o:0}]]);
+ const k=el('<div class="kick">Restaurantes e negócios locais</div>','c');at(k,0,520);lineIn(k,.05,2.0,30);
+ const a=el('<div class="h">3 erros que</div>','c');at(a,0,610);lineIn(a,.1,2.05);
+ const b=el('<div class="h">fazem perder</div>','c');at(b,0,720);lineIn(b,.4,2.05);
+ const c=el('<div class="h"><span class="y">clientes</span></div>','c');at(c,0,830);lineIn(c,.7,2.1);
+ const d=el('<div class="h">no Google.</div>','c');at(d,0,940);lineIn(d,1.0,2.1);
+ const sw=el('<div class="sub">O 2.º é o mais comum ↓</div>','c');at(sw,0,1120);lineIn(sw,1.35,2.1,30);
+ function head(n,t0,t1,title,sub){const N=el(`<div class="num">${n}</div>`);at(N,90,300);K(N,[[t0,{o:0,s:.3,r:-90}],[t0+.4,{o:1,s:1,r:0},'b'],[t1,{o:1}],[t1+.3,{o:0,s:.8},'io']]);
+  const T=el(`<div class="h s" style="text-align:left">${title}</div>`);at(T,280,300,720);K(T,[[t0+.1,{o:0,x:60}],[t0+.45,{o:1,x:0}],[t1,{o:1}],[t1+.3,{o:0,x:-60},'io']]);
+  const Sb=el(`<div class="sub" style="text-align:left">${sub}</div>`);at(Sb,90,520,900);K(Sb,[[t0+.3,{o:0,y:30}],[t0+.65,{o:1,y:0}],[t1,{o:1}],[t1+.3,{o:0}]])}
+ // 1 — sem site
+ head(1,2.25,5.1,'Não ter <span class="y">site.</span>','A ementa só existe no Instagram. Quem pesquisa no Google não a encontra.');
+ const sb=el(`<div class="search"><svg style="width:44px;height:44px;color:#6B7491"><use href="#search"/></svg><span id="q"></span></div>`);at(sb,110,800);K(sb,[[2.6,{o:0,y:40}],[2.95,{o:1,y:0}],[5.1,{o:1}],[5.4,{o:0}]]);
+ CB.push(t=>{const q='churrasqueira perto de mim';const n=Math.max(0,Math.min(q.length,Math.floor((t-2.95)*30)));sb.querySelector('#q').textContent=q.slice(0,n)+(t<4.0&&Math.floor(t*3)%2?'|':'')});
+ const r1c=el(`<div class="res"><div class="nm">O seu negócio</div><div class="mt"><span class="st">★★★★☆</span> 4,3 · Restaurante</div><div class="bt"><span>Ligar</span><span>Direções</span><span class="miss" id="ms">Website ✕</span></div></div>`);at(r1c,110,980);
+ K(r1c,[[3.95,{o:0,y:60}],[4.3,{o:1,y:0}],[5.1,{o:1}],[5.4,{o:0}]]);
+ CB.push(t=>{const m=r1c.querySelector('#ms');m.style.transform=`scale(${t>4.5&&t<5.1?1+.08*Math.sin((t-4.5)*14):1})`});
+ // 2 — poucas avaliações
+ head(2,5.4,8.25,'Poucas <span class="y">avaliações.</span>','Entre dois sítios, o cliente escolhe quem tem mais estrelas e mais opiniões.');
+ const cA=el(`<div class="res"><div class="nm">O vizinho do lado</div><div class="mt"><span class="st">★★★★★</span> 4,7 · <b id="na">380</b> avaliações</div></div>`);at(cA,110,800);
+ const cB=el(`<div class="res"><div class="nm">O seu negócio</div><div class="mt"><span class="st">★★★★☆</span> 4,2 · 19 avaliações</div></div>`);at(cB,110,1050);
+ K(cA,[[5.75,{o:0,x:-200}],[6.1,{o:1,x:0}],[8.25,{o:1}],[8.55,{o:0}]]);K(cB,[[5.95,{o:0,x:200}],[6.3,{o:1,x:0}],[6.9,{o:1,s:1}],[7.2,{o:.45,s:.94}],[8.25,{o:.45,s:.94}],[8.55,{o:0}]]);
+ const chA=el('<span class="chip" style="background:#1E9E5A;color:#fff"><svg><use href="#check"/></svg>Escolhido</span>');at(chA,700,760);K(chA,[[7.0,{o:0,s:.5}],[7.3,{o:1,s:1},'b'],[8.25,{o:1}],[8.55,{o:0}]]);
+ const lb=el('<div class="lbl">Exemplo ilustrativo</div>','c');at(lb,0,1290);K(lb,[[6.3,{o:0}],[6.6,{o:1}],[8.25,{o:1}],[8.55,{o:0}]]);
+ // 3 — sem botão
+ head(3,8.55,11.4,'Sem botão para <span class="y">encomendar.</span>','Se o cliente tem de procurar o número, desiste e vai ao concorrente.');
+ const P=phone(`<div class="bar"><b>churrasqueiraogabriel.pt</b></div><img src="a/gab_hero.jpg" style="position:absolute;top:96px;left:0;width:100%">`);at(P,330,760);P.style.zIndex=2;
+ K(P,[[8.85,{o:0,y:300}],[9.3,{o:1,y:0}],[11.4,{o:1}],[11.7,{o:0,y:-60}]]);
+ const ring=el('<div style="width:280px;height:84px;border:6px solid #F4C21A;border-radius:16px"></div>');at(ring,400,1246);ring.style.zIndex=3;
+ K(ring,[[9.6,{o:0,s:1.5}],[9.95,{o:1,s:1},'b'],[11.4,{o:1}],[11.7,{o:0}]]);
+ CB.push(t=>{if(t>9.95&&t<11.4)ring.style.boxShadow=`0 0 0 ${12+10*Math.sin(t*9)}px rgba(244,194,26,.25)`});
+ const ok3=el('<span class="chip"><svg style="color:#1E9E5A"><use href="#check"/></svg>Ligar & encomendar num toque</span>');at(ok3,200,1710);ok3.style.zIndex=3;K(ok3,[[10.0,{o:0,y:30}],[10.35,{o:1,y:0}],[11.4,{o:1}],[11.7,{o:0}]]);
+ // solution
+ flash(11.75);
+ const so=el('<div class="h m">Resolvemos <span class="y">os 3.</span></div>','c');at(so,0,470);K(so,[[11.75,{o:0,s:1.2}],[12.1,{o:1,s:1},'b']]);
+ ['Site profissional, sem mensalidades','Cartões NFC para avaliações','Botão para ligar e encomendar'].forEach((s,i)=>{const e=el(`<div class="step"><span class="n" style="background:#1E9E5A;color:#fff"><svg style="width:50px;height:50px;margin-top:18px"><use href="#check"/></svg></span>${s}</div>`);at(e,110,660+i*170);K(e,[[12.2+i*.25,{o:0,x:-100}],[12.55+i*.25,{o:1,x:0}]])});
+ const bt=el('<span class="pill">Análise grátis: envie mensagem</span>','c');at(bt,0,1250);K(bt,[[13.1,{o:0,s:.7}],[13.45,{o:1,s:1},'b']]);
+ const hd=el('<div class="handle">@evolveyourbusiness2026</div><div class="url">evolveyourbusiness.pt</div>','c');at(hd,0,1440);K(hd,[[13.3,{o:0}],[13.65,{o:1}]]);
+ brandFoot(13.4,15.3);
+ return {sfx:[['impact',0],['pop',.1],['pop',.4],['pop',.7],['pop',1.0],['whoosh',2.0],['impact',2.25],['type',2.95],['pop',4.0],['buzz',4.55],['whoosh',5.15],['impact',5.4],['pop',5.8],['pop',6.0],['ding',7.05],['whoosh',8.3],['impact',8.55],['whoosh',8.9],['ding',9.95],['riser',11.15],['impact',11.75],['pop',12.2],['pop',12.45],['pop',12.7],['pop',13.1]],reveal:2.25,prog:1}
+}
+
+/* ======================= R3: antes / depois ======================= */
+function r3(){DUR=14.4;
+ const k=el('<div class="kick">Antes</div>','c');at(k,0,250);K(k,[[0,{o:0}],[.2,{o:1}],[2.1,{o:1}],[2.35,{o:0}]]);
+ const t1=el('<div class="h m">Só Instagram.</div>','c');at(t1,0,310);lineIn(t1,.1,2.1);
+ const P0=phone(`<div class="bar"><b>instagram</b></div><div class="ig"><div class="hd"><div class="pp"></div><div class="ln"><i style="width:70%"></i><i style="width:45%"></i></div></div><div class="gr">${'<i></i>'.repeat(15)}</div></div>`);at(P0,330,500);
+ K(P0,[[0,{o:0,y:120}],[.4,{o:1,y:0}],[2.1,{o:1,s:1}],[2.4,{o:0,s:.8,r:-8},'io']]);
+ const q=el('<div class="sub" style="color:#fff">Ementa? Preços? Horário?<br><span class="y" style="font-weight:800">Ninguém encontra.</span></div>','c');at(q,0,1420);lineIn(q,.7,2.1,30);
+ // depois
+ flash(2.45);
+ const k2=el('<div class="kick" style="color:#F4C21A">Depois</div>','c');at(k2,0,250);K(k2,[[2.45,{o:0}],[2.7,{o:1}],[9.6,{o:1}],[9.9,{o:0}]]);
+ const t2=el('<div class="h m">Um site a sério.</div>','c');at(t2,0,310);K(t2,[[2.5,{o:0,y:50}],[2.85,{o:1,y:0}],[9.6,{o:1}],[9.9,{o:0}]]);
+ function site(img1,img2,url,x0,t0,t1,dir){const P=phone(`<div class="bar"><b>${url}</b></div><div class="tl" style="position:absolute;top:96px;left:0;width:100%"><img src="${img1}" style="display:block;width:100%"><img src="${img2}" style="display:block;width:100%"></div>`);at(P,x0,500);
+  K(P,[[t0,{o:0,x:dir*500,r:dir*10}],[t0+.45,{o:1,x:0,r:0}],[t1,{o:1}],[t1+.35,{o:0,x:-dir*400},'io']]);
+  const tl=P.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-(t0+.6))/(t1-t0-.8)));const e=ez.io(p);tl.style.transform=`translateY(${-e*2600}px)`});return P}
+ site('a/gab_tall_0.jpg','a/gab_tall_1.jpg','churrasqueiraogabriel.pt',330,2.5,6.0,1);
+ site('a/bg_tall_0.jpg','a/bg_tall_1.jpg','churrasqueirabomgosto.pt',330,6.0,9.5,-1);
+ const chips=[['menu','Ementa completa',2.9],['star','Avaliações do Google',3.6],['phone','Ligar e encomendar',4.3],['globe','Telemóvel e computador',5.0]];
+ chips.forEach(([ic,tx,t0],i)=>{const c=el(`<span class="chip"><svg style="color:#2141C2"><use href="#${ic}" ${ic=='star'?'fill="currentColor"':''}/></svg>${tx}</span>`);at(c,i%2?520:60,1420+Math.floor(i/2)*130);K(c,[[t0,{o:0,s:.5}],[t0+.35,{o:1,s:1},'b'],[9.5,{o:1}],[9.8,{o:0}]])});
+ // steps
+ const k3=el('<div class="kick">Como funciona</div>','c');at(k3,0,330);K(k3,[[9.9,{o:0}],[10.2,{o:1}],[12.0,{o:1}],[12.3,{o:0}]]);
+ ['Fala connosco','Recebe um <span class="y">protótipo grátis</span>','Dá a sua opinião','Site online'].forEach((s,i)=>{const e=el(`<div class="step"><span class="n">${i+1}</span><span>${s}</span></div>`);at(e,110,450+i*175);K(e,[[10.0+i*.3,{o:0,x:120}],[10.35+i*.3,{o:1,x:0}],[12.0,{o:1}],[12.3,{o:0,x:-80}]])});
+ // CTA
+ flash(12.3);
+ const c1=el('<div class="h m">Pagamento único.</div>','c');at(c1,0,300);K(c1,[[12.3,{o:0,y:40}],[12.6,{o:1,y:0}]]);
+ const c2=el('<div class="h m"><span class="y">Sem mensalidades.</span></div>','c');at(c2,0,410);K(c2,[[12.45,{o:0,y:40}],[12.75,{o:1,y:0}]]);
+ const bt=el('<span class="pill">Peça o seu protótipo grátis</span>','c');at(bt,0,590);K(bt,[[12.75,{o:0,s:.7}],[13.1,{o:1,s:1},'b']]);
+ const hd=el('<div class="handle">@evolveyourbusiness2026</div><div class="url">evolveyourbusiness.pt</div>','c');at(hd,0,760);K(hd,[[12.95,{o:0}],[13.3,{o:1}]]);
+ [['a/gab_hero.jpg','churrasqueiraogabriel.pt',120,-7],['a/bg_hero.jpg','churrasqueirabomgosto.pt',540,7]].forEach(([im,u,x,r],i)=>{const q=phone(`<div class="bar"><b>${u}</b></div><img src="${im}" style="position:absolute;top:96px;left:0;width:100%">`);at(q,x,820);K(q,[[12.6+i*.15,{o:0,y:300,s:.68,r:r*2}],[13.05+i*.15,{o:1,y:0,s:.68,r:r},'b'],[14.4,{o:1,y:-20,s:.7,r:r},'l']])});
+ brandFoot(13.0,14.4);
+ return {sfx:[['impact',0],['pop',.4],['pop',.75],['riser',1.9],['impact',2.45],['whoosh',2.5],['pop',2.9],['pop',3.6],['pop',4.3],['pop',5.0],['whoosh',5.9],['whoosh',6.05],['whoosh',9.55],['impact',9.9],['pop',10.0],['pop',10.3],['pop',10.6],['pop',10.9],['riser',11.8],['impact',12.3],['pop',12.75]],reveal:2.45,prog:2}
+}
+
+/* ======================= R4: um cartão para cada rede ======================= */
+function r4(){DUR=13.5;
+ const k=el('<div class="kick">Cartões NFC + QR</div>','c');at(k,0,560);lineIn(k,.05,2.0,30);
+ const a=el('<div class="h">Um toque</div>','c');at(a,0,650);lineIn(a,.1,2.05);
+ const b=el('<div class="h">no cartão</div>','c');at(b,0,760);lineIn(b,.4,2.05);
+ const c=el('<div class="h">e o cliente<span class="y">…</span></div>','c');at(c,0,870);lineIn(c,.75,2.1);
+ const cards=[['k-white','star','Google','Avalie-nos','no Google',1,'…deixa uma <span class="y">avaliação</span>.'],
+   ['k-cob','user','Instagram','Siga-nos','no Instagram',0,'…passa a <span class="y">seguir</span> o seu Instagram.'],
+   ['k-tram','menu','Ementa','Veja a','nossa ementa',0,'…vê a <span class="y">ementa</span> no telemóvel.'],
+   ['k-green','chat','WhatsApp','Fale','connosco',0,'…fala consigo no <span class="y">WhatsApp</span>.'],
+   ['k-ink','globe','Site','Visite','o nosso site',0,'…abre o seu <span class="y">site</span>.']];
+ cards.forEach((cd,i)=>{const t0=2.25+i*1.35,t1=t0+1.35;const real=i===1;const e=real?el('<div class="photo" style="width:560px;height:538px;border-radius:36px"><img src="a/cartao-instagram.jpg"></div>'):el(cardHTML(cd[0],cd[1],cd[2],cd[3],cd[4],cd[5]));at(e,real?260:230,real?480:560);
+  if(real){const tg=el('<span class="chip" style="font-size:24px;padding:12px 22px">Foto real</span>');at(tg,700,450);K(tg,[[t0+.3,{o:0,s:.6}],[t0+.55,{o:1,s:1},'b'],[t1-.05,{o:1}],[t1+.2,{o:0}]])}
+  K(e,[[t0-.05,{o:0,y:500,r:12,s:.9}],[t0+.35,{o:1,y:0,r:-3,s:1},'b'],[t1-.05,{o:1,y:0,r:-3}],[t1+.3,{o:0,y:-260,r:-10,s:.82},'io']]);
+  const cap=el(`<div class="h xs">${cd[6]}</div>`,'c');at(cap,0,1080);K(cap,[[t0+.1,{o:0,y:40}],[t0+.4,{o:1,y:0}],[t1-.1,{o:1}],[t1+.1,{o:0}]]);
+  for(let j=0;j<2;j++){const r=el('','ripple');if(real)at(r,375,910);else at(r,770,610);K(r,[[t0+.45+j*.12,{o:0,s:.3}],[t0+.5+j*.12,{o:1,s:.6}],[t0+1.0+j*.12,{o:0,s:3.6}]])}});
+ // prices
+ flash(9.0);
+ const kp=el('<div class="kick">Preços</div>','c');at(kp,0,470);K(kp,[[9.0,{o:0}],[9.3,{o:1}],[11.1,{o:1}],[11.35,{o:0}]]);
+ [['1 cartão','18 €'],['2 cartões','34 €'],['3 cartões','48 €'],['4 cartões','60 €']].forEach((p,i)=>{const e=el(`<div class="price"><span>${p[0]}</span><b>${p[1]}</b></div>`);at(e,130,570+i*160);K(e,[[9.1+i*.25,{o:0,x:-120}],[9.45+i*.25,{o:1,x:0}],[11.1,{o:1}],[11.35,{o:0}]])});
+ const pu=el('<div class="sub">Pagamento único. 5 ou mais: orçamento.</div>','c');at(pu,0,1250);K(pu,[[10.2,{o:0}],[10.5,{o:1}],[11.1,{o:1}],[11.35,{o:0}]]);
+ // CTA
+ const cp=el('<div class="photo" style="width:660px;height:344px"><img src="a/cartoes-reais.jpg"></div>');at(cp,70,420);K(cp,[[11.25,{o:0,s:.85,r:-4}],[11.6,{o:1,s:1,r:-4},'b'],[13.5,{o:1,s:1.03,r:-4},'l']]);
+ const ci=el('<div class="photo" style="width:400px;height:384px;border-radius:30px"><img src="a/cartao-instagram.jpg"></div>');at(ci,610,540);K(ci,[[11.4,{o:0,s:.8,r:12}],[11.75,{o:1,s:1,r:6},'b'],[13.5,{o:1,s:1.03,r:6},'l']]);
+ const t=el('<div class="h s">Escolha os <span class="y">seus.</span></div>','c');at(t,0,970);K(t,[[11.4,{o:0,y:40}],[11.7,{o:1,y:0}]]);
+ const bt=el('<span class="pill">Envie mensagem</span>','c');at(bt,0,1130);K(bt,[[11.6,{o:0,s:.7}],[11.95,{o:1,s:1},'b']]);
+ const hd=el('<div class="handle">@evolveyourbusiness2026</div><div class="url">evolveyourbusiness.pt</div>','c');at(hd,0,1320);K(hd,[[11.8,{o:0}],[12.1,{o:1}]]);
+ brandFoot(11.9,13.5);
+ const sf=[['impact',0],['pop',.1],['pop',.4],['pop',.75],['riser',1.65]];
+ cards.forEach((_,i)=>{const t0=2.25+i*1.35;sf.push(['whoosh',t0-.1],['impact',t0+.05],['tap',t0+.45],['ding',t0+.55])});
+ sf.push(['whoosh',8.85],['impact',9.0],['pop',9.1],['pop',9.35],['pop',9.6],['pop',9.85],['impact',11.25],['pop',11.6]);
+ return {sfx:sf,reveal:2.25,prog:3}
+}
+/* ======================= TikTok batch helpers ======================= */
+function hookL(lines,t1){lines.forEach(([html,y,t0,cls])=>{const e=el(`<div class="${cls||'h'}">${html}</div>`,'c');at(e,0,y);lineIn(e,t0,t1,cls&&cls.startsWith('kick')||cls==='sub'?30:70)})}
+function cta(t0,dur,l1,l2,pill,word,extra){flash(t0);
+ const a=el(`<div class="h m">${l1}</div>`,'c');at(a,0,330);K(a,[[t0,{o:0,y:40}],[t0+.3,{o:1,y:0}]]);
+ if(l2){const b=el(`<div class="h m"><span class="y">${l2}</span></div>`,'c');at(b,0,440);K(b,[[t0+.15,{o:0,y:40}],[t0+.45,{o:1,y:0}]])}
+ const bt=el(`<span class="pill">${pill}</span>`,'c');at(bt,0,620);K(bt,[[t0+.45,{o:0,s:.7}],[t0+.8,{o:1,s:1},'b']]);
+ const cm=el(`<span class="chip"><svg style="color:#2141C2"><use href="#chat"/></svg>Comente «${word}»</span>`,'c');at(cm,0,790);K(cm,[[t0+.7,{o:0,y:30}],[t0+1.0,{o:1,y:0}]]);
+ const u=el('<div class="handle">evolveyourbusiness.pt</div>','c');at(u,0,935);K(u,[[t0+.85,{o:0}],[t0+1.15,{o:1}]]);
+ if(extra)extra(t0);
+ brandFoot(t0+.9,dur);
+ CB.push(t=>{if(t>t0+1.2){cm.firstChild.style.transform=`scale(${1+.04*Math.sin((t-t0)*6)})`}});
+}
+function ctaCards(t0){const cp=el('<div class="photo" style="width:620px;height:323px"><img src="a/cartoes-reais.jpg"></div>');at(cp,70,1110);K(cp,[[t0+.5,{o:0,s:.85,r:-6}],[t0+.9,{o:1,s:1,r:-4},'b'],[t0+4,{o:1,s:1.03,r:-4},'l']]);
+ const ci=el('<div class="photo" style="width:360px;height:346px;border-radius:30px"><img src="a/cartao-instagram.jpg"></div>');at(ci,640,1170);K(ci,[[t0+.65,{o:0,s:.8,r:12}],[t0+1.05,{o:1,s:1,r:6},'b'],[t0+4,{o:1,s:1.03,r:6},'l']])}
+function ctaSites(t0){[['a/gab_hero.jpg','churrasqueiraogabriel.pt',150,-7],['a/bg_hero.jpg','churrasqueirabomgosto.pt',510,7]].forEach(([im,u,x,r],i)=>{const q=phone(`<div class="bar"><b>${u}</b></div><img src="${im}" style="position:absolute;top:96px;left:0;width:100%">`);at(q,x,1000);K(q,[[t0+.5+i*.15,{o:0,y:300,s:.6,r:r*2}],[t0+.95+i*.15,{o:1,y:0,s:.6,r:r},'b'],[t0+4,{o:1,y:-20,s:.62,r:r},'l']])})}
+function lockPhone(inner,tapT){const P=phone(inner);const scr=P.querySelector('.scr');const lock=document.createElement('div');lock.style.cssText='position:absolute;inset:0;z-index:6;background:linear-gradient(160deg,#1d3bb4,#0a1020);color:#fff;text-align:center;padding-top:150px;font:800 92px/1 U';lock.innerHTML='12:30<div style="font:600 24px M;margin-top:14px;opacity:.75">terça-feira</div>';scr.appendChild(lock);CB.push(t=>{lock.style.opacity=t<tapT?1:Math.max(0,1-(t-tapT)/.15)});return P}
+const REVIEW_PAGE=`<div class="bar"><b>g.page/o-seu-negocio</b></div><div class="rv"><div class="av">S</div><h4>O seu negócio</h4><p>Partilhe a sua experiência</p><div class="stars">${[0,1,2,3,4].map(()=>`<svg style="color:#F4A51A"><use href="#star" fill="currentColor"/></svg>`).join('')}</div><div class="box">Escreva a sua opinião…</div><div class="pub">Publicar</div></div>`;
+function caption(html,y,t0,t1,cls){const e=el(`<div class="${cls||'h s'}">${html}</div>`,'c');at(e,0,y);K(e,[[t0,{o:0,y:40}],[t0+.3,{o:1,y:0}],[t1,{o:1}],[t1+.25,{o:0}]]);return e}
+function stdSfx(extra){return [['impact',0],['pop',.1],['pop',.4],['pop',.75],['pop',1.1]].concat(extra)}
+
+/* ======================= R5: não aparece no Google ======================= */
+function r5(){DUR=14.1;
+ hookL([['Para donos de negócios',470,.05,'kick'],['Se o seu negócio',560,.1,'h m'],['não aparece',660,.35],['no Google…',770,.6],['…para o cliente',960,1.0,'sub'],['<span class="y">não existe.</span>',1030,1.3]],2.25);
+ const sb=el(`<div class="search"><svg style="width:44px;height:44px;color:#6B7491"><use href="#search"/></svg><span id="q"></span></div>`);at(sb,110,260);K(sb,[[2.45,{o:0,y:40}],[2.8,{o:1,y:0}],[7.5,{o:1}],[7.8,{o:0}]]);
+ CB.push(t=>{const q='cabeleireiro perto de mim';const n=Math.max(0,Math.min(q.length,Math.floor((t-2.8)*30)));sb.querySelector('#q').textContent=q.slice(0,n)+(t<3.8&&Math.floor(t*3)%2?'|':'')});
+ [['Concorrente A','★★★★★','4,8 · 512 avaliações'],['Concorrente B','★★★★★','4,6 · 230 avaliações'],['Concorrente C','★★★★☆','4,4 · 141 avaliações']].forEach((c,i)=>{const r=el(`<div class="res"><div class="nm">${c[0]}</div><div class="mt"><span class="st">${c[1]}</span> ${c[2]}</div><div class="bt"><span>Ligar</span><span>Direções</span><span>Website</span></div></div>`);at(r,110,430+i*260);K(r,[[3.9+i*.25,{o:0,y:60}],[4.25+i*.25,{o:1,y:0}],[7.5,{o:1}],[7.8,{o:0}]])});
+ const gh=el(`<div class="res" style="background:rgba(255,255,255,.05);border:4px dashed #E0525A;box-shadow:none;color:#fff"><div class="nm" style="color:#fff">O seu negócio?</div><div class="mt" style="color:#E0525A">Não aparece nos resultados</div></div>`);at(gh,110,1230);
+ K(gh,[[5.1,{o:0,s:.8}],[5.45,{o:1,s:1},'b'],[7.5,{o:1}],[7.8,{o:0}]]);
+ CB.push(t=>{if(t>5.45&&t<7.5)gh.style.transform+=` translateX(${Math.sin(t*40)*Math.max(0,1-(t-5.45)*2.5)*10}px)`});
+ const lb=el('<div class="lbl">Exemplo ilustrativo</div>','c');at(lb,0,1480);K(lb,[[5.3,{o:0}],[5.6,{o:1}],[7.5,{o:1}],[7.8,{o:0}]]);
+ const k3=el('<div class="kick">O que o cliente procura</div>','c');at(k3,0,420);K(k3,[[7.85,{o:0}],[8.15,{o:1}],[11.0,{o:1}],[11.25,{o:0}]]);
+ [['Fotos e horário certos'],['Avaliações <span class="y">recentes</span>'],['Site com botão <span class="y">Ligar</span>']].forEach(([s],i)=>{const e=el(`<div class="step"><span class="n">${i+1}</span><span>${s}</span></div>`);at(e,110,540+i*190);K(e,[[8.0+i*.4,{o:0,x:120}],[8.35+i*.4,{o:1,x:0}],[11.0,{o:1}],[11.25,{o:0,x:-80}]])});
+ const ph=el('<div class="photo" style="width:620px;height:323px"><img src="a/cartoes-reais.jpg"></div>');at(ph,230,1170);K(ph,[[9.3,{o:0,y:80}],[9.7,{o:1,y:0}],[11.0,{o:1}],[11.25,{o:0}]]);
+ cta(11.3,14.1,'Apareça onde','o cliente procura.','Análise grátis ao seu Google','GOOGLE',ctaSites);
+ return {sfx:stdSfx([['pop',1.3],['whoosh',2.3],['impact',2.45],['type',2.8],['pop',3.9],['pop',4.15],['pop',4.4],['buzz',5.45],['whoosh',7.7],['impact',7.85],['pop',8.0],['pop',8.4],['pop',8.8],['riser',10.7],['impact',11.3],['pop',11.75]]),reveal:2.45,prog:0}
+}
+
+/* ======================= R6: mensalidade vs pagamento único ======================= */
+function r6(){DUR=14.4;
+ hookL([['Sites para negócios',520,.05,'kick'],['Está a pagar',610,.1],['<span class="y">mensalidade</span>',720,.4],['pelo seu site?',830,.7],['Faça as contas ↓',1010,1.1,'sub']],2.25);
+ const lb=el('<div class="lbl">Exemplo: site a 30 €/mês</div>','c');at(lb,0,300);K(lb,[[2.4,{o:0}],[2.7,{o:1}],[8.4,{o:1}],[8.7,{o:0}]]);
+ const cn=el('<div style="font:800 190px/1 U;color:#fff;letter-spacing:-.03em"><span id="cv">0</span> €</div>','c');at(cn,0,370);K(cn,[[2.45,{o:0,s:.7}],[2.8,{o:1,s:1},'b'],[8.4,{o:1}],[8.7,{o:0}]]);
+ CB.push(t=>{const v=t<2.9?0:t<6.0?Math.round(1080*ez.io((t-2.9)/3.1)/10)*10:1080;cn.querySelector('#cv').textContent=v.toLocaleString('pt-PT');cn.style.color=t>6?'#FF7A80':'#fff'});
+ [['1 ano','360 €',3.6],['2 anos','720 €',4.6],['3 anos','1080 €',5.6]].forEach(([a,b,t0],i)=>{const e=el(`<div class="price"><span>${a}</span><b style="color:#FF7A80">${b}</b></div>`);at(e,130,640+i*160);K(e,[[t0,{o:0,x:-120}],[t0+.35,{o:1,x:0}],[8.4,{o:1}],[8.7,{o:0}]])});
+ const us=el(`<div class="price" style="background:#1E9E5A;border-color:#1E9E5A"><span style="display:flex;align-items:center;gap:16px"><svg style="width:48px;height:48px"><use href="#check"/></svg>Connosco</span><b style="color:#fff">400 €</b></div>`);at(us,130,1160);
+ K(us,[[6.4,{o:0,s:.6}],[6.8,{o:1,s:1.06},'b'],[8.4,{o:1,s:1.06}],[8.7,{o:0}]]);
+ const u2=el('<div class="h s">Uma vez. <span class="y">E acabou.</span></div>','c');at(u2,0,1340);K(u2,[[6.9,{o:0,y:40}],[7.2,{o:1,y:0}],[8.4,{o:1}],[8.7,{o:0}]]);
+ const k3=el('<div class="kick">Incluído</div>','c');at(k3,0,470);K(k3,[[8.8,{o:0}],[9.1,{o:1}],[11.3,{o:1}],[11.55,{o:0}]]);
+ ['Protótipo <span class="y">grátis</span>','Telemóvel e computador','Manutenção gratuita'].forEach((s,i)=>{const e=el(`<div class="step"><span class="n" style="background:#1E9E5A;color:#fff"><svg style="width:50px;height:50px;margin-top:18px"><use href="#check"/></svg></span><span>${s}</span></div>`);at(e,110,590+i*190);K(e,[[8.9+i*.35,{o:0,x:-120}],[9.25+i*.35,{o:1,x:0}],[11.3,{o:1}],[11.55,{o:0,x:80}]])});
+ const ph=phone(`<div class="bar"><b>churrasqueiraogabriel.pt</b></div><img src="a/gab_hero.jpg" style="position:absolute;top:96px;left:0;width:100%">`);at(ph,330,1130);K(ph,[[9.9,{o:0,y:300,s:.7}],[10.3,{o:1,y:0,s:.7},'b'],[11.3,{o:1,s:.7}],[11.55,{o:0,s:.7}]]);
+ cta(11.6,14.4,'Pagamento único.','Sem mensalidades.','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.45],['riser',2.9],['pop',3.6],['pop',4.6],['pop',5.6],['buzz',6.0],['impact',6.4],['ding',6.8],['whoosh',8.65],['impact',8.8],['pop',8.9],['pop',9.25],['pop',9.6],['riser',11.0],['impact',11.6],['pop',12.05]]),reveal:2.45,prog:1}
+}
+
+/* ======================= R7: avaliação de 1 estrela ======================= */
+function r7(){DUR=14.7;
+ hookL([['Dica para donos de negócios',500,.05,'kick'],['Recebeu uma',590,.1],['avaliação de',700,.4],['<span class="y">1 estrela?</span>',810,.7],['Não ignore. Responda assim ↓',990,1.1,'sub']],2.3);
+ const P=phone(`<div class="bar"><b>Google · Avaliações</b></div><div style="position:absolute;inset:96px 0 0;background:#fff;padding:26px 24px;color:#11182E">
+  <div style="display:flex;gap:14px;align-items:center"><div style="width:64px;height:64px;border-radius:50%;background:#7C4DCC;color:#fff;font:800 30px/64px M;text-align:center">M</div><div><b style="font:800 24px M">Marta S.</b><div style="font:600 18px M;color:#6B7491;margin-top:4px">há 2 dias</div></div></div>
+  <div style="display:flex;gap:4px;margin-top:16px">${[0,1,2,3,4].map(i=>`<svg style="width:30px;height:30px;color:${i?'#D3D8E5':'#F4A51A'}"><use href="#star" fill="currentColor"/></svg>`).join('')}</div>
+  <p style="font:600 22px/1.4 M;margin-top:12px">Esperei 40 minutos pela comida. Não volto.</p>
+  <div id="rep" style="margin-top:24px;border-left:5px solid #2141C2;background:#F1F4FC;border-radius:14px;padding:16px 18px"><b style="font:800 19px M;color:#2141C2">Resposta do proprietário</b><p id="rt" style="font:600 21px/1.42 M;margin-top:8px;color:#11182E;min-height:240px"></p></div></div>`);
+ at(P,330,470);K(P,[[2.45,{o:0,y:300,s:1.2}],[2.9,{o:1,y:0,s:1.25},'o'],[8.3,{o:1,s:1.25}],[8.6,{o:0,y:-80,s:1.15},'io']]);
+ const rep=P.querySelector('#rep');const rt=P.querySelector('#rt');
+ const tx='Olá Marta, pedimos desculpa pela espera. Obrigado por nos avisar: já reforçámos a equipa ao fim de semana. Esperamos voltar a recebê-la!';
+ CB.push(t=>{rep.style.opacity=t<3.6?0:Math.min(1,(t-3.6)/.25);const n=Math.max(0,Math.min(tx.length,Math.floor((t-3.9)*42)));rt.textContent=tx.slice(0,n)+(n<tx.length&&t>3.9&&Math.floor(t*4)%2?'|':'')});
+ caption('Rápido. Educado.<br><span class="y">Com solução.</span>',1480,4.0,8.2,'h xs');
+ const k3=el('<div class="kick">3 regras</div>','c');at(k3,0,420);K(k3,[[8.7,{o:0}],[9.0,{o:1}],[11.5,{o:1}],[11.75,{o:0}]]);
+ ['Responda em <span class="y">24 horas</span>','Agradeça. Nunca discuta.','Diga o que vai melhorar'].forEach((s,i)=>{const e=el(`<div class="step"><span class="n">${i+1}</span><span>${s}</span></div>`);at(e,110,540+i*190);K(e,[[8.8+i*.45,{o:0,x:120}],[9.15+i*.45,{o:1,x:0}],[11.5,{o:1}],[11.75,{o:0,x:-80}]])});
+ const nt=el('<div class="sub" style="color:#fff">Quem lê as avaliações também<br>lê as <span class="y" style="font-weight:800">suas respostas.</span></div>','c');at(nt,0,1180);K(nt,[[10.3,{o:0,y:30}],[10.6,{o:1,y:0}],[11.5,{o:1}],[11.75,{o:0}]]);
+ cta(11.85,14.7,'E para ter mais','avaliações boas:','Cartões NFC desde 18 €','NFC',ctaCards);
+ return {sfx:stdSfx([['whoosh',2.35],['impact',2.5],['ding',3.6],['type',3.9],['type',5.1],['type',6.3],['whoosh',8.55],['impact',8.7],['pop',8.8],['pop',9.25],['pop',9.7],['pop',10.3],['riser',11.25],['impact',11.85],['pop',12.3]]),reveal:2.5,prog:2}
+}
+
+/* ======================= R8: tour site churrasqueira ======================= */
+function r8(){DUR=14.1;
+ hookL([['Site real · cliente nosso',520,.05,'kick'],['Fizemos este',610,.1],['site para uma',720,.4],['<span class="y">churrasqueira.</span>',830,.7],['Veja em 10 segundos ↓',1010,1.1,'sub']],2.2);
+ const P=phone(`<div class="bar"><b>churrasqueirabomgosto.pt</b></div><div class="tl" style="position:absolute;top:96px;left:0;width:100%"><img src="a/bg_tall_0.jpg" style="display:block;width:100%"><img src="a/bg_tall_1.jpg" style="display:block;width:100%"></div>`);
+ at(P,330,330);K(P,[[2.3,{o:0,y:400,s:1.1}],[2.75,{o:1,y:0,s:1.12}],[8.9,{o:1,s:1.12}],[9.25,{o:0,y:-80,s:1}]]);
+ const tl=P.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-3.0)/5.6));tl.style.transform=`translateY(${-ez.io(p)*5300}px)`});
+ const chips=[['menu','Ementa completa',3.3,60,1380],['star','Avaliações do Google',4.6,520,1380],['phone','Ligar e encomendar',5.9,60,1510],['globe','Telemóvel e computador',7.2,520,1510]];
+ chips.forEach(([ic,tx,t0,x,y])=>{const c=el(`<span class="chip"><svg style="color:#2141C2"><use href="#${ic}" ${ic=='star'?'fill="currentColor"':''}/></svg>${tx}</span>`);at(c,x,y);c.style.zIndex=3;K(c,[[t0,{o:0,s:.5}],[t0+.35,{o:1,s:1},'b'],[8.9,{o:1}],[9.2,{o:0}]])});
+ const k3=el('<div class="kick">E o melhor</div>','c');at(k3,0,500);K(k3,[[9.3,{o:0}],[9.55,{o:1}],[11.0,{o:1}],[11.25,{o:0}]]);
+ [['Pagamento <span class="y">único.</span>',600],['Sem mensalidades.',720],['Protótipo <span class="y">grátis.</span>',840]].forEach(([s,y],i)=>{const e=el(`<div class="h m">${s}</div>`,'c');at(e,0,y);K(e,[[9.4+i*.35,{o:0,x:-120,b:14}],[9.75+i*.35,{o:1,x:0,b:0}],[11.0,{o:1}],[11.25,{o:0,y:-50}]])});
+ const g=phone(`<div class="bar"><b>churrasqueiraogabriel.pt</b></div><img src="a/gab_hero.jpg" style="position:absolute;top:96px;left:0;width:100%">`);at(g,330,1010);K(g,[[10.0,{o:0,y:300,s:.7}],[10.4,{o:1,y:0,s:.7},'b'],[11.0,{o:1,s:.7}],[11.25,{o:0}]]);
+ cta(11.3,14.1,'Quer um assim','para o seu negócio?','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.2],['impact',2.35],['pop',3.3],['pop',4.6],['pop',5.9],['pop',7.2],['whoosh',9.15],['impact',9.3],['pop',9.4],['pop',9.75],['pop',10.1],['riser',10.7],['impact',11.3],['pop',11.75]]),reveal:2.35,prog:3}
+}
+
+/* ======================= R9: funciona em todos os telemóveis? ======================= */
+function r9(){DUR=13.8;
+ hookL([['Pergunta que nos fazem sempre',470,.05,'kick'],['O cartão NFC',560,.1,'h m'],['funciona em todos',660,.35,'h m'],['os telemóveis?',760,.6,'h m']],1.35);
+ const sim=el('<div style="font:800 300px/1 U;color:#F4C21A">Sim.</div>','c');at(sim,0,820);K(sim,[[1.75,{o:0,s:.4}],[2.05,{o:1,s:1},'b'],[2.6,{o:1,s:1}],[2.85,{o:0,s:1.3,b:12},'io']]);
+ const card=el(cardHTML('k-white','star','Google','Avalie-nos','no Google',1));at(card,230,1080);K(card,[[2.7,{o:0,y:300}],[3.05,{o:1,y:0}],[8.6,{o:1}],[8.9,{o:0,y:200}]]);card.style.zIndex=1;
+ const panels=[['iPhone','Encoste a <span class="y">parte de cima.</span>',2.85,180],['Android','Encoste a <span class="y">parte de trás.</span>',4.75,0],['Sem NFC?','Aponte a câmara <span class="y">ao QR.</span>',6.65,0]];
+ panels.forEach(([nm,cap,t0,rot],i)=>{const t1=t0+1.9,tap=t0+.85;
+  const lab=el(`<span class="chip">${nm}</span>`,'c');at(lab,0,170);K(lab,[[t0,{o:0,y:-30}],[t0+.3,{o:1,y:0}],[t1-.1,{o:1}],[t1+.1,{o:0}]]);
+  caption(cap,1520,t0+.15,t1-.1,'h xs');
+  let P;
+  if(i<2){P=lockPhone(REVIEW_PAGE,tap);at(P,330,250);P.style.zIndex=2;
+   K(P,[[t0,{o:0,y:-200,s:.72,r:rot}],[t0+.4,{o:1,y:0,s:.72,r:rot}],[tap-.05,{o:1,y:rot?120:150,s:.72,r:rot?rot:-8},'io'],[tap+.35,{o:1,y:0,s:.72,r:0},'io'],[t1,{o:1,y:0,s:.72,r:0}],[t1+.25,{o:0,y:-100,s:.72}]]);
+   for(let j=0;j<3;j++){const r=el('','ripple');at(r,540,1080);r.style.zIndex=3;K(r,[[tap-.05+j*.12,{o:0,s:.3}],[tap+j*.12,{o:1,s:.6}],[tap+.55+j*.12,{o:0,s:4}]])}
+  }else{P=phone(`<div style="position:absolute;inset:0;background:#1a1a1a"><div style="position:absolute;left:64px;top:230px;width:260px;height:260px;background:#fff;border-radius:16px;padding:20px"><svg viewBox="0 0 25 25" style="width:100%;height:100%;color:#0E1630"><use href="#qr" fill="currentColor"/></svg></div>
+    <div id="fr" style="position:absolute;left:44px;top:210px;width:300px;height:300px;border:6px solid #F4C21A;border-radius:22px"></div>
+    <div id="lk" style="position:absolute;left:30px;right:30px;top:560px;background:#fff;border-radius:24px;padding:20px;font:800 22px M;color:#11182E;text-align:center">Abrir g.page/o-seu-negocio</div></div>`);at(P,330,250);P.style.zIndex=2;
+   K(P,[[t0,{o:0,y:-200,s:.72}],[t0+.4,{o:1,y:0,s:.72}],[t1,{o:1,s:.72}],[t1+.25,{o:0,s:.72}]]);
+   const lk=P.querySelector('#lk'),fr=P.querySelector('#fr');CB.push(t=>{lk.style.opacity=t<tap?0:Math.min(1,(t-tap)/.2);fr.style.transform=`scale(${t<tap?1+.06*Math.sin(t*10):.92})`;fr.style.borderColor=t<tap?'#F4C21A':'#1E9E5A'})}
+ });
+ [['Sem <span class="y">aplicações.</span>',560],['Sem criar contas.',680],['Só <span class="y">encostar.</span>',800]].forEach(([s,y],i)=>{const e=el(`<div class="h m">${s}</div>`,'c');at(e,0,y);K(e,[[8.7+i*.35,{o:0,x:-120,b:14}],[9.05+i*.35,{o:1,x:0,b:0}],[10.6,{o:1}],[10.85,{o:0,y:-50}]])});
+ const pl=el('<div class="photo" style="width:620px;height:558px"><img src="a/placa.jpg"></div>');at(pl,230,1000);K(pl,[[9.2,{o:0,y:100,r:-4}],[9.6,{o:1,y:0,r:-3}],[10.6,{o:1}],[10.85,{o:0}]]);
+ cta(10.95,13.8,'Cartões NFC + QR','a partir de 18 €','Envie mensagem','NFC',ctaCards);
+ const sf=stdSfx([['impact',1.75],['ding',2.05]]);panels.forEach(([, , t0])=>{sf.push(['whoosh',t0],['tap',t0+.85],['ding',t0+.95])});sf.push(['whoosh',8.6],['impact',8.7],['pop',9.05],['pop',9.4],['riser',10.4],['impact',10.95],['pop',11.4]);
+ return {sfx:sf,reveal:1.75,prog:0}
+}
+
+/* ======================= R10: onde colocar o cartão ======================= */
+function r10(){DUR=13.5;
+ hookL([['Cartões NFC',520,.05,'kick'],['Comprou o cartão.',610,.1,'h m'],['Onde o <span class="y">põe?</span>',720,.5],['5 sítios que funcionam ↓',900,1.0,'sub']],2.1);
+ const items=['Balcão, junto à <span class="y">caixa</span>','Em cada <span class="y">mesa</span>','No <span class="y">espelho</span> (cabeleireiros)','Na <span class="y">montra</span> ou porta','Junto à <span class="y">conta</span>'];
+ items.forEach((s,i)=>{const e=el(`<div class="step" style="font-size:40px"><span class="n">${i+1}</span><span>${s}</span></div>`);at(e,110,260+i*170);K(e,[[2.3+i*.75,{o:0,x:140,b:10}],[2.65+i*.75,{o:1,x:0,b:0}],[8.2,{o:1}],[8.45,{o:0,x:-80}]])});
+ const pl=el('<div class="photo" style="width:560px;height:504px"><img src="a/placa.jpg"></div>');at(pl,260,1150);K(pl,[[2.4,{o:0,y:200}],[2.8,{o:1,y:0,r:-2}],[8.2,{o:1,r:2},'l'],[8.45,{o:0}]]);
+ const k2=el('<div class="kick">Dica de ouro</div>','c');at(k2,0,470);K(k2,[[8.5,{o:0}],[8.8,{o:1}],[10.4,{o:1}],[10.65,{o:0}]]);
+ const q=el('<div class="h s">Diga ao cliente:</div>','c');at(q,0,560);K(q,[[8.6,{o:0,y:40}],[8.9,{o:1,y:0}],[10.4,{o:1}],[10.65,{o:0}]]);
+ const qq=el('<div class="h m">«Se gostou,<br><span class="y">encoste aqui.»</span></div>','c');at(qq,0,700);K(qq,[[9.0,{o:0,s:.8}],[9.35,{o:1,s:1},'b'],[10.4,{o:1}],[10.65,{o:0}]]);
+ const ci=el('<div class="photo" style="width:440px;height:423px;border-radius:30px"><img src="a/cartao-instagram.jpg"></div>');at(ci,320,1020);K(ci,[[9.3,{o:0,y:100,r:8}],[9.7,{o:1,y:0,r:4}],[10.4,{o:1}],[10.65,{o:0}]]);
+ cta(10.7,13.5,'Cartões NFC + QR','a partir de 18 €','Envie mensagem','NFC',ctaCards);
+ const sf=stdSfx([['whoosh',2.15]]);items.forEach((_,i)=>sf.push(['impact',2.3+i*.75],['pop',2.4+i*.75]));sf.push(['whoosh',8.4],['impact',8.5],['ding',9.35],['riser',10.1],['impact',10.7],['pop',11.15]);
+ return {sfx:sf,reveal:2.3,prog:1}
+}
+
+/* ======================= R11: veja o site antes de decidir ======================= */
+function r11(){DUR=14.1;
+ hookL([['Sites para negócios',520,.05,'kick'],['E se pudesse',610,.1,'h m'],['<span class="y">ver o seu site</span>',715,.4,'h m'],['antes de decidir?',820,.7,'h m'],['É assim que trabalhamos ↓',990,1.1,'sub']],2.25);
+ const P=phone(`<div class="bar"><b>o-seu-negocio.pt</b></div><img src="a/gab_hero.jpg" style="position:absolute;top:96px;left:0;width:100%">
+   <div id="wf" style="position:absolute;inset:96px 0 0;background:#EEF0F6;padding:24px">
+    <div style="height:300px;border-radius:18px;background:#D7DCEA"></div><div style="height:30px;width:70%;border-radius:15px;background:#C9CFE0;margin-top:26px"></div><div style="height:20px;width:90%;border-radius:10px;background:#D7DCEA;margin-top:18px"></div><div style="height:20px;width:80%;border-radius:10px;background:#D7DCEA;margin-top:12px"></div>
+    <div style="display:flex;gap:12px;margin-top:30px"><div style="flex:1;height:64px;border-radius:32px;background:#C9CFE0"></div><div style="flex:1;height:64px;border-radius:32px;background:#C9CFE0"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px"><div style="height:120px;border-radius:14px;background:#D7DCEA"></div><div style="height:120px;border-radius:14px;background:#D7DCEA"></div></div></div>`);
+ at(P,330,300);K(P,[[2.4,{o:0,y:300,s:.95}],[2.85,{o:1,y:0,s:.95}],[8.9,{o:1,s:.95}],[9.2,{o:0,y:-60}]]);
+ const wf=P.querySelector('#wf');CB.push(t=>{wf.style.opacity=t<5.6?1:Math.max(0,1-(t-5.6)/.6)});
+ const tag=el('<span class="chip" id="tg">Protótipo</span>');at(tag,640,300);tag.style.zIndex=3;K(tag,[[2.9,{o:0,s:.5}],[3.2,{o:1,s:1},'b'],[8.9,{o:1}],[9.2,{o:0}]]);
+ CB.push(t=>{const c=tag.querySelector('.chip');const fin=t>5.9;c.textContent=fin?'Site final ✓':'Protótipo';c.style.background=fin?'#1E9E5A':'#fff';c.style.color=fin?'#fff':'#11182E'});
+ const steps=[['Fala connosco',2.9],['Protótipo <span class="y">grátis</span>',3.7],['Pede as alterações',4.5],['Site online',6.0]];
+ steps.forEach(([s,t0],i)=>{const t1=i<3?steps[i+1][1]:8.9;const e=el(`<div class="step" style="width:860px;font-size:40px;padding:22px 30px"><span class="n" style="width:70px;height:70px;font:800 38px/70px U">${i+1}</span><span>${s}</span></div>`);at(e,110,1250);K(e,[[t0,{o:0,y:60}],[t0+.3,{o:1,y:0}],[t1-.05,{o:1,y:0}],[t1+.2,{o:0,y:-60}]])});
+ const k3=el('<div class="kick">Sem compromisso</div>','c');at(k3,0,500);K(k3,[[9.25,{o:0}],[9.55,{o:1}],[11.0,{o:1}],[11.25,{o:0}]]);
+ [['Só avança',600],['<span class="y">se gostar.</span>',720]].forEach(([s,y],i)=>{const e=el(`<div class="h">${s}</div>`,'c');at(e,0,y);K(e,[[9.35+i*.4,{o:0,y:60,b:14}],[9.7+i*.4,{o:1,y:0,b:0}],[11.0,{o:1}],[11.25,{o:0,y:-50}]])});
+ const nt=el('<div class="sub">O protótipo é grátis e sem compromisso.</div>','c');at(nt,0,900);K(nt,[[10.1,{o:0}],[10.4,{o:1}],[11.0,{o:1}],[11.25,{o:0}]]);
+ cta(11.3,14.1,'Peça o seu','protótipo grátis.','Envie mensagem','SITE',ctaSites);
+ return {sfx:stdSfx([['pop',1.1],['whoosh',2.25],['impact',2.4],['pop',2.9],['pop',3.7],['pop',4.5],['riser',5.0],['impact',5.6],['ding',5.9],['pop',6.0],['whoosh',9.15],['impact',9.35],['pop',9.75],['riser',10.7],['impact',11.3],['pop',11.75]]),reveal:2.4,prog:2}
+}
+
+/* ======================= R12: ementa em PDF ======================= */
+function r12(){DUR=13.8;
+ hookL([['Restaurantes e cafés',520,.05,'kick'],['A sua ementa',610,.1],['ainda é um',720,.4],['<span class="y">PDF?</span>',830,.7],['No telemóvel, ninguém tem paciência ↓',1010,1.1,'sub']],2.2);
+ const pdf=phone(`<div class="bar"><b>ementa_final_v3.pdf</b></div><div style="position:absolute;inset:96px 0 0;background:#525659;overflow:hidden"><div id="pg" style="position:absolute;left:30px;top:30px;width:328px;height:460px;background:#fff;padding:22px;transform-origin:30% 30%">
+   <div style="font:800 16px M;color:#333;text-align:center">EMENTA</div>${Array.from({length:22},(_,i)=>`<div style="display:flex;justify-content:space-between;margin-top:${i%6?6:14}px"><i style="display:block;height:6px;width:${40+(i*37)%45}%;background:#bbb;border-radius:3px"></i><i style="display:block;height:6px;width:12%;background:#bbb;border-radius:3px"></i></div>`).join('')}</div>
+   <div id="ld" style="position:absolute;left:0;right:0;bottom:0;height:80px;background:#202124;color:#fff;font:700 19px M;display:flex;align-items:center;justify-content:center;gap:12px">A transferir… <span id="pc">0</span>%</div></div>`);
+ at(pdf,330,330);K(pdf,[[2.3,{o:0,y:300,s:1.05}],[2.7,{o:1,y:0,s:1.08}],[5.6,{o:1,s:1.08}],[5.9,{o:0,x:-500,r:-12},'io']]);
+ const pg=pdf.querySelector('#pg');CB.push(t=>{const z=t<3.9?1:t<4.6?1+1.6*ez.io((t-3.9)/.7):t<5.0?2.6:2.6-1.4*ez.io(Math.min(1,(t-5.0)/.5));pg.style.transform=`scale(${z})`;pdf.querySelector('#pc').textContent=Math.min(100,Math.max(0,Math.floor((t-2.7)*80)));pdf.querySelector('#ld').style.opacity=t<4.0?1:0});
+ [['Letra minúscula',3.9,60,1360],['Zoom, zoom, zoom…',4.4,470,1360],['Demora a abrir',4.9,250,1480]].forEach(([s,t0,x,y])=>{const c=el(`<span class="chip" style="background:#FFF2F2;color:#E0525A"><svg><use href="#x"/></svg>${s}</span>`);at(c,x,y);c.style.zIndex=3;K(c,[[t0,{o:0,s:.5}],[t0+.3,{o:1,s:1},'b'],[5.6,{o:1}],[5.85,{o:0}]])});
+ flash(5.95);
+ const k2=el('<div class="kick" style="color:#F4C21A">Ementa no site</div>','c');at(k2,0,200);K(k2,[[5.95,{o:0}],[6.2,{o:1}],[9.7,{o:1}],[9.95,{o:0}]]);
+ const st=phone(`<div class="bar"><b>churrasqueiraogabriel.pt</b></div><div class="tl" style="position:absolute;top:96px;left:0;width:100%"><img src="a/gab_ementa.jpg" style="display:block;width:100%"><img src="a/gab_tall_1.jpg" style="display:block;width:100%"></div>`);
+ at(st,330,300);K(st,[[5.95,{o:0,x:500,r:12,s:1.05}],[6.4,{o:1,x:0,r:0,s:1.05}],[9.7,{o:1,s:1.05}],[10.0,{o:0,y:-80}]]);
+ const tl=st.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-7.0)/2.5));tl.style.transform=`translateY(${-ez.io(p)*560}px)`});
+ [['Lê-se sem zoom',6.6,60,1300],['Atualiza num instante',7.2,480,1300],['Botão para encomendar',7.8,220,1430]].forEach(([s,t0,x,y])=>{const c=el(`<span class="chip"><svg style="color:#1E9E5A"><use href="#check"/></svg>${s}</span>`);at(c,x,y);c.style.zIndex=3;K(c,[[t0,{o:0,s:.5}],[t0+.3,{o:1,s:1},'b'],[9.7,{o:1}],[9.95,{o:0}]])});
+ const pl=el('<div class="sub" style="color:#fff">E com um cartão NFC na mesa,<br>abre <span class="y" style="font-weight:800">num toque.</span></div>','c');at(pl,0,1560);K(pl,[[8.4,{o:0,y:30}],[8.7,{o:1,y:0}],[9.7,{o:1}],[9.95,{o:0}]]);
+ cta(10.05,13.8,'Ementa no site','+ cartão na mesa.','Envie mensagem','EMENTA',ctaCards);
+ return {sfx:stdSfx([['whoosh',2.2],['impact',2.35],['buzz',3.9],['buzz',4.4],['buzz',4.9],['riser',5.4],['impact',5.95],['whoosh',6.0],['pop',6.6],['pop',7.2],['pop',7.8],['ding',8.7],['riser',9.5],['impact',10.05],['pop',10.5]]),reveal:2.35,prog:3}
+}
+
+/* ======================= R13: 3 perguntas antes de sair ======================= */
+function r13(){DUR=14.4;
+ hookL([['Para donos de negócios',540,.05,'kick'],['Antes de sair de casa,',630,.1,'h s'],['o cliente pergunta:',720,.4,'h s']],2.35);
+ const qs=[['Está <span class="y">aberto?</span>',860,.9],['O que há <span class="y">hoje?</span>',980,1.3],['Como <span class="y">chego lá?</span>',1100,1.7]];
+ qs.forEach(([s,y,t0])=>{const e=el(`<div class="h m">${s}</div>`,'c');at(e,0,y);K(e,[[t0,{o:0,s:.7,b:10}],[t0+.3,{o:1,s:1,b:0},'b'],[2.35,{o:1}],[2.65,{o:0,y:-60},'io']])});
+ const kk=el('<div class="kick">Um site responde a tudo</div>','c');at(kk,0,190);K(kk,[[2.7,{o:0}],[3.0,{o:1}],[9.4,{o:1}],[9.65,{o:0}]]);
+ const P=phone(`<div class="bar"><b>churrasqueiraogabriel.pt</b></div><div class="tl" style="position:absolute;top:96px;left:0;width:100%"><img src="a/gab_tall_0.jpg" style="display:block;width:100%"><img src="a/gab_tall_1.jpg" style="display:block;width:100%"></div>`);
+ at(P,330,300);K(P,[[2.6,{o:0,y:300}],[3.0,{o:1,y:0}],[9.4,{o:1}],[9.7,{o:0,y:-60}]]);
+ const tl=P.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-3.3)/5.8));tl.style.transform=`translateY(${-ez.io(p)*4600}px)`});
+ const ans=[['Está aberto?','Horário sempre visível',3.6],['O que há hoje?','Ementa completa',5.2],['Como chego lá?','Mapa e botão Direções',6.8]];
+ ans.forEach(([q,a,t0],i)=>{const t1=i<2?ans[i+1][2]:9.4;
+   const qe=el(`<div class="sub" style="color:#fff">${q}</div>`,'c');at(qe,0,1230);K(qe,[[t0,{o:0,y:30}],[t0+.3,{o:1,y:0}],[t1-.1,{o:1}],[t1+.1,{o:0}]]);
+   const ae=el(`<span class="chip" style="font-size:38px;padding:24px 36px"><svg style="color:#1E9E5A;width:44px;height:44px"><use href="#check"/></svg>${a}</span>`,'c');at(ae,0,1320);K(ae,[[t0+.35,{o:0,s:.5}],[t0+.65,{o:1,s:1},'b'],[t1-.1,{o:1}],[t1+.1,{o:0}]])});
+ const call=el('<span class="chip" style="background:#F4C21A;color:#1B1606;font-size:34px"><svg><use href="#phone"/></svg>E um botão para ligar</span>','c');at(call,0,1480);K(call,[[7.8,{o:0,y:30}],[8.1,{o:1,y:0}],[9.4,{o:1}],[9.65,{o:0}]]);
+ const k3=el('<div class="kick">Mesmo quando está fechado</div>','c');at(k3,0,560);K(k3,[[9.7,{o:0}],[10.0,{o:1}],[11.3,{o:1}],[11.55,{o:0}]]);
+ const big=el('<div class="h">O seu site<br>trabalha <span class="y">24h.</span></div>','c');at(big,0,650);K(big,[[9.8,{o:0,s:.8}],[10.15,{o:1,s:1},'b'],[11.3,{o:1}],[11.55,{o:0}]]);
+ const g=phone(`<div class="bar"><b>churrasqueirabomgosto.pt</b></div><img src="a/bg_hero.jpg" style="position:absolute;top:96px;left:0;width:100%">`);at(g,330,940);K(g,[[10.1,{o:0,y:300,s:.75}],[10.5,{o:1,y:0,s:.75},'b'],[11.3,{o:1,s:.75}],[11.55,{o:0,s:.75}]]);
+ cta(11.6,14.4,'Pagamento único.','Protótipo grátis.','Peça o seu site','SITE',ctaSites);
+ return {sfx:stdSfx([['pop',.4],['impact',.9],['impact',1.3],['impact',1.7],['whoosh',2.6],['impact',2.7],['pop',3.6],['ding',3.95],['pop',5.2],['ding',5.55],['pop',6.8],['ding',7.15],['pop',7.8],['whoosh',9.6],['impact',9.8],['riser',11.0],['impact',11.6],['pop',12.05]]),reveal:2.7,prog:0}
+}
+
+let INFO;
+function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13][R]();window.DUR=DUR;frame(0);return INFO}
+</script></body></html>

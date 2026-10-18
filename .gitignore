@@ -1,0 +1,4 @@
+out/
+*.wav
+*_silent.mp4
+chk/

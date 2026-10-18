@@ -1,0 +1,104 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:U;src:url(a/Unbounded.ttf);font-weight:200 900}
+@font-face{font-family:M;src:url(a/Manrope.ttf);font-weight:200 800}
+:root{--paper:#0A1020;--hero:#162E95;--deep:#0C1A5E;--ink:#E9EDF8;--muted:#9CA7C6;--cobalt:#8AA0FF;--blue:#2141C2;--tram:#F4C21A;--tink:#1B1606;--line:#24304F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:M;color:var(--ink);
+  background:radial-gradient(1200px 900px at 50% -8%, #1d3bb4 0%, #12257a 32%, rgba(10,16,32,0) 70%), var(--paper)}
+#grid{position:absolute;inset:0;background-image:radial-gradient(rgba(138,160,255,.13) 2px,transparent 2.4px);background-size:54px 54px;
+  -webkit-mask-image:linear-gradient(#000 0%,rgba(0,0,0,.35) 60%,transparent 100%)}
+.abs{position:absolute;will-change:transform,opacity}
+.c{left:0;right:0;text-align:center}
+.kick{font:800 30px/1 M;letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt)}
+.h{font:800 98px/1.04 U;letter-spacing:-.02em;color:#fff}
+.h.m{font-size:84px}.h.s{font-size:70px}.h.xs{font-size:58px}
+.y{color:var(--tram)}
+.sub{font:600 40px/1.35 M;color:var(--muted)}
+.hl{position:relative;display:inline-block}
+.hl::after{content:"";position:absolute;left:-4px;right:-4px;bottom:2px;height:16px;background:var(--tram);opacity:.28;border-radius:8px;z-index:-1}
+.logo{display:inline-grid;grid-template-columns:1fr 1fr;gap:5px;width:60px;height:60px;vertical-align:middle}
+.logo i{display:block}
+.logo i:nth-child(1){background:#2141C2}
+.logo i:nth-child(2){background:var(--tram);border-top-right-radius:100%}
+.logo i:nth-child(3){background:var(--tram);border-bottom-left-radius:100%}
+.logo i:nth-child(4){background:#2141C2;border-radius:50%}
+.brand{display:flex;align-items:center;justify-content:center;gap:18px;font:800 38px/1 M;color:#fff}
+.pill{display:inline-flex;align-items:center;gap:16px;padding:30px 54px;border-radius:999px;background:var(--tram);color:var(--tink);font:800 46px/1 M;box-shadow:0 18px 50px rgba(244,194,26,.35)}
+.handle{font:700 38px/1.3 M;color:#fff}
+.url{font:600 32px/1.3 M;color:var(--muted)}
+.photo{border-radius:44px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.55);border:4px solid rgba(255,255,255,.08)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover}
+/* phone */
+.phone{width:420px;height:860px;border-radius:64px;background:#0B0F1E;border:3px solid #2A3150;padding:16px;box-shadow:0 50px 110px rgba(0,0,0,.6),inset 0 0 0 2px #000}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:50px;overflow:hidden;background:#F6F7FB}
+.phone .notch{position:absolute;left:50%;top:14px;width:120px;height:32px;margin-left:-60px;background:#0B0F1E;border-radius:20px;z-index:5}
+.scr .bar{position:absolute;left:0;right:0;top:0;height:96px;background:#fff;z-index:4;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font:700 19px/1 M;color:#6B7491;border-bottom:1px solid #E3E6EF}
+.scr .bar b{display:inline-flex;align-items:center;gap:8px;background:#EEF0F6;border-radius:30px;padding:8px 18px;color:#11182E}
+/* review ui */
+.rv{position:absolute;inset:0;padding:140px 34px 0;background:#fff;color:#11182E;text-align:center}
+.rv .av{width:110px;height:110px;border-radius:50%;margin:0 auto 18px;background:linear-gradient(135deg,#2141C2,#8AA0FF);display:flex;align-items:center;justify-content:center;font:800 44px U;color:#fff}
+.rv h4{font:800 32px/1.2 M}.rv p{font:600 21px/1.4 M;color:#6B7491;margin-top:8px}
+.stars{display:flex;justify-content:center;gap:12px;margin-top:34px}
+.stars svg{width:56px;height:56px}
+.rv .box{margin-top:30px;height:150px;border:2px solid #E3E6EF;border-radius:20px;text-align:left;padding:18px;font:600 21px/1.4 M;color:#9aa1b6}
+.rv .pub{margin:28px auto 0;width:220px;padding:18px 0;border-radius:40px;background:#2141C2;color:#fff;font:800 24px M}
+.rv .ok{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;font:800 30px/1.3 M;color:#11182E}
+.rv .ok .ck{width:130px;height:130px;border-radius:50%;background:#1E9E5A;display:flex;align-items:center;justify-content:center}
+/* result cards (search) */
+.res{width:860px;border-radius:30px;background:#fff;color:#11182E;padding:30px 34px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.res .nm{font:800 40px/1.2 M}.res .mt{display:flex;align-items:center;gap:10px;font:700 30px/1 M;color:#4a5370;margin-top:12px}
+.res .mt .st{color:#F4A51A;letter-spacing:2px}
+.res .bt{display:flex;gap:14px;margin-top:22px}
+.res .bt span{flex:1;text-align:center;padding:18px 0;border-radius:40px;border:2px solid #D7DCEA;font:800 26px M;color:#2141C2}
+.res .bt span.miss{border-style:dashed;border-color:#E0525A;color:#E0525A;background:#FFF2F2}
+.search{width:860px;border-radius:60px;background:#fff;color:#11182E;padding:28px 40px;font:600 36px M;display:flex;align-items:center;gap:22px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+/* big number */
+.num{width:150px;height:150px;border-radius:50%;background:var(--tram);color:var(--tink);font:800 84px/150px U;text-align:center;box-shadow:0 0 0 14px rgba(244,194,26,.18)}
+/* nfc card */
+.card{width:620px;height:390px;border-radius:40px;padding:40px 44px;position:relative;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.55);display:flex;flex-direction:column;justify-content:space-between}
+.card .top{display:flex;justify-content:space-between;align-items:center;font:800 32px M}
+.card .top span{display:flex;align-items:center;gap:14px}
+.card .mid{display:flex;justify-content:space-between;align-items:flex-end}
+.card .cp b{display:block;font:800 54px/1.05 U;white-space:nowrap}.card .cp i{display:block;font:700 34px/1.3 M;font-style:normal;opacity:.85;margin-top:10px}
+.card .qr{width:150px;height:150px;border-radius:18px;background:#fff;padding:12px}
+.card .ft{font:700 22px M;opacity:.7;letter-spacing:.04em}
+.k-ink{background:linear-gradient(150deg,#1a2342,#0d1328);color:#fff;border:2px solid #2A3150}
+.k-cob{background:linear-gradient(150deg,#2a4ee0,#1631a6);color:#fff}
+.k-white{background:linear-gradient(150deg,#ffffff,#e8ecf7);color:#0E1630}
+.k-tram{background:linear-gradient(150deg,#ffd23f,#f0b90b);color:#1B1606}
+.k-green{background:linear-gradient(150deg,#1f9e5f,#137445);color:#fff}
+.ripple{width:60px;height:60px;border-radius:50%;border:6px solid var(--tram);margin:-30px 0 0 -30px}
+.chip{display:inline-flex;align-items:center;gap:12px;padding:20px 30px;border-radius:999px;background:#fff;color:#11182E;font:800 32px M;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.chip svg{width:36px;height:36px}
+.step{display:flex;align-items:center;gap:30px;width:860px;padding:30px 36px;border-radius:32px;background:rgba(255,255,255,.06);border:2px solid rgba(138,160,255,.25);font:800 44px/1.2 M;color:#fff}
+.step .n{flex:none;width:86px;height:86px;border-radius:50%;background:var(--tram);color:var(--tink);font:800 46px/86px U;text-align:center}
+.price{display:flex;justify-content:space-between;align-items:center;width:820px;padding:28px 40px;border-radius:30px;background:rgba(255,255,255,.06);border:2px solid rgba(138,160,255,.25);font:700 46px M;color:#fff}
+.price b{font:800 56px U;color:var(--tram)}
+.ig{position:absolute;inset:96px 0 0;background:#fff;padding:20px}
+.ig .hd{display:flex;align-items:center;gap:18px;padding:10px 6px 22px}
+.ig .hd .pp{width:84px;height:84px;border-radius:50%;background:#d9dce6}
+.ig .hd .ln{flex:1}.ig .hd .ln i{display:block;height:16px;border-radius:8px;background:#e3e6ef;margin:10px 0}
+.ig .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.ig .gr i{display:block;aspect-ratio:1;background:#e3e6ef}
+.ig .gr i:nth-child(3n+1){background:#d6d9e3}.ig .gr i:nth-child(4n){background:#cfd3df}
+.lbl{font:800 26px M;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.flash{position:absolute;inset:0;background:#fff;pointer-events:none}
+</style></head><body><div id="stage"><div id="grid"></div><div class="abs c kick" style="top:330px">Cartões NFC + QR</div>
+<div class="abs c h" style="top:400px">Um cartão</div><div class="abs c h" style="top:510px">para <span class="y">cada rede.</span></div>
+<div class="abs photo" style="left:60px;top:720px;width:640px;height:333px;transform:rotate(-4deg)"><img src="a/cartoes-reais.jpg"></div>
+<div class="abs photo" style="left:560px;top:860px;width:440px;height:423px;border-radius:30px;transform:rotate(6deg)"><img src="a/cartao-instagram.jpg"></div><div class="abs c" style="top:1500px"><div class="brand"><span class="logo"><i></i><i></i><i></i><i></i></span>EvolveYourBusiness</div></div></div><svg width="0" height="0" style="position:absolute">
+ <defs>
+  <symbol id="star" viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.3 6.1 20.5l1.3-6.5L2.5 9.4l6.6-.8z"/></symbol>
+  <symbol id="nfc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 8.5a5 5 0 0 1 0 7M9.5 6a8.5 8.5 0 0 1 0 12M13 3.5a12 12 0 0 1 0 17"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+  <symbol id="search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></symbol>
+  <symbol id="user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M4 19l1.3-3.9A8 8 0 1 1 8.6 18.3z"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M16 3c-2 1.5-2.5 4-2.5 7h2.5v11"/></symbol>
+  <symbol id="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.5 5.6 3.5 9s-1 6.4-3.5 9c-2.5-2.6-3.5-5.6-3.5-9s1-6.4 3.5-9z"/></symbol>
+  <symbol id="qr" viewBox="0 0 25 25"><path d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM18 0h7v7h-7zm1 1v5h5V1zm1 1h3v3h-3zM0 18h7v7H0zm1 1v5h5v-5zm1 1h3v3H2zM9 0h2v2H9zm3 0h2v3h-2zm-3 3h2v3H9zm4 2h3v2h-3zM9 8h3v2H9zm5 0h2v3h-2zm-6 3h2v2H8zm4 0h2v3h-2zM0 9h2v2H0zm3 0h3v2H3zm15 0h2v3h-2zm4 0h3v2h-3zM9 14h3v2H9zm6 0h3v2h-3zm5 2h2v3h-2zm-5 2h3v2h-3zm-6 1h2v3H9zm3 2h2v4h-2zm7 1h3v3h-3zm4-2h2v2h-2zm-8 4h2v2h-2z"/></symbol>
+ </defs>
+</svg></body></html>
