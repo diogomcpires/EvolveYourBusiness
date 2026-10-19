@@ -478,6 +478,51 @@ function r13(){DUR=14.4;
  return {sfx:stdSfx([['pop',.4],['impact',.9],['impact',1.3],['impact',1.7],['whoosh',2.6],['impact',2.7],['pop',3.6],['ding',3.95],['pop',5.2],['ding',5.55],['pop',6.8],['ding',7.15],['pop',7.8],['whoosh',9.6],['impact',9.8],['riser',11.0],['impact',11.6],['pop',12.05]]),reveal:2.7,prog:0}
 }
 
+/* ======================= R14: prova social (tema claro, estilo Google) ======================= */
+function r14(){DUR=14.7;
+ S.style.background='radial-gradient(1100px 800px at 50% -10%, #ffffff 0%, #F3F5FA 55%, #E9EDF6 100%)';S.style.color='#11182E';
+ document.getElementById('grid').style.backgroundImage='radial-gradient(rgba(33,65,194,.10) 2px,transparent 2.4px)';
+ const G=`<span style="font:800 1em U"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>`;
+ const dk='color:#11182E';
+ // hook (frame 0)
+ const tag=el('<span class="call" style="background:#11182E;color:#fff">Clientes reais · dados do Google</span>','c');at(tag,0,430);K(tag,[[-.3,{o:0,y:20}],[.05,{o:1,y:0}],[2.3,{o:1}],[2.55,{o:0}]]);
+ const big=el(`<div style="font:800 230px/1 U;letter-spacing:-.04em;${dk}"><span id="tot">1210</span></div>`,'c');at(big,0,520);K(big,[[-.3,{o:0,s:.8}],[.05,{o:1,s:1},'b'],[2.3,{o:1}],[2.6,{o:0,s:1.15,b:10},'io']]);
+ const l2=el(`<div class="h s" style="${dk};white-space:nowrap;font-size:66px">avaliações no ${G}.</div>`,'c');at(l2,0,770);K(l2,[[-.2,{o:0,y:40}],[.15,{o:1,y:0}],[2.3,{o:1}],[2.55,{o:0}]]);
+ const l3=el(`<div class="sub" style="color:#4a5370">2 churrasqueiras. E faltava-lhes <b style="color:#2141C2">uma coisa</b>… ↓</div>`,'c');at(l3,0,900);K(l3,[[.5,{o:0,y:30}],[.85,{o:1,y:0}],[2.3,{o:1}],[2.55,{o:0}]]);
+ CB.push(t=>{big.querySelector('#tot').textContent=(t<.1?1210:1210).toLocaleString('pt-PT')});
+ function place(name,area,rating,count,t0,t1,site,img,y){
+  const full=Math.floor(rating),half=rating-full>=.25;
+  const st=[0,1,2,3,4].map(i=>`<span style="color:${i<full||(i===full&&half)?'#FBBC05':'#D3D8E5'}">★</span>`).join('');
+  const c=el(`<div style="width:900px;background:#fff;border-radius:32px;padding:34px 38px;box-shadow:0 30px 70px rgba(17,24,46,.16);border:1px solid #E3E6EF">
+   <div style="display:flex;justify-content:space-between;align-items:center"><div style="font:800 46px/1.1 M;color:#11182E">${name}</div><div style="font:700 26px M;color:#6B7491">${G}</div></div>
+   <div style="display:flex;align-items:center;gap:14px;margin-top:16px;font:700 38px M;color:#4a5370"><b style="color:#11182E">${String(rating).replace('.',',')}</b><span style="font-size:44px;letter-spacing:2px">${st}</span><span>(<span class="cnt">0</span>)</span></div>
+   <div style="font:600 28px M;color:#6B7491;margin-top:8px">Churrasqueira · ${area}</div>
+   <div style="display:flex;gap:14px;margin-top:24px"><span style="flex:1;text-align:center;padding:16px 0;border-radius:40px;border:2px solid #D7DCEA;font:800 26px M;color:#2141C2">Ligar</span><span style="flex:1;text-align:center;padding:16px 0;border-radius:40px;border:2px solid #D7DCEA;font:800 26px M;color:#2141C2">Direções</span><span class="ws" style="flex:1;text-align:center;padding:16px 0;border-radius:40px;border:2px solid #D7DCEA;font:800 26px M;color:#2141C2">Website</span></div></div>`);
+  at(c,90,y);K(c,[[t0,{o:0,y:80,s:.95}],[t0+.4,{o:1,y:0,s:1},'b'],[t1,{o:1}],[t1+.3,{o:0,y:-80},'io']]);
+  const cnt=c.querySelector('.cnt'),ws=c.querySelector('.ws');
+  CB.push(t=>{const p=Math.max(0,Math.min(1,(t-(t0+.3))/1.3));cnt.textContent=Math.round(count*ez.o(p));const on=t>t0+1.9;ws.style.background=on?'#2141C2':'';ws.style.color=on?'#fff':'#2141C2';ws.style.borderColor=on?'#2141C2':'#D7DCEA';ws.style.transform=`scale(${t>t0+1.9&&t<t0+2.2?1.12:1})`});
+  const P=phone(`<div class="bar"><b>${site}</b></div><img src="${img}" style="position:absolute;top:96px;left:0;width:100%">`);at(P,330,y+420);
+  K(P,[[t0+1.9,{o:0,y:260,s:.95,r:6}],[t0+2.35,{o:1,y:0,s:1.02,r:0},'b'],[t1,{o:1,s:1.02}],[t1+.3,{o:0,y:-80,s:1},'io']]);
+  const ch=el(`<span class="chip" style="background:#1E9E5A;color:#fff"><svg><use href="#check"/></svg>Site próprio</span>`);at(ch,650,y+620);ch.style.zIndex=3;K(ch,[[t0+2.5,{o:0,s:.5}],[t0+2.8,{o:1,s:1},'b'],[t1,{o:1}],[t1+.25,{o:0}]]);
+  const ch2=el(`<span class="chip" style="background:#F4C21A;color:#1B1606"><svg><use href="#nfc"/></svg>Cartão NFC</span>`);at(ch2,70,y+860);ch2.style.zIndex=3;K(ch2,[[t0+2.8,{o:0,s:.5}],[t0+3.1,{o:1,s:1},'b'],[t1,{o:1}],[t1+.25,{o:0}]]);
+ }
+ const ans=el('<div class="h m" style="color:#2141C2">Um site próprio.</div>','c');at(ans,0,150);K(ans,[[2.55,{o:0,y:-30}],[2.85,{o:1,y:0}],[10.6,{o:1}],[10.85,{o:0}]]);
+ place('Churrasqueira O Gabriel','Odivelas',4.5,396,2.7,6.6,'churrasqueiraogabriel.pt','a/gab_hero.jpg',300);
+ place('Churrasqueira Bom Gosto','Amadora',4.4,814,6.75,10.6,'churrasqueirabomgosto.pt','a/bg_hero.jpg',300);
+ const src=el('<div class="lbl" style="color:#8a93ad">Dados públicos do Google a 19/10/2026</div>','c');at(src,0,1820);K(src,[[2.7,{o:0}],[3.0,{o:1}],[10.6,{o:1}],[10.85,{o:0}]]);
+ // CTA
+ flash(10.9);
+ const c1=el(`<div class="h m" style="${dk}">O seu negócio</div>`,'c');at(c1,0,330);K(c1,[[10.9,{o:0,y:40}],[11.2,{o:1,y:0}]]);
+ const c2=el('<div class="h m" style="color:#2141C2">é o próximo?</div>','c');at(c2,0,440);K(c2,[[11.05,{o:0,y:40}],[11.35,{o:1,y:0}]]);
+ const c3=el('<div class="sub" style="color:#4a5370">Site + cartões NFC · Pagamento único</div>','c');at(c3,0,575);K(c3,[[11.25,{o:0}],[11.55,{o:1}]]);
+ const bt=el('<span class="pill">Peça o seu protótipo grátis</span>','c');at(bt,0,670);K(bt,[[11.4,{o:0,s:.7}],[11.75,{o:1,s:1},'b']]);
+ const cm=el(`<span class="chip" style="border:2px solid #E3E6EF"><svg style="color:#2141C2"><use href="#chat"/></svg>Comente «SITE»</span><span style="display:inline-block;width:18px"></span><span class="chip" style="background:#2141C2;color:#fff">+ Siga para mais</span>`,'c');at(cm,0,830);K(cm,[[11.6,{o:0,y:30}],[11.9,{o:1,y:0}]]);
+ const u=el(`<div class="handle" style="${dk}">evolveyourbusiness.pt</div>`,'c');at(u,0,960);K(u,[[11.75,{o:0}],[12.05,{o:1}]]);
+ [['a/gab_hero.jpg','churrasqueiraogabriel.pt',150,-7],['a/bg_hero.jpg','churrasqueirabomgosto.pt',510,7]].forEach(([im,s2,x,r],i)=>{const q=phone(`<div class="bar"><b>${s2}</b></div><img src="${im}" style="position:absolute;top:96px;left:0;width:100%">`);at(q,x,1030);K(q,[[11.5+i*.15,{o:0,y:300,s:.58,r:r*2}],[11.95+i*.15,{o:1,y:0,s:.58,r:r},'b'],[14.7,{o:1,y:-20,s:.6,r:r},'l']])});
+ const bf=el(`<div class="brand" style="color:#11182E">${LOGO}EvolveYourBusiness</div>`,'c');at(bf,0,1740);K(bf,[[11.8,{o:0,y:30}],[12.2,{o:1,y:0}]]);
+ return {sfx:[['impact',0],['pop',.15],['pop',.85],['riser',2.0],['impact',2.6],['whoosh',2.7],['tick',3.0],['tick',3.3],['tick',3.6],['ding',4.6],['pop',5.2],['pop',5.5],['whoosh',6.7],['impact',6.8],['tick',7.1],['tick',7.4],['tick',7.7],['ding',8.65],['pop',9.25],['pop',9.55],['riser',10.3],['impact',10.9],['pop',11.4],['pop',11.75]],reveal:2.6,prog:1}
+}
+
 let INFO;
-function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
+function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
 </script></body></html>
