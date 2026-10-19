@@ -86,6 +86,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
 .ig .gr i:nth-child(3n+1){background:#d6d9e3}.ig .gr i:nth-child(4n){background:#cfd3df}
 .lbl{font:800 26px M;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
 .flash{position:absolute;inset:0;background:#fff;pointer-events:none}
+.call{display:inline-block;background:var(--tram);color:var(--tink);padding:16px 30px;border-radius:999px;letter-spacing:.14em;box-shadow:0 12px 34px rgba(244,194,26,.3)}
 </style></head>
 <body><div id="stage"><div id="grid"></div></div>
 <svg width="0" height="0" style="position:absolute">
@@ -285,13 +286,14 @@ function r4(){DUR=13.5;
  return {sfx:sf,reveal:2.25,prog:3}
 }
 /* ======================= TikTok batch helpers ======================= */
-function hookL(lines,t1){lines.forEach(([html,y,t0,cls])=>{const e=el(`<div class="${cls||'h'}">${html}</div>`,'c');at(e,0,y);lineIn(e,t0,t1,cls&&cls.startsWith('kick')||cls==='sub'?30:70)})}
+function hookL(lines,t1){lines.forEach(([html,y,t0,cls])=>{const isK=cls&&cls.startsWith('kick');const tt=Math.max(-.38,t0*.4-.38);const e=el(`<div class="${cls||'h'}">${isK?`<span class="call">${html}</span>`:html}</div>`,'c');at(e,0,isK?y-20:y);lineIn(e,tt,t1,isK||cls==='sub'?30:70)})}
+function progressBar(){const b=el('<div style="height:12px;width:1080px;background:linear-gradient(90deg,#F4C21A,#ffd84d);border-radius:0 6px 6px 0;transform-origin:0 0"></div>');at(b,0,0);b.style.zIndex=50;CB.push(t=>{b.firstChild.style.transform=`scaleX(${Math.min(1,t/DUR)})`})}
 function cta(t0,dur,l1,l2,pill,word,extra){flash(t0);
  const a=el(`<div class="h m">${l1}</div>`,'c');at(a,0,330);K(a,[[t0,{o:0,y:40}],[t0+.3,{o:1,y:0}]]);
  if(l2){const b=el(`<div class="h m"><span class="y">${l2}</span></div>`,'c');at(b,0,440);K(b,[[t0+.15,{o:0,y:40}],[t0+.45,{o:1,y:0}]])}
  const bt=el(`<span class="pill">${pill}</span>`,'c');at(bt,0,620);K(bt,[[t0+.45,{o:0,s:.7}],[t0+.8,{o:1,s:1},'b']]);
- const cm=el(`<span class="chip"><svg style="color:#2141C2"><use href="#chat"/></svg>Comente «${word}»</span>`,'c');at(cm,0,790);K(cm,[[t0+.7,{o:0,y:30}],[t0+1.0,{o:1,y:0}]]);
- const u=el('<div class="handle">evolveyourbusiness.pt</div>','c');at(u,0,935);K(u,[[t0+.85,{o:0}],[t0+1.15,{o:1}]]);
+ const cm=el(`<span class="chip"><svg style="color:#2141C2"><use href="#chat"/></svg>Comente «${word}»</span><span style="display:inline-block;width:18px"></span><span class="chip" style="background:#2141C2;color:#fff">+ Siga para mais dicas</span>`,'c');at(cm,0,770);K(cm,[[t0+.7,{o:0,y:30}],[t0+1.0,{o:1,y:0}]]);
+ const u=el('<div class="handle">evolveyourbusiness.pt</div><div class="url" style="font-size:26px;margin-top:6px">Clientes: Churrasqueira O Gabriel · Churrasqueira Bom Gosto</div>','c');at(u,0,900);K(u,[[t0+.85,{o:0}],[t0+1.15,{o:1}]]);
  if(extra)extra(t0);
  brandFoot(t0+.9,dur);
  CB.push(t=>{if(t>t0+1.2){cm.firstChild.style.transform=`scale(${1+.04*Math.sin((t-t0)*6)})`}});
@@ -306,7 +308,7 @@ function stdSfx(extra){return [['impact',0],['pop',.1],['pop',.4],['pop',.75],['
 
 /* ======================= R5: não aparece no Google ======================= */
 function r5(){DUR=14.1;
- hookL([['Para donos de negócios',470,.05,'kick'],['Se o seu negócio',560,.1,'h m'],['não aparece',660,.35],['no Google…',770,.6],['…para o cliente',960,1.0,'sub'],['<span class="y">não existe.</span>',1030,1.3]],2.25);
+ hookL([['Donos de negócios: atenção',470,.05,'kick'],['Se o seu negócio',560,.1,'h m'],['não aparece',660,.35],['no Google…',770,.6],['…para o cliente',960,1.0,'sub'],['<span class="y">não existe.</span>',1030,1.3]],2.25);
  const sb=el(`<div class="search"><svg style="width:44px;height:44px;color:#6B7491"><use href="#search"/></svg><span id="q"></span></div>`);at(sb,110,260);K(sb,[[2.45,{o:0,y:40}],[2.8,{o:1,y:0}],[7.5,{o:1}],[7.8,{o:0}]]);
  CB.push(t=>{const q='cabeleireiro perto de mim';const n=Math.max(0,Math.min(q.length,Math.floor((t-2.8)*30)));sb.querySelector('#q').textContent=q.slice(0,n)+(t<3.8&&Math.floor(t*3)%2?'|':'')});
  [['Concorrente A','★★★★★','4,8 · 512 avaliações'],['Concorrente B','★★★★★','4,6 · 230 avaliações'],['Concorrente C','★★★★☆','4,4 · 141 avaliações']].forEach((c,i)=>{const r=el(`<div class="res"><div class="nm">${c[0]}</div><div class="mt"><span class="st">${c[1]}</span> ${c[2]}</div><div class="bt"><span>Ligar</span><span>Direções</span><span>Website</span></div></div>`);at(r,110,430+i*260);K(r,[[3.9+i*.25,{o:0,y:60}],[4.25+i*.25,{o:1,y:0}],[7.5,{o:1}],[7.8,{o:0}]])});
@@ -323,7 +325,7 @@ function r5(){DUR=14.1;
 
 /* ======================= R6: mensalidade vs pagamento único ======================= */
 function r6(){DUR=14.4;
- hookL([['Sites para negócios',520,.05,'kick'],['Está a pagar',610,.1],['<span class="y">mensalidade</span>',720,.4],['pelo seu site?',830,.7],['Faça as contas ↓',1010,1.1,'sub']],2.25);
+ hookL([['Sites para negócios',520,.05,'kick'],['Está a pagar',610,.1],['<span class="y">mensalidade</span>',720,.4],['pelo seu site?',830,.7],['Faça as contas: pode passar dos 1000 € ↓',1010,1.1,'sub']],2.25);
  const lb=el('<div class="lbl">Exemplo: site a 30 €/mês</div>','c');at(lb,0,300);K(lb,[[2.4,{o:0}],[2.7,{o:1}],[8.4,{o:1}],[8.7,{o:0}]]);
  const cn=el('<div style="font:800 190px/1 U;color:#fff;letter-spacing:-.03em"><span id="cv">0</span> €</div>','c');at(cn,0,370);K(cn,[[2.45,{o:0,s:.7}],[2.8,{o:1,s:1},'b'],[8.4,{o:1}],[8.7,{o:0}]]);
  CB.push(t=>{const v=t<2.9?0:t<6.0?Math.round(1080*ez.io((t-2.9)/3.1)/10)*10:1080;cn.querySelector('#cv').textContent=v.toLocaleString('pt-PT');cn.style.color=t>6?'#FF7A80':'#fff'});
@@ -340,7 +342,7 @@ function r6(){DUR=14.4;
 
 /* ======================= R7: avaliação de 1 estrela ======================= */
 function r7(){DUR=14.7;
- hookL([['Dica para donos de negócios',500,.05,'kick'],['Recebeu uma',590,.1],['avaliação de',700,.4],['<span class="y">1 estrela?</span>',810,.7],['Não ignore. Responda assim ↓',990,1.1,'sub']],2.3);
+ hookL([['Dica para donos de negócios',500,.05,'kick'],['Recebeu uma',590,.1],['avaliação de',700,.4],['<span class="y">1 estrela?</span>',810,.7],['Não ignore. Guarde esta resposta ↓',990,1.1,'sub']],2.3);
  const P=phone(`<div class="bar"><b>Google · Avaliações</b></div><div style="position:absolute;inset:96px 0 0;background:#fff;padding:26px 24px;color:#11182E">
   <div style="display:flex;gap:14px;align-items:center"><div style="width:64px;height:64px;border-radius:50%;background:#7C4DCC;color:#fff;font:800 30px/64px M;text-align:center">M</div><div><b style="font:800 24px M">Marta S.</b><div style="font:600 18px M;color:#6B7491;margin-top:4px">há 2 dias</div></div></div>
   <div style="display:flex;gap:4px;margin-top:16px">${[0,1,2,3,4].map(i=>`<svg style="width:30px;height:30px;color:${i?'#D3D8E5':'#F4A51A'}"><use href="#star" fill="currentColor"/></svg>`).join('')}</div>
@@ -401,7 +403,7 @@ function r9(){DUR=13.8;
 
 /* ======================= R10: onde colocar o cartão ======================= */
 function r10(){DUR=13.5;
- hookL([['Cartões NFC',520,.05,'kick'],['Comprou o cartão.',610,.1,'h m'],['Onde o <span class="y">põe?</span>',720,.5],['5 sítios que funcionam ↓',900,1.0,'sub']],2.1);
+ hookL([['Cartões NFC',520,.05,'kick'],['Comprou o cartão.',610,.1,'h m'],['Onde o <span class="y">põe?</span>',720,.5],['5 sítios. Guarde este vídeo ↓',900,1.0,'sub']],2.1);
  const items=['Balcão, junto à <span class="y">caixa</span>','Em cada <span class="y">mesa</span>','No <span class="y">espelho</span> (cabeleireiros)','Na <span class="y">montra</span> ou porta','Junto à <span class="y">conta</span>'];
  items.forEach((s,i)=>{const e=el(`<div class="step" style="font-size:40px"><span class="n">${i+1}</span><span>${s}</span></div>`);at(e,110,260+i*170);K(e,[[2.3+i*.75,{o:0,x:140,b:10}],[2.65+i*.75,{o:1,x:0,b:0}],[8.2,{o:1}],[8.45,{o:0,x:-80}]])});
  const pl=el('<div class="photo" style="width:560px;height:504px"><img src="a/placa.jpg"></div>');at(pl,260,1150);K(pl,[[2.4,{o:0,y:200}],[2.8,{o:1,y:0,r:-2}],[8.2,{o:1,r:2},'l'],[8.45,{o:0}]]);
@@ -477,5 +479,5 @@ function r13(){DUR=14.4;
 }
 
 let INFO;
-function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13][R]();window.DUR=DUR;frame(0);return INFO}
+function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
 </script></body></html>
