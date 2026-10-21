@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sites Profissionais e Cartões NFC | EvolveYourBusiness</title>
-<meta name="description" content="Cartões NFC para avaliações no Google, Instagram e Facebook, e sites profissionais para restaurantes, cafés, bares, cabeleireiros e estética, com envio para todo o país.">
+<title>Sites, Cartões NFC e Edição de Reels | EvolveYourBusiness</title>
+<meta name="description" content="Cartões NFC para avaliações no Google, Instagram e Facebook, sites profissionais e edição de reels e TikToks para restaurantes, cafés, bares, cabeleireiros e estética, com envio para todo o país.">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0A1020">
-<meta property="og:title" content="EvolveYourBusiness · Sites e Cartões NFC">
-<meta property="og:description" content="Um toque no balcão, mais uma avaliação no Google. Cartões NFC desde 18 € e sites desde 400 €.">
+<meta property="og:title" content="EvolveYourBusiness · Sites, Cartões NFC e Reels">
+<meta property="og:description" content="Um toque no balcão, mais uma avaliação no Google. Cartões NFC desde 18 €, sites desde 400 € e reels desde 75 €.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
 <link rel="canonical" href="https://evolveyourbusiness.pt/">
@@ -19,7 +19,7 @@
 <meta property="og:image:height" content="1080">
 <meta property="og:site_name" content="EvolveYourBusiness">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "EvolveYourBusiness", "url": "https://evolveyourbusiness.pt/", "image": "https://evolveyourbusiness.pt/capa.jpg", "description": "Sites profissionais para telemóvel e computador e cartões NFC com QR code para avaliações no Google e redes sociais. Para restaurantes, cafés, bares, cabeleireiros, estética e muito mais.", "telephone": "+351937016773", "email": "evolveyourbusiness@gmail.com", "areaServed": {"@type": "Country", "name": "Portugal"}, "knowsLanguage": "pt-PT"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "EvolveYourBusiness", "url": "https://evolveyourbusiness.pt/", "image": "https://evolveyourbusiness.pt/capa.jpg", "description": "Sites profissionais para telemóvel e computador, cartões NFC com QR code para avaliações no Google e redes sociais, e edição de reels e TikToks. Para restaurantes, cafés, bares, cabeleireiros, estética e muito mais.", "telephone": "+351937016773", "email": "evolveyourbusiness@gmail.com", "areaServed": {"@type": "Country", "name": "Portugal"}, "knowsLanguage": "pt-PT", "sameAs": ["https://www.instagram.com/evolveyourbusiness2026/", "https://www.tiktok.com/@evolveyourbusinessnfc"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
@@ -39,6 +39,7 @@
   --f-display:"Unbounded", "Arial Black", "Helvetica Neue", system-ui, sans-serif;
   --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --reel-bg:#060A16; --reel-glow:rgb(244 194 26 / .10);
   --gut:clamp(16px, 4vw, 40px);
   --wrap:1160px;
 
@@ -71,7 +72,7 @@ p{margin:0}
 .nav{display:none;gap:26px}
 .nav a{font-weight:600;font-size:14.5px;color:var(--muted);text-decoration:none;transition:color .15s}
 .nav a:hover{color:var(--ink)}
-@media (min-width:900px){.nav{display:flex}}
+@media (min-width:1000px){.nav{display:flex}}
 
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 15px/1 var(--f-body);padding:15px 22px;border-radius:999px;text-decoration:none;border:1.5px solid transparent;background:transparent;cursor:pointer;transition:transform .15s ease, background-color .15s ease, border-color .15s ease;white-space:nowrap}
@@ -105,7 +106,7 @@ p{margin:0}
 .hero__facts .ic{color:var(--tram);width:16px;height:16px}
 
 .hero__services{display:grid;gap:12px;margin-top:30px}
-@media (min-width:560px){.hero__services{grid-template-columns:1fr 1fr}}
+@media (min-width:560px){.hero__services{grid-template-columns:1fr 1fr}.hero__services .svc:last-child:nth-child(odd){grid-column:1 / -1}}
 .svc{display:flex;align-items:center;gap:14px;min-width:0;padding:15px 16px;border-radius:16px;background:var(--on-hero-chip);border:1px solid var(--on-hero-line);color:var(--on-hero);text-decoration:none;transition:background-color .15s ease, transform .15s ease}
 .svc:hover{background:var(--on-hero-chip-hover);transform:translateY(-1px)}
 .svc:focus-visible{outline:3px solid var(--tram);outline-offset:3px}
@@ -307,6 +308,28 @@ p{margin:0}
 .lm-list li{display:flex;justify-content:space-between;gap:3cqw;padding:3.6cqw 0;border-bottom:1px solid var(--m2-line);font:600 4.6cqw/1.2 var(--f-body)}
 .lm-list b{color:var(--m2-acc);white-space:nowrap}
 
+/* reels */
+.sec--reel{background-color:var(--reel-bg);background-image:radial-gradient(55% 60% at 82% 45%, var(--reel-glow), transparent 70%);border-block:1px solid var(--line)}
+.reels{display:grid;gap:clamp(40px,6vw,72px);align-items:center}
+@media (min-width:980px){.reels{grid-template-columns:1fr 1fr}}
+.reelwall{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.6vw,30px);width:100%;max-width:520px;margin-inline:auto}
+.reelwall figure{margin:0;display:grid;gap:12px;align-content:start;min-width:0}
+.reelwall figure:nth-child(2){margin-top:clamp(28px,6vw,64px)}
+.rphone{position:relative;background:var(--device);border-radius:13% / 6.6%;padding:4.2%;box-shadow:0 36px 60px -26px rgb(0 0 0 / .8), inset 0 0 0 1.5px var(--device-edge)}
+.rphone video,.rphone img{display:block;width:100%;height:auto;aspect-ratio:9 / 16;object-fit:cover;border-radius:9.5% / 5.4%;background:var(--device)}
+.rphone__live{position:absolute;top:8.5%;left:10%;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:99px;background:rgb(6 10 22 / .62);color:var(--on-hero);font:700 11px/1 var(--f-body);letter-spacing:.04em;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.rphone__live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tram)}
+.reelwall figcaption{font-size:13.5px;line-height:1.4;color:var(--muted)}
+.reelwall figcaption b{display:block;color:var(--ink);font-weight:700}
+.reel-prices{display:flex;flex-wrap:wrap;gap:18px 34px}
+.reel-prices strong{display:block;font:600 34px/1.1 var(--f-display);letter-spacing:-.02em}
+.reel-prices small{display:block;font:500 12px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.boardbox--wide{grid-column:1 / -1;display:grid;gap:8px 40px}
+.boardbox--wide > div > p{color:var(--muted);font-size:14.5px;margin-top:6px}
+@media (min-width:820px){.boardbox--wide{grid-template-columns:1fr 1fr;align-items:start}.boardbox--wide .quote{margin-top:0;padding-top:0;border-top:0}}
+.foot ul .soc{display:inline-flex;align-items:center;gap:8px}
+.foot ul .soc .ic{width:16px;height:16px;color:var(--cobalt)}
+
 /* pricing */
 .plans{display:grid;gap:20px}
 @media (min-width:820px){.plans{grid-template-columns:1fr 1fr}}
@@ -444,6 +467,7 @@ p{margin:0}
     <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-screen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8.5 21h7M12 17v4"/></g></symbol>
+    <symbol id="i-reel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="5.5" y="2.5" width="13" height="19" rx="3"/><path fill="currentColor" stroke="none" d="M10.3 9v6l4.9-3z"/></g></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path stroke-linecap="round" d="M10.5 18.5h3"/></g></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10"/><path d="M17 21V3c-2.2 1.2-3.5 3.6-3.5 6.5V13H17"/></g></symbol>
     <symbol id="qr" viewBox="0 0 25 25"><path fill="currentColor" d="M0 0h7v1h-7zM8 0h1v1h-1zM11 0h2v1h-2zM14 0h3v1h-3zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h2v1h-2zM12 1h1v1h-1zM14 1h2v1h-2zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h2v1h-2zM11 2h1v1h-1zM13 2h2v1h-2zM16 2h1v1h-1zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h2v1h-2zM13 3h3v1h-3zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h6v1h-6zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM10 7h3v1h-3zM15 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM6 8h2v1h-2zM10 8h1v1h-1zM13 8h3v1h-3zM19 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM0 9h4v1h-4zM5 9h1v1h-1zM7 9h2v1h-2zM10 9h1v1h-1zM12 9h2v1h-2zM15 9h6v1h-6zM22 9h2v1h-2zM4 10h3v1h-3zM9 10h4v1h-4zM17 10h1v1h-1zM23 10h1v1h-1zM0 11h1v1h-1zM4 11h2v1h-2zM7 11h5v1h-5zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM21 11h1v1h-1zM0 12h3v1h-3zM4 12h3v1h-3zM8 12h1v1h-1zM10 12h1v1h-1zM12 12h2v1h-2zM16 12h3v1h-3zM21 12h1v1h-1zM23 12h1v1h-1zM1 13h1v1h-1zM3 13h1v1h-1zM7 13h2v1h-2zM10 13h1v1h-1zM12 13h1v1h-1zM15 13h1v1h-1zM20 13h1v1h-1zM23 13h1v1h-1zM0 14h2v1h-2zM4 14h1v1h-1zM6 14h4v1h-4zM12 14h3v1h-3zM16 14h1v1h-1zM20 14h3v1h-3zM24 14h1v1h-1zM2 15h2v1h-2zM7 15h1v1h-1zM9 15h4v1h-4zM14 15h3v1h-3zM21 15h1v1h-1zM23 15h1v1h-1zM0 16h2v1h-2zM4 16h3v1h-3zM8 16h2v1h-2zM13 16h8v1h-8zM23 16h1v1h-1zM8 17h1v1h-1zM13 17h4v1h-4zM20 17h1v1h-1zM24 17h1v1h-1zM0 18h7v1h-7zM8 18h2v1h-2zM11 18h1v1h-1zM15 18h2v1h-2zM18 18h1v1h-1zM20 18h4v1h-4zM0 19h1v1h-1zM6 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM15 19h2v1h-2zM20 19h1v1h-1zM22 19h2v1h-2zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM9 20h1v1h-1zM11 20h3v1h-3zM16 20h5v1h-5zM22 20h1v1h-1zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM9 21h1v1h-1zM12 21h1v1h-1zM17 21h2v1h-2zM21 21h1v1h-1zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM8 22h1v1h-1zM12 22h3v1h-3zM18 22h1v1h-1zM20 22h1v1h-1zM22 22h3v1h-3zM0 23h1v1h-1zM6 23h1v1h-1zM11 23h2v1h-2zM14 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM24 23h1v1h-1zM0 24h7v1h-7zM8 24h1v1h-1zM10 24h1v1h-1zM13 24h3v1h-3zM17 24h5v1h-5zM23 24h2v1h-2z"/></symbol>
@@ -459,6 +483,7 @@ p{margin:0}
     <nav class="nav" aria-label="Secções">
       <a href="#cartoes">Cartões NFC</a>
       <a href="#sites">Sites</a>
+      <a href="#reels">Reels</a>
       <a href="#precos">Preços</a>
       <a href="#como">Como funciona</a>
       <a href="#faq">Dúvidas</a>
@@ -474,7 +499,7 @@ p{margin:0}
       <div>
         <span class="kicker">Está pronto para levar o seu negócio a outro nível?</span>
         <h1>Um toque no balcão. <em>Mais uma avaliação</em> no Google.</h1>
-        <p class="lead">Hoje, os clientes encontram-no primeiro no telemóvel: pesquisam, comparam avaliações e só depois escolhem onde ir. Com um site profissional e cartões NFC para avaliações, o seu negócio ganha presença online e atrai mais clientes.</p>
+        <p class="lead">Hoje, os clientes encontram-no primeiro no telemóvel: pesquisam, comparam avaliações e veem vídeos antes de escolher onde ir. Com um site profissional, cartões NFC para avaliações e reels que chamam a atenção, o seu negócio ganha presença online e atrai mais clientes.</p>
         <div class="hero__cta">
           <a class="btn btn--tram" href="#precos">Ver packs e preços <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <a class="btn btn--line" data-wa="geral" href="#pedido" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg> Falar no WhatsApp</a>
@@ -488,6 +513,11 @@ p{margin:0}
           <a class="svc" href="#sites">
             <span class="svc__ic"><svg class="ic" aria-hidden="true"><use href="#i-screen"/></svg></span>
             <span><b>Sites profissionais</b><small>Telemóvel e computador · <span class="nw">desde <span data-price="site">400 €</span></span></small></span>
+            <svg class="ic svc__go" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="svc" href="#reels">
+            <span class="svc__ic"><svg class="ic" aria-hidden="true"><use href="#i-reel"/></svg></span>
+            <span><b>Edição de reels e TikToks</b><small>Vídeos que fazem parar o scroll · <span class="nw">desde <span data-price="reel">75 €</span></span></small></span>
             <svg class="ic svc__go" aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
         </div>
@@ -576,7 +606,7 @@ p{margin:0}
         <span class="eyebrow">Cartões NFC + QR</span>
         <h2>Um cartão para cada sítio onde o querem encontrar.</h2>
         <p>Autocolantes prontos a colar no balcão, nas mesas ou no espelho. Programamos cada um com o link do seu perfil e testamos antes de enviar.</p>
-        <div class="price-tag"><strong data-price="unit">18 €</strong><span>por cartão · mais barato em packs</span></div>
+        <div class="price-tag"><strong data-price="unit">18 €</strong><span>1 cartão · a partir de 2, <span data-price="multi">16 €</span> cada</span></div>
       </div>
         <figure class="photo">
           <div class="showcase">
@@ -753,6 +783,45 @@ p{margin:0}
     </div>
   </section>
 
+  <!-- REELS -->
+  <section class="sec sec--reel" id="reels">
+    <div class="wrap reels">
+      <div>
+        <div class="sec__head" style="margin-bottom:0">
+          <span class="eyebrow">Edição de reels e TikToks</span>
+          <h2>Vídeos que fazem parar o scroll e trazem clientes à porta.</h2>
+          <p>Grave no seu espaço, mesmo só com o telemóvel, e envie-nos os vídeos. Escolhemos os melhores momentos e montamos um reel com ar profissional, pronto a publicar no Instagram e no TikTok.</p>
+        </div>
+        <ul class="ticks">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Gancho forte nos primeiros segundos<small>Para quem vê não passar à frente</small></span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Cortes, transições e efeitos premium<small>Mantendo a qualidade original do seu vídeo</small></span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Textos animados e chamada para ação<small>Morada, horário e contacto no final</small></span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Formato vertical 9:16 em alta qualidade<small>Para Instagram, TikTok e Facebook</small></span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Pré-visualização antes da versão final<small>Ajustamos o que quiser antes de entregar</small></span></li>
+        </ul>
+        <div class="sites__price">
+          <div class="reel-prices">
+            <div><small>1 reel</small><strong data-price="reel">75 €</strong></div>
+            <div><small>Pack mensal · <span data-cfg="reelsN">4</span> reels</small><strong data-price="reels4">220 €</strong><span class="nego"><span data-price="reelEach">55 €</span> por reel</span></div>
+          </div>
+          <a class="btn btn--tram" href="#pedido" data-pick="reels">Pedir reel <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="reelwall">
+          <figure>
+            <div class="rphone"><span class="rphone__live" aria-hidden="true">Reel</span><video src="media/reel-o-gabriel.mp4" poster="media/reel-o-gabriel.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="Exemplo de reel: o site da Churrasqueira O Gabriel"></video></div>
+            <figcaption><b>Churrasqueira O Gabriel</b>Odivelas</figcaption>
+          </figure>
+          <figure>
+            <div class="rphone"><span class="rphone__live" aria-hidden="true">Reel</span><video src="media/reel-bom-gosto.mp4" poster="media/reel-bom-gosto.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="Exemplo de reel: o site da Churrasqueira Bom Gosto"></video></div>
+            <figcaption><b>Churrasqueira Bom Gosto</b>Amadora</figcaption>
+          </figure>
+        </div>
+        <p class="caption">Reels feitos por nós para clientes</p>
+      </div>
+    </div>
+  </section>
   <!-- PREÇOS -->
   <section class="sec sec--surface" id="precos">
     <div class="wrap">
@@ -778,7 +847,7 @@ p{margin:0}
           <div class="plan__top"><span class="plan__name">Pack completo</span><span class="badge">Recomendado</span></div>
           <div class="plan__price"><strong data-price="completo">420 €</strong><span>site + 2 cartões</span></div>
           <div class="perks"><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pagamento único</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidades</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Manutenção gratuita</span></div>
-          <p id="completo-deal">Por mais 20 € do que o site sozinho, leva 2 cartões NFC à escolha, que valem 34 €.</p>
+          <p id="completo-deal">Por mais 20 € do que o site sozinho, leva 2 cartões NFC à escolha, que valem 32 €.</p>
           <ul class="ticks">
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tudo o que inclui o site</li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>2 cartões à escolha: Google, Instagram e outros</li>
@@ -792,7 +861,7 @@ p{margin:0}
         <div class="boardbox">
           <h3>Packs pequenos</h3>
           <p>Para um balcão, uma receção ou um salão pequeno.</p>
-          <table class="board"><caption class="sr">Preços dos packs pequenos de cartões NFC</caption><tbody id="t-small"><tr><th scope="row">1 cartão</th><td>18 €</td></tr><tr><th scope="row">2 cartões<small>17 € cada</small></th><td>34 €</td></tr><tr><th scope="row">3 cartões<small>16 € cada</small></th><td>48 €</td></tr><tr><th scope="row">4 cartões<small>15 € cada</small></th><td>60 €</td></tr></tbody></table>
+          <table class="board"><caption class="sr">Preços dos packs pequenos de cartões NFC</caption><tbody id="t-small"><tr><th scope="row">1 cartão</th><td>18 €</td></tr><tr><th scope="row">2 cartões<small>16 € cada</small></th><td>32 €</td></tr><tr><th scope="row">3 cartões<small>16 € cada</small></th><td>48 €</td></tr><tr><th scope="row">4 cartões<small>16 € cada</small></th><td>64 €</td></tr></tbody></table>
         </div>
         <div class="boardbox">
           <h3>5 ou mais cartões</h3>
@@ -805,6 +874,20 @@ p{margin:0}
         </div>
       </div>
       <p class="note">Pode misturar plataformas no mesmo pack, por exemplo Google nas mesas e Instagram no balcão.</p>
+      <div class="boards">
+        <div class="boardbox boardbox--wide">
+          <div>
+            <h3>Edição de reels e TikToks</h3>
+            <p>A partir dos vídeos que grava no seu espaço, em formato 9:16 para Instagram e TikTok.</p>
+            <table class="board"><caption class="sr">Preços da edição de reels</caption><tbody><tr><th scope="row">1 reel</th><td data-price="reel">75 €</td></tr><tr><th scope="row">Pack mensal · <span data-cfg="reelsN">4</span> reels<small><span data-price="reelEach">55 €</span> por reel</small></th><td data-price="reels4">220 €</td></tr></tbody></table>
+          </div>
+          <div class="quote">
+            <strong>Pronto a publicar</strong>
+            <p>Gancho, cortes, transições, textos animados e o seu contacto no final. Vê uma pré-visualização antes da versão final.</p>
+            <a class="btn btn--tram" href="#pedido" data-pick="reels">Pedir reel <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -817,9 +900,9 @@ p{margin:0}
       </div>
       <ol class="steps">
         <li><span class="n">1</span><h3>Fale connosco</h3><p>Conte-nos o que o seu negócio precisa, por WhatsApp ou email. Analisamos tudo consigo, sem compromisso.</p></li>
-        <li><span class="n">2</span><h3>Recebe um protótipo</h3><p>Preparamos logo um primeiro protótipo, à medida do seu negócio, para ver como vai ficar.</p></li>
+        <li><span class="n">2</span><h3>Recebe um protótipo</h3><p>Preparamos logo um primeiro protótipo, ou a pré-visualização do reel, à medida do seu negócio, para ver como vai ficar.</p></li>
         <li><span class="n">3</span><h3>Dá a sua opinião</h3><p>Diga-nos o que gosta e o que quer mudar. Fazemos os ajustes antes de finalizar.</p></li>
-        <li><span class="n">4</span><h3>Entregamos</h3><p>O site fica online, pronto a partilhar. Os cartões seguem por correio, programados e testados.</p></li>
+        <li><span class="n">4</span><h3>Entregamos</h3><p>O site fica online, pronto a partilhar. Os cartões seguem por correio, programados e testados, e os reels chegam prontos a publicar.</p></li>
       </ol>
     </div>
   </section>
@@ -842,6 +925,11 @@ p{margin:0}
           <fieldset id="f-qty">
             <legend><span>02</span>Quantos cartões?</legend>
             <div class="chips" id="qtys"></div>
+          </fieldset>
+          <fieldset id="f-reels" hidden>
+            <legend><span>02</span>Quantos reels?</legend>
+            <div class="chips" id="reelqty"></div>
+            <p class="hint">Depois envia-nos os vídeos pelo WhatsApp. Pode gravar só com o telemóvel.</p>
           </fieldset>
           <fieldset id="f-plat">
             <legend><span>03</span>Para que plataformas?</legend>
@@ -905,8 +993,20 @@ p{margin:0}
           <p>O preço base é <span data-price="site">400 €</span> e é negociável. É pagamento único, sem mensalidades, e a manutenção é gratuita. O valor final depende do que o seu negócio precisa, e extras como reservas online são orçamentados à parte. Com o pack completo, leva também 2 cartões NFC.</p>
         </details>
         <details>
+          <summary>Como funciona a edição de reels?</summary>
+          <p>Grave no seu espaço, mesmo só com o telemóvel, e envie-nos os vídeos por WhatsApp. Escolhemos os melhores momentos e montamos o reel com gancho, cortes, transições, textos animados e o seu contacto no final. Primeiro recebe uma pré-visualização; depois de aprovar, enviamos a versão final em alta qualidade, pronta a publicar.</p>
+        </details>
+        <details>
+          <summary>Quanto custa um reel?</summary>
+          <p><span data-price="reel">75 €</span> por reel, ou <span data-price="reels4">220 €</span> por mês no pack de <span data-cfg="reelsN">4</span> reels, que fica a <span data-price="reelEach">55 €</span> cada.</p>
+        </details>
+        <details>
+          <summary>Posso pôr uma música em tendência no reel?</summary>
+          <p>Sim. As músicas do Instagram e do TikTok só podem ser juntadas na própria app, no momento de publicar. Entregamos o reel pronto e explicamos como adicionar a música em poucos segundos.</p>
+        </details>
+        <details>
           <summary>Trabalham com negócios de todo o país?</summary>
-          <p>Sim. Os sites são feitos à distância: envia-nos o logótipo, as fotos e os textos por WhatsApp ou email, e recebe o site pronto online. Os cartões seguem por correio, com instruções para colar.</p>
+          <p>Sim. Os sites e os reels são feitos à distância: envia-nos o logótipo, as fotos, os vídeos e os textos por WhatsApp ou email, e recebe tudo pronto. Os cartões seguem por correio, com instruções para colar.</p>
         </details>
       </div>
     </div>
@@ -931,20 +1031,22 @@ p{margin:0}
         <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         <span class="brand__name">Evolve<span>YourBusiness</span></span>
       </a>
-      <p>Sites profissionais e cartões NFC para restaurantes, cafés, bares, cabeleireiros, estética e muito mais.</p>
+      <p>Sites profissionais, cartões NFC e edição de reels e TikToks para restaurantes, cafés, bares, cabeleireiros, estética e muito mais.</p>
     </div>
     <div>
       <h4>Contactos</h4>
       <ul>
         <li>WhatsApp: <a data-wa="geral" href="#pedido" target="_blank" rel="noopener"><span data-cfg="whatsappLabel">+351 937 016 773</span></a><button class="copy-btn" type="button" data-copy="whatsappLabel">Copiar</button></li>
         <li>Email: <span data-cfg="email">evolveyourbusiness@gmail.com</span><button class="copy-btn" type="button" data-copy="email">Copiar</button></li>
+        <li><a class="soc" href="https://www.instagram.com/evolveyourbusiness2026/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Instagram @evolveyourbusiness2026</a></li>
+        <li><a class="soc" href="https://www.tiktok.com/@evolveyourbusinessnfc" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg>TikTok @evolveyourbusinessnfc</a></li>
       </ul>
     </div>
     <div>
       <h4>Onde trabalhamos</h4>
       <ul>
         <li>Todo o país</li>
-        <li>Sites feitos à distância</li>
+        <li>Sites e reels feitos à distância</li>
         <li>Cartões enviados por correio</li>
       </ul>
     </div>
@@ -964,12 +1066,18 @@ const CONFIG = {
   whatsappLabel: '+351 937 016 773',   // como aparece escrito no site
   email: 'evolveyourbusiness@gmail.com',
   unit: 18,                            // preço de 1 cartão
+  multi: 16,                           // preço de cada cartão a partir de 2
   site: 400,                           // preço base do site
   completo: 420,                       // site + 2 cartões (mais 20 € que o site sozinho)
   completoCards: 2,
-  small: [[1,18],[2,34],[3,48],[4,60]],          // 18, 17, 16 e 15 € por cartão
-  quoteFrom: 5                                   // a partir daqui: orçamento à medida
+  quoteFrom: 5,                        // a partir daqui: orçamento à medida
+  reel: 75,                            // edição de 1 reel
+  reels4: 220,                         // pack mensal de reels
+  reelsN: 4                            // quantos reels tem o pack mensal
 };
+// packs pequenos: 1 cartão ao preço unitário, a partir de 2 ao preço "multi" cada
+CONFIG.small = [1,2,3,4].map(q => [q, q === 1 ? CONFIG.unit : q * CONFIG.multi]);
+CONFIG.reelEach = Math.round(CONFIG.reels4 / CONFIG.reelsN * 100) / 100;
 
 const PLATFORMS = [
   {id:'google',      name:'Google',      icon:'i-star'},
@@ -992,11 +1100,23 @@ document.querySelectorAll('[data-price]').forEach(el => {
   if (typeof v === 'number') el.textContent = eur(v);
 });
 document.querySelectorAll('[data-cfg]').forEach(el => { el.textContent = CONFIG[el.dataset.cfg]; });
+/* reels de exemplo: só tocam quando estão à vista */
+(() => {
+  const vids = [...document.querySelectorAll('.reelwall video')];
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still || !('IntersectionObserver' in window)) { vids.forEach(v => { v.controls = true; }); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { v.preload = 'auto'; const p = v.play(); if (p && p.catch) p.catch(() => { v.controls = true; }); }
+    else v.pause();
+  }), {threshold: .35});
+  vids.forEach(v => io.observe(v));
+})();
 const each = (q,p) => Math.round(p / q * 100) / 100;
 const rows = list => list.map(([q,p]) => `<tr><th scope="row">${cards(q)}${q > 1 ? `<small>${eur(each(q,p))} cada</small>` : ''}</th><td>${eur(p)}</td></tr>`).join('');
 $('#t-small').innerHTML = rows(CONFIG.small);
 document.querySelectorAll('[data-wa="geral"]').forEach(a => {
-  a.href = waLink('Olá! Vi o vosso site e gostava de saber mais sobre os sites e os cartões NFC.');
+  a.href = waLink('Olá! Vi o vosso site e gostava de saber mais sobre os sites, os cartões NFC e a edição de reels.');
 });
 document.querySelectorAll('[data-wa="orcamento"]').forEach(a => {
   a.href = waLink('Olá! Gostava de um orçamento para ' + CONFIG.quoteFrom + ' ou mais cartões NFC.\nQuantidade: \nPlataformas (Google, Instagram…): \nNegócio: ');
@@ -1023,7 +1143,12 @@ document.querySelectorAll('[data-copy]').forEach(btn => {
 const KINDS = [
   {id:'cartoes',  name:'Cartões NFC',   sub:'desde ' + eur(CONFIG.unit)},
   {id:'site',     name:'Site',          sub:'desde ' + eur(CONFIG.site)},
-  {id:'completo', name:'Pack completo', sub:'site + ' + CONFIG.completoCards + ' cartões · ' + eur(CONFIG.completo)}
+  {id:'completo', name:'Pack completo', sub:'site + ' + CONFIG.completoCards + ' cartões · ' + eur(CONFIG.completo)},
+  {id:'reels',    name:'Reels e TikToks', sub:'desde ' + eur(CONFIG.reel)}
+];
+const REELS = [
+  {id:'1', name:'1 reel', price:CONFIG.reel, note:'total'},
+  {id:String(CONFIG.reelsN), name:'Pack mensal · ' + CONFIG.reelsN + ' reels', price:CONFIG.reels4, note:'por mês'}
 ];
 const PACKS = [...CONFIG.small, [CONFIG.quoteFrom, null]];   // null = orçamento à medida
 const qtyLabel = (q,p) => p == null ? q + ' ou mais' : cards(q);
@@ -1032,6 +1157,8 @@ $('#kinds').innerHTML = KINDS.map((k,i) =>
   `<label class="chip" for="kind-${k.id}"><input type="radio" name="kind" id="kind-${k.id}" value="${k.id}"${i===0?' checked':''}><span>${k.name}<small>${k.sub}</small></span></label>`).join('');
 $('#qtys').innerHTML = PACKS.map(([q,p]) =>
   `<label class="chip" for="qty-${q}"><input type="radio" name="qty" id="qty-${q}" value="${q}"${q===3?' checked':''}><span>${qtyLabel(q,p)}<small>${p == null ? 'orçamento' : eur(p)}</small></span></label>`).join('');
+$('#reelqty').innerHTML = REELS.map((r,i) =>
+  `<label class="chip" for="reel-${r.id}"><input type="radio" name="reel" id="reel-${r.id}" value="${r.id}"${i===0?' checked':''}><span>${r.name}<small>${eur(r.price)}${r.note === 'por mês' ? ' por mês' : ''}</small></span></label>`).join('');
 $('#plats').innerHTML = PLATFORMS.map(p =>
   `<label class="chip chip--plat" for="plat-${p.id}"><input type="checkbox" name="plat" id="plat-${p.id}" value="${p.id}"${p.id==='google'||p.id==='instagram'?' checked':''}><span><svg class="ic" aria-hidden="true"><use href="#${p.icon}"/></svg>${p.name}</span></label>`).join('');
 
@@ -1042,7 +1169,8 @@ function read(){
   const kind = form.querySelector('input[name="kind"]:checked').value;
   const qty = +form.querySelector('input[name="qty"]:checked').value;
   const plats = platInputs().filter(i => i.checked).map(i => PLATFORMS.find(p => p.id === i.value).name);
-  return {kind, qty, plats, biz: $('#biz').value.trim(), loc: $('#loc').value.trim()};
+  const reel = REELS.find(r => r.id === form.querySelector('input[name="reel"]:checked').value);
+  return {kind, qty, plats, reel, biz: $('#biz').value.trim(), loc: $('#loc').value.trim()};
 }
 
 function limitPlatforms(kind){
@@ -1064,7 +1192,9 @@ function render(){
   limitPlatforms(s.kind);
   const st = read();
   $('#f-qty').hidden = st.kind !== 'cartoes';
-  $('#f-plat').hidden = st.kind === 'site';
+  $('#f-plat').hidden = st.kind === 'site' || st.kind === 'reels';
+  $('#f-reels').hidden = st.kind !== 'reels';
+  [...form.querySelectorAll('fieldset')].filter(f => !f.hidden).forEach((f,i) => { f.querySelector('legend span').textContent = String(i + 1).padStart(2, '0'); });
 
   let total, note, lines = [];
   if (st.kind === 'cartoes'){
@@ -1079,11 +1209,14 @@ function render(){
   } else if (st.kind === 'site'){
     total = eur(CONFIG.site); note = 'preço base';
     lines.push('Site profissional — desde ' + eur(CONFIG.site));
+  } else if (st.kind === 'reels'){
+    total = eur(st.reel.price); note = st.reel.note;
+    lines.push('Edição de reels: ' + st.reel.name + ' — ' + eur(st.reel.price) + (st.reel.note === 'por mês' ? ' por mês' : ''));
   } else {
     total = eur(CONFIG.completo); note = 'total';
     lines.push('Pack completo: site + ' + CONFIG.completoCards + ' cartões NFC — ' + eur(CONFIG.completo));
   }
-  if (st.kind !== 'site') lines.push('Plataformas: ' + (st.plats.length ? st.plats.join(', ') : 'a combinar'));
+  if (st.kind !== 'site' && st.kind !== 'reels') lines.push('Plataformas: ' + (st.plats.length ? st.plats.join(', ') : 'a combinar'));
 
   const msg = 'Olá! Vi o vosso site e gostava de encomendar:\n'
     + lines.map(l => '• ' + l).join('\n')
