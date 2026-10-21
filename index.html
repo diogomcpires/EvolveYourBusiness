@@ -8,7 +8,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0A1020">
 <meta property="og:title" content="EvolveYourBusiness · Sites, Cartões NFC e Reels">
-<meta property="og:description" content="Um toque no balcão, mais uma avaliação no Google. Cartões NFC desde 18 €, sites desde 400 € e reels desde 75 €.">
+<meta property="og:description" content="Um toque no balcão, mais uma avaliação no Google. Cartões NFC desde 18 €, sites desde 400 € e reels a 60 €.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
 <link rel="canonical" href="https://evolveyourbusiness.pt/">
@@ -322,6 +322,7 @@ p{margin:0}
 .reelwall figcaption{font-size:13.5px;line-height:1.4;color:var(--muted)}
 .reelwall figcaption b{display:block;color:var(--ink);font-weight:700}
 .reel-prices{display:flex;flex-wrap:wrap;gap:18px 34px}
+.reel-btns{display:flex;flex-wrap:wrap;gap:12px}
 .reel-prices strong{display:block;font:600 34px/1.1 var(--f-display);letter-spacing:-.02em}
 .reel-prices small{display:block;font:500 12px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .boardbox--wide{grid-column:1 / -1;display:grid;gap:8px 40px}
@@ -517,7 +518,7 @@ p{margin:0}
           </a>
           <a class="svc" href="#reels">
             <span class="svc__ic"><svg class="ic" aria-hidden="true"><use href="#i-reel"/></svg></span>
-            <span><b>Edição de reels e TikToks</b><small>Vídeos que fazem parar o scroll · <span class="nw">desde <span data-price="reel">75 €</span></span></small></span>
+            <span><b>Edição de reels e TikToks</b><small>Vídeos que fazem parar o scroll · <span class="nw"><span data-price="reel">60 €</span> por reel</span></small></span>
             <svg class="ic svc__go" aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
         </div>
@@ -801,10 +802,13 @@ p{margin:0}
         </ul>
         <div class="sites__price">
           <div class="reel-prices">
-            <div><small>1 reel</small><strong data-price="reel">75 €</strong></div>
-            <div><small>Pack mensal · <span data-cfg="reelsN">4</span> reels</small><strong data-price="reels4">220 €</strong><span class="nego"><span data-price="reelEach">55 €</span> por reel</span></div>
+            <div><small>1 reel</small><strong data-price="reel">60 €</strong></div>
+            <div><small>Pack mensal</small><strong>Fale connosco</strong><span class="nego">Diga-nos quantos reels quer por mês</span></div>
           </div>
-          <a class="btn btn--tram" href="#pedido" data-pick="reels">Pedir reel <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <div class="reel-btns">
+            <a class="btn btn--tram" href="#pedido" data-pick="reels">Pedir reel <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost" href="#pedido" data-wa="reels"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Pack mensal no WhatsApp</a>
+          </div>
         </div>
       </div>
       <div>
@@ -879,12 +883,13 @@ p{margin:0}
           <div>
             <h3>Edição de reels e TikToks</h3>
             <p>A partir dos vídeos que grava no seu espaço, em formato 9:16 para Instagram e TikTok.</p>
-            <table class="board"><caption class="sr">Preços da edição de reels</caption><tbody><tr><th scope="row">1 reel</th><td data-price="reel">75 €</td></tr><tr><th scope="row">Pack mensal · <span data-cfg="reelsN">4</span> reels<small><span data-price="reelEach">55 €</span> por reel</small></th><td data-price="reels4">220 €</td></tr></tbody></table>
+            <table class="board"><caption class="sr">Preço da edição de reels</caption><tbody><tr><th scope="row">1 reel<small>Gancho, cortes, transições, textos animados e o seu contacto no final</small></th><td data-price="reel">60 €</td></tr></tbody></table>
+            <a class="btn btn--ghost" href="#pedido" data-pick="reels" style="margin-top:14px">Pedir reel <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
           <div class="quote">
-            <strong>Pronto a publicar</strong>
-            <p>Gancho, cortes, transições, textos animados e o seu contacto no final. Vê uma pré-visualização antes da versão final.</p>
-            <a class="btn btn--tram" href="#pedido" data-pick="reels">Pedir reel <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <strong>Pack mensal</strong>
+            <p>Quer vários reels por mês? Diga-nos quantos e enviamos o preço por WhatsApp.</p>
+            <a class="btn btn--tram" href="#" data-wa="reels"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Pedir pack mensal por WhatsApp</a>
           </div>
         </div>
       </div>
@@ -929,6 +934,9 @@ p{margin:0}
           <fieldset id="f-reels" hidden>
             <legend><span>02</span>Quantos reels?</legend>
             <div class="chips" id="reelqty"></div>
+            <div class="fields" id="reel-month" hidden>
+              <label for="reels-n">Quantos reels por mês?<input id="reels-n" name="reels-n" type="number" inputmode="numeric" min="2" max="60" placeholder="Ex.: 4"></label>
+            </div>
             <p class="hint">Depois envia-nos os vídeos pelo WhatsApp. Pode gravar só com o telemóvel.</p>
           </fieldset>
           <fieldset id="f-plat">
@@ -998,7 +1006,7 @@ p{margin:0}
         </details>
         <details>
           <summary>Quanto custa um reel?</summary>
-          <p><span data-price="reel">75 €</span> por reel, ou <span data-price="reels4">220 €</span> por mês no pack de <span data-cfg="reelsN">4</span> reels, que fica a <span data-price="reelEach">55 €</span> cada.</p>
+          <p><span data-price="reel">60 €</span> por reel. Se quiser vários reels por mês, fale connosco e diga-nos quantos quer: enviamos o preço por WhatsApp.</p>
         </details>
         <details>
           <summary>Posso pôr uma música em tendência no reel?</summary>
@@ -1071,13 +1079,10 @@ const CONFIG = {
   completo: 420,                       // site + 2 cartões (mais 20 € que o site sozinho)
   completoCards: 2,
   quoteFrom: 5,                        // a partir daqui: orçamento à medida
-  reel: 75,                            // edição de 1 reel
-  reels4: 220,                         // pack mensal de reels
-  reelsN: 4                            // quantos reels tem o pack mensal
+  reel: 60                             // edição de 1 reel (pack mensal: preço por WhatsApp)
 };
 // packs pequenos: 1 cartão ao preço unitário, a partir de 2 ao preço "multi" cada
 CONFIG.small = [1,2,3,4].map(q => [q, q === 1 ? CONFIG.unit : q * CONFIG.multi]);
-CONFIG.reelEach = Math.round(CONFIG.reels4 / CONFIG.reelsN * 100) / 100;
 
 const PLATFORMS = [
   {id:'google',      name:'Google',      icon:'i-star'},
@@ -1122,6 +1127,10 @@ document.querySelectorAll('[data-wa="orcamento"]').forEach(a => {
   a.href = waLink('Olá! Gostava de um orçamento para ' + CONFIG.quoteFrom + ' ou mais cartões NFC.\nQuantidade: \nPlataformas (Google, Instagram…): \nNegócio: ');
   a.target = '_blank'; a.rel = 'noopener';
 });
+document.querySelectorAll('[data-wa="reels"]').forEach(a => {
+  a.href = waLink('Olá! Gostava de um pack mensal de reels.\nQuantos reels por mês: \nNegócio: ');
+  a.target = '_blank'; a.rel = 'noopener';
+});
 $('#year').textContent = new Date().getFullYear();
 const allPacks = [...CONFIG.small];
 const twoValue = (allPacks.find(([q]) => q === CONFIG.completoCards) || [0, CONFIG.unit * CONFIG.completoCards])[1];
@@ -1144,11 +1153,11 @@ const KINDS = [
   {id:'cartoes',  name:'Cartões NFC',   sub:'desde ' + eur(CONFIG.unit)},
   {id:'site',     name:'Site',          sub:'desde ' + eur(CONFIG.site)},
   {id:'completo', name:'Pack completo', sub:'site + ' + CONFIG.completoCards + ' cartões · ' + eur(CONFIG.completo)},
-  {id:'reels',    name:'Reels e TikToks', sub:'desde ' + eur(CONFIG.reel)}
+  {id:'reels',    name:'Reels e TikToks', sub:eur(CONFIG.reel) + ' por reel'}
 ];
 const REELS = [
-  {id:'1', name:'1 reel', price:CONFIG.reel, note:'total'},
-  {id:String(CONFIG.reelsN), name:'Pack mensal · ' + CONFIG.reelsN + ' reels', price:CONFIG.reels4, note:'por mês'}
+  {id:'1',      name:'1 reel',      sub:eur(CONFIG.reel)},
+  {id:'mensal', name:'Pack mensal', sub:'falar connosco'}
 ];
 const PACKS = [...CONFIG.small, [CONFIG.quoteFrom, null]];   // null = orçamento à medida
 const qtyLabel = (q,p) => p == null ? q + ' ou mais' : cards(q);
@@ -1158,7 +1167,7 @@ $('#kinds').innerHTML = KINDS.map((k,i) =>
 $('#qtys').innerHTML = PACKS.map(([q,p]) =>
   `<label class="chip" for="qty-${q}"><input type="radio" name="qty" id="qty-${q}" value="${q}"${q===3?' checked':''}><span>${qtyLabel(q,p)}<small>${p == null ? 'orçamento' : eur(p)}</small></span></label>`).join('');
 $('#reelqty').innerHTML = REELS.map((r,i) =>
-  `<label class="chip" for="reel-${r.id}"><input type="radio" name="reel" id="reel-${r.id}" value="${r.id}"${i===0?' checked':''}><span>${r.name}<small>${eur(r.price)}${r.note === 'por mês' ? ' por mês' : ''}</small></span></label>`).join('');
+  `<label class="chip" for="reel-${r.id}"><input type="radio" name="reel" id="reel-${r.id}" value="${r.id}"${i===0?' checked':''}><span>${r.name}<small>${r.sub}</small></span></label>`).join('');
 $('#plats').innerHTML = PLATFORMS.map(p =>
   `<label class="chip chip--plat" for="plat-${p.id}"><input type="checkbox" name="plat" id="plat-${p.id}" value="${p.id}"${p.id==='google'||p.id==='instagram'?' checked':''}><span><svg class="ic" aria-hidden="true"><use href="#${p.icon}"/></svg>${p.name}</span></label>`).join('');
 
@@ -1169,8 +1178,9 @@ function read(){
   const kind = form.querySelector('input[name="kind"]:checked').value;
   const qty = +form.querySelector('input[name="qty"]:checked').value;
   const plats = platInputs().filter(i => i.checked).map(i => PLATFORMS.find(p => p.id === i.value).name);
-  const reel = REELS.find(r => r.id === form.querySelector('input[name="reel"]:checked').value);
-  return {kind, qty, plats, reel, biz: $('#biz').value.trim(), loc: $('#loc').value.trim()};
+  const reel = form.querySelector('input[name="reel"]:checked').value;
+  const reelsN = Math.max(0, Math.round(+$('#reels-n').value || 0));
+  return {kind, qty, plats, reel, reelsN, biz: $('#biz').value.trim(), loc: $('#loc').value.trim()};
 }
 
 function limitPlatforms(kind){
@@ -1194,6 +1204,7 @@ function render(){
   $('#f-qty').hidden = st.kind !== 'cartoes';
   $('#f-plat').hidden = st.kind === 'site' || st.kind === 'reels';
   $('#f-reels').hidden = st.kind !== 'reels';
+  $('#reel-month').hidden = st.reel !== 'mensal';
   [...form.querySelectorAll('fieldset')].filter(f => !f.hidden).forEach((f,i) => { f.querySelector('legend span').textContent = String(i + 1).padStart(2, '0'); });
 
   let total, note, lines = [];
@@ -1210,8 +1221,13 @@ function render(){
     total = eur(CONFIG.site); note = 'preço base';
     lines.push('Site profissional — desde ' + eur(CONFIG.site));
   } else if (st.kind === 'reels'){
-    total = eur(st.reel.price); note = st.reel.note;
-    lines.push('Edição de reels: ' + st.reel.name + ' — ' + eur(st.reel.price) + (st.reel.note === 'por mês' ? ' por mês' : ''));
+    if (st.reel === 'mensal'){
+      total = 'A combinar'; note = 'preço por WhatsApp';
+      lines.push('Pack mensal de reels: ' + (st.reelsN ? st.reelsN + ' reels por mês' : 'quantidade por indicar') + ' — pedido de preço');
+    } else {
+      total = eur(CONFIG.reel); note = 'total';
+      lines.push('Edição de 1 reel — ' + eur(CONFIG.reel));
+    }
   } else {
     total = eur(CONFIG.completo); note = 'total';
     lines.push('Pack completo: site + ' + CONFIG.completoCards + ' cartões NFC — ' + eur(CONFIG.completo));
@@ -1232,7 +1248,7 @@ function render(){
 }
 
 form.addEventListener('change', render);
-form.addEventListener('input', e => { if (e.target.matches('input[type="text"]')) render(); });
+form.addEventListener('input', e => { if (e.target.matches('input[type="text"], input[type="number"]')) render(); });
 form.addEventListener('submit', e => e.preventDefault());
 
 document.querySelectorAll('[data-pick]').forEach(a => {
