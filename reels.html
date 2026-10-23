@@ -536,15 +536,15 @@ const RED='background:#FFF2F2;color:#E0525A';
 
 /* ======================= R15: o que inclui um site de 400 € ======================= */
 function r15(){DUR=14.4;
- hookL([['Sites para negócios',500,.05,'kick'],['O que inclui',590,.1],['um site de',700,.4],['<span class="y">400 €?</span>',810,.7],['Tudo isto. Pago uma vez ↓',990,1.1,'sub']],2.25);
- const items=['Design à medida da sua marca','Ementa ou serviços, com preços','Galeria de fotos','Botões Ligar · WhatsApp · Direções','Ligação às suas redes sociais','Telemóvel e computador','Manutenção gratuita'];
+ hookL([['Sites para negócios',500,.05,'kick'],['O que inclui',590,.1],['um site desde',700,.4],['<span class="y">400 €?</span>',810,.7],['Tudo isto, com orçamento à medida ↓',990,1.1,'sub']],2.25);
+ const items=['Design à medida da sua marca','Ementa ou serviços, com preços','Galeria de fotos','Botões Ligar · WhatsApp · Direções','Ligação às suas redes sociais','Telemóvel e computador','3 meses de alterações incluídos'];
  const rc=el(`<div style="width:840px;background:#fff;color:#11182E;border-radius:30px;padding:40px 48px 34px;box-shadow:0 40px 90px rgba(0,0,0,.55)">
   <div style="display:flex;justify-content:space-between;align-items:center;font:800 24px M;letter-spacing:.16em;color:#6B7491"><span>O QUE ESTÁ INCLUÍDO</span><span>SITE PROFISSIONAL</span></div>
   <div style="border-top:3px dashed #D7DCEA;margin:22px 0 6px"></div>
   ${items.map(s=>`<div class="ri" style="display:flex;align-items:center;gap:20px;padding:15px 0;font:700 34px/1.2 M"><span style="flex:none;width:46px;height:46px;border-radius:50%;background:#1E9E5A;color:#fff;display:flex;align-items:center;justify-content:center"><svg style="width:30px;height:30px"><use href="#check"/></svg></span>${s}</div>`).join('')}
   <div style="border-top:3px dashed #D7DCEA;margin:16px 0 12px"></div>
-  <div class="rt" style="display:flex;justify-content:space-between;align-items:baseline;font:800 40px M"><span>Total</span><b style="font:800 84px U;color:#2141C2;letter-spacing:-.02em">400 €</b></div>
-  <div class="rt2" style="font:800 28px M;color:#1E9E5A;text-align:right;margin-top:4px">Pagamento único · 0 € por mês</div></div>`);
+  <div class="rt" style="display:flex;justify-content:space-between;align-items:baseline;font:800 40px M"><span>Desde</span><b style="font:800 84px U;color:#2141C2;letter-spacing:-.02em">400 €</b></div>
+  <div class="rt2" style="font:800 28px M;color:#1E9E5A;text-align:right;margin-top:4px">Pagamento único · sem mensalidades obrigatórias</div></div>`);
  at(rc,120,300);K(rc,[[2.35,{o:0,y:500,s:.96}],[2.8,{o:1,y:0,s:1}],[9.2,{o:1}],[9.5,{o:0,y:-80},'io']]);
  [...rc.querySelectorAll('.ri')].forEach((r,i)=>K(r,[[2.85+i*.5,{o:0,x:-60}],[3.15+i*.5,{o:1,x:0}]]));
  K(rc.querySelector('.rt'),[[6.5,{o:0,s:.7}],[6.85,{o:1,s:1},'b']]);K(rc.querySelector('.rt2'),[[6.9,{o:0,y:20}],[7.2,{o:1,y:0}]]);
@@ -552,7 +552,7 @@ function r15(){DUR=14.4;
  kick2('Precisa de mais?',520,9.55,11.1);
  bigLine('Reservas online?',610,9.65,11.1);bigLine('<span class="y">Também fazemos.</span>',720,9.95,11.1);
  const nt=el('<div class="sub">Extra opcional, orçamentado à parte.</div>','c');at(nt,0,880);K(nt,[[10.3,{o:0}],[10.6,{o:1}],[11.1,{o:1}],[11.3,{o:0}]]);
- cta(11.35,14.4,'Tudo isto por','400 €. Uma vez.','Peça o seu protótipo grátis','SITE',ctaSites);
+ cta(11.35,14.4,'Tudo isto','desde 400 €.','Peça o seu protótipo grátis','SITE',ctaSites);
  const sf=stdSfx([['pop',1.1],['whoosh',2.3],['impact',2.45]]);items.forEach((_,i)=>sf.push(['tick',2.9+i*.5]));
  sf.push(['ding',6.85],['pop',7.45],['whoosh',9.45],['impact',9.6],['pop',9.95],['riser',10.8],['impact',11.35],['pop',11.8]);
  return {sfx:sf,reveal:2.45,prog:0}
