@@ -733,9 +733,9 @@ p{margin:0}
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Reservas online<small>Extra opcional, orçamentado à parte</small></span></li>
         </ul>
         <div class="sites__price">
-          <div><small>Preço base</small><strong data-price="site">400 €</strong><span class="nego">— preço negociável</span></div>
+          <div><small>Desde</small><strong data-price="site">400 €</strong><span class="nego">Orçamento à medida</span></div>
           <a class="btn btn--ink" href="#pedido" data-pick="site">Pedir site <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <div class="perks"><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pagamento único</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidades</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Manutenção gratuita</span></div>
+          <div class="perks"><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pagamento único</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidades obrigatórias</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>3 meses de alterações incluídos</span></div>
         </div>
       </div>
 
@@ -837,8 +837,8 @@ p{margin:0}
       <div class="plans">
         <article class="plan">
           <div class="plan__top"><span class="plan__name">Site profissional</span></div>
-          <div class="plan__price"><strong data-price="site">400 €</strong><span>— preço negociável</span></div>
-          <div class="perks"><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pagamento único</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidades</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Manutenção gratuita</span></div>
+          <div class="plan__price"><span>desde</span><strong data-price="site">400 €</strong><span>· orçamento à medida</span></div>
+          <div class="perks"><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pagamento único</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidades obrigatórias</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>3 meses de alterações incluídos</span></div>
           <p>Um site à medida, para telemóvel e computador.</p>
           <ul class="ticks">
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Design com as cores da sua marca</li>
@@ -849,8 +849,8 @@ p{margin:0}
         </article>
         <article class="plan plan--feat">
           <div class="plan__top"><span class="plan__name">Pack completo</span><span class="badge">Recomendado</span></div>
-          <div class="plan__price"><strong data-price="completo">420 €</strong><span>site + 2 cartões</span></div>
-          <div class="perks"><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pagamento único</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidades</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Manutenção gratuita</span></div>
+          <div class="plan__price"><span>desde</span><strong data-price="completo">420 €</strong><span>site + 2 cartões</span></div>
+          <div class="perks"><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Pagamento único</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidades obrigatórias</span><span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>3 meses de alterações incluídos</span></div>
           <p id="completo-deal">Por mais 20 € do que o site sozinho, leva 2 cartões NFC à escolha, que valem 32 €.</p>
           <ul class="ticks">
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tudo o que inclui o site</li>
@@ -890,6 +890,18 @@ p{margin:0}
             <strong>Pack mensal</strong>
             <p>Quer vários reels por mês? Diga-nos quantos e enviamos o preço por WhatsApp.</p>
             <a class="btn btn--tram" href="#" data-wa="reels"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Pedir pack mensal por WhatsApp</a>
+          </div>
+        </div>
+        <div class="boardbox boardbox--wide">
+          <div>
+            <h3>Manutenção do site</h3>
+            <p>Depois de o site estar online, mantemo-lo sempre atualizado.</p>
+            <table class="board"><caption class="sr">Preços da manutenção do site</caption><tbody><tr><th scope="row">Primeiros <span data-cfg="maintMonths">3</span> meses<small>Preços, fotos, horário e textos</small></th><td>Incluído</td></tr><tr><th scope="row">Cada alteração depois</th><td>desde <span data-price="change">15 €</span></td></tr><tr><th scope="row">Plano mensal opcional<small>Para quem atualiza com frequência</small></th><td>desde <span data-price="plan">15 €</span>/mês</td></tr></tbody></table>
+          </div>
+          <div class="quote">
+            <strong>Sem surpresas</strong>
+            <p>O alojamento não tem mensalidade. Paga só as alterações que pedir, ou escolhe o plano mensal se preferir.</p>
+            <a class="btn btn--tram" href="#pedido" data-wa="geral" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Falar no WhatsApp</a>
           </div>
         </div>
       </div>
@@ -998,7 +1010,11 @@ p{margin:0}
         </details>
         <details>
           <summary>Quanto custa um site?</summary>
-          <p>O preço base é <span data-price="site">400 €</span> e é negociável. É pagamento único, sem mensalidades, e a manutenção é gratuita. O valor final depende do que o seu negócio precisa, e extras como reservas online são orçamentados à parte. Com o pack completo, leva também 2 cartões NFC.</p>
+          <p>Desde <span data-price="site">400 €</span>, com orçamento à medida: o valor final depende do que o seu negócio precisa, e extras como reservas online são orçamentados à parte. É pagamento único, sem mensalidades obrigatórias. Com o pack completo, leva também 2 cartões NFC.</p>
+        </details>
+        <details>
+          <summary>E depois de o site estar online?</summary>
+          <p>Nos primeiros <span data-cfg="maintMonths">3</span> meses, as alterações estão incluídas: preços, fotos, horário e textos. Depois, cada alteração custa desde <span data-price="change">15 €</span>, ou pode ter um plano mensal opcional desde <span data-price="plan">15 €</span>/mês, se atualizar o site com frequência. O alojamento não tem mensalidade.</p>
         </details>
         <details>
           <summary>Como funciona a edição de reels?</summary>
@@ -1075,7 +1091,10 @@ const CONFIG = {
   email: 'evolveyourbusiness@gmail.com',
   unit: 18,                            // preço de 1 cartão
   multi: 16,                           // preço de cada cartão a partir de 2
-  site: 400,                           // preço base do site
+  site: 400,                           // site: "desde" (orçamento à medida)
+  maintMonths: 3,                      // meses de alterações incluídos depois de o site estar online
+  change: 15,                          // cada alteração depois disso: "desde"
+  plan: 15,                            // plano mensal opcional de manutenção: "desde" por mês
   completo: 420,                       // site + 2 cartões (mais 20 € que o site sozinho)
   completoCards: 2,
   quoteFrom: 5,                        // a partir daqui: orçamento à medida
@@ -1152,7 +1171,7 @@ document.querySelectorAll('[data-copy]').forEach(btn => {
 const KINDS = [
   {id:'cartoes',  name:'Cartões NFC',   sub:'desde ' + eur(CONFIG.unit)},
   {id:'site',     name:'Site',          sub:'desde ' + eur(CONFIG.site)},
-  {id:'completo', name:'Pack completo', sub:'site + ' + CONFIG.completoCards + ' cartões · ' + eur(CONFIG.completo)},
+  {id:'completo', name:'Pack completo', sub:'site + ' + CONFIG.completoCards + ' cartões · desde ' + eur(CONFIG.completo)},
   {id:'reels',    name:'Reels e TikToks', sub:eur(CONFIG.reel) + ' por reel'}
 ];
 const REELS = [
@@ -1218,8 +1237,8 @@ function render(){
       lines.push('Pack de ' + cards(st.qty) + ' NFC — ' + eur(price));
     }
   } else if (st.kind === 'site'){
-    total = eur(CONFIG.site); note = 'preço base';
-    lines.push('Site profissional — desde ' + eur(CONFIG.site));
+    total = eur(CONFIG.site); note = 'desde · orçamento à medida';
+    lines.push('Site profissional — desde ' + eur(CONFIG.site) + ' (orçamento à medida)');
   } else if (st.kind === 'reels'){
     if (st.reel === 'mensal'){
       total = 'A combinar'; note = 'preço por WhatsApp';
@@ -1229,8 +1248,8 @@ function render(){
       lines.push('Edição de 1 reel — ' + eur(CONFIG.reel));
     }
   } else {
-    total = eur(CONFIG.completo); note = 'total';
-    lines.push('Pack completo: site + ' + CONFIG.completoCards + ' cartões NFC — ' + eur(CONFIG.completo));
+    total = eur(CONFIG.completo); note = 'desde · orçamento à medida';
+    lines.push('Pack completo: site + ' + CONFIG.completoCards + ' cartões NFC — desde ' + eur(CONFIG.completo));
   }
   if (st.kind !== 'site' && st.kind !== 'reels') lines.push('Plataformas: ' + (st.plats.length ? st.plats.join(', ') : 'a combinar'));
 
