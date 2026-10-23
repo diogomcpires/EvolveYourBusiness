@@ -288,11 +288,11 @@ function r4(){DUR=13.5;
 /* ======================= TikTok batch helpers ======================= */
 function hookL(lines,t1){lines.forEach(([html,y,t0,cls])=>{const isK=cls&&cls.startsWith('kick');const tt=Math.max(-.38,t0*.4-.38);const e=el(`<div class="${cls||'h'}">${isK?`<span class="call">${html}</span>`:html}</div>`,'c');at(e,0,isK?y-20:y);lineIn(e,tt,t1,isK||cls==='sub'?30:70)})}
 function progressBar(){const b=el('<div style="height:12px;width:1080px;background:linear-gradient(90deg,#F4C21A,#ffd84d);border-radius:0 6px 6px 0;transform-origin:0 0"></div>');at(b,0,0);b.style.zIndex=50;CB.push(t=>{b.firstChild.style.transform=`scaleX(${Math.min(1,t/DUR)})`})}
-function cta(t0,dur,l1,l2,pill,word,extra){flash(t0);
+function cta(t0,dur,l1,l2,pill,word,extra,follow){flash(t0);
  const a=el(`<div class="h m">${l1}</div>`,'c');at(a,0,330);K(a,[[t0,{o:0,y:40}],[t0+.3,{o:1,y:0}]]);
  if(l2){const b=el(`<div class="h m"><span class="y">${l2}</span></div>`,'c');at(b,0,440);K(b,[[t0+.15,{o:0,y:40}],[t0+.45,{o:1,y:0}]])}
  const bt=el(`<span class="pill">${pill}</span>`,'c');at(bt,0,620);K(bt,[[t0+.45,{o:0,s:.7}],[t0+.8,{o:1,s:1},'b']]);
- const cm=el(`<span class="chip"><svg style="color:#2141C2"><use href="#chat"/></svg>Comente «${word}»</span><span style="display:inline-block;width:18px"></span><span class="chip" style="background:#2141C2;color:#fff">+ Siga para mais dicas</span>`,'c');at(cm,0,770);K(cm,[[t0+.7,{o:0,y:30}],[t0+1.0,{o:1,y:0}]]);
+ const cm=el(`<span class="chip"><svg style="color:#2141C2"><use href="#chat"/></svg>Comente «${word}»</span><span style="display:inline-block;width:18px"></span><span class="chip" style="background:#2141C2;color:#fff">+ ${follow||'Siga para mais dicas'}</span>`,'c');at(cm,0,770);K(cm,[[t0+.7,{o:0,y:30}],[t0+1.0,{o:1,y:0}]]);
  const u=el('<div class="handle">evolveyourbusiness.pt</div><div class="url" style="font-size:26px;margin-top:6px">Clientes: Churrasqueira O Gabriel · Churrasqueira Bom Gosto</div>','c');at(u,0,900);K(u,[[t0+.85,{o:0}],[t0+1.15,{o:1}]]);
  if(extra)extra(t0);
  brandFoot(t0+.9,dur);
@@ -523,6 +523,222 @@ function r14(){DUR=14.7;
  return {sfx:[['impact',0],['pop',.15],['pop',.85],['riser',2.0],['impact',2.6],['whoosh',2.7],['tick',3.0],['tick',3.3],['tick',3.6],['ding',4.6],['pop',5.2],['pop',5.5],['whoosh',6.7],['impact',6.8],['tick',7.1],['tick',7.4],['tick',7.7],['ding',8.65],['pop',9.25],['pop',9.55],['riser',10.3],['impact',10.9],['pop',11.4],['pop',11.75]],reveal:2.6,prog:1}
 }
 
+/* ======================= TikTok batch 3 helpers ======================= */
+function ctaReels(t0){[['a/reel-o-gabriel.jpg',150,-7],['a/reel-bom-gosto.jpg',510,7]].forEach(([im,x,r],i)=>{const q=phone(`<img src="${im}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`);at(q,x,1000);K(q,[[t0+.5+i*.15,{o:0,y:300,s:.6,r:r*2}],[t0+.95+i*.15,{o:1,y:0,s:.6,r:r},'b'],[t0+4,{o:1,y:-20,s:.62,r:r},'l']])})}
+function flip(box,dir,n,fps,t0,loop){const ims=[];for(let i=1;i<=n;i++){const im=document.createElement('img');im.src=`${dir}/${String(i).padStart(3,'0')}.jpg`;im.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none';box.appendChild(im);ims.push(im)}
+ let cur=-1;CB.push(t=>{let k=Math.floor((t-t0)*fps);k=loop?((k%n)+n)%n:Math.max(0,Math.min(n-1,k));if(k!==cur){if(cur>=0)ims[cur].style.display='none';ims[k].style.display='block';cur=k}})}
+function lbl(txt,y,t0,t1){const e=el(`<div class="lbl">${txt}</div>`,'c');at(e,0,y);K(e,[[t0,{o:0}],[t0+.3,{o:1}],[t1,{o:1}],[t1+.25,{o:0}]]);return e}
+function kick2(txt,y,t0,t1,col){const e=el(`<div class="kick"${col?` style="color:${col}"`:''}>${txt}</div>`,'c');at(e,0,y);K(e,[[t0,{o:0}],[t0+.3,{o:1}],[t1,{o:1}],[t1+.25,{o:0}]]);return e}
+function bigLine(html,y,t0,t1,cls){const e=el(`<div class="${cls||'h m'}">${html}</div>`,'c');at(e,0,y);K(e,[[t0,{o:0,x:-120,b:14}],[t0+.35,{o:1,x:0,b:0}],[t1,{o:1}],[t1+.25,{o:0,y:-50}]]);return e}
+function chipAt(html,x,y,t0,t1,style){const c=el(`<span class="chip"${style?` style="${style}"`:''}>${html}</span>`);at(c,x,y);c.style.zIndex=3;K(c,[[t0,{o:0,s:.5}],[t0+.3,{o:1,s:1},'b'],[t1,{o:1}],[t1+.25,{o:0}]]);return c}
+const OK='<svg style="color:#1E9E5A"><use href="#check"/></svg>', NO='<svg><use href="#x"/></svg>';
+const RED='background:#FFF2F2;color:#E0525A';
+
+/* ======================= R15: o que inclui um site de 400 € ======================= */
+function r15(){DUR=14.4;
+ hookL([['Sites para negócios',500,.05,'kick'],['O que inclui',590,.1],['um site de',700,.4],['<span class="y">400 €?</span>',810,.7],['Tudo isto. Pago uma vez ↓',990,1.1,'sub']],2.25);
+ const items=['Design à medida da sua marca','Ementa ou serviços, com preços','Galeria de fotos','Botões Ligar · WhatsApp · Direções','Ligação às suas redes sociais','Telemóvel e computador','Manutenção gratuita'];
+ const rc=el(`<div style="width:840px;background:#fff;color:#11182E;border-radius:30px;padding:40px 48px 34px;box-shadow:0 40px 90px rgba(0,0,0,.55)">
+  <div style="display:flex;justify-content:space-between;align-items:center;font:800 24px M;letter-spacing:.16em;color:#6B7491"><span>O QUE ESTÁ INCLUÍDO</span><span>SITE PROFISSIONAL</span></div>
+  <div style="border-top:3px dashed #D7DCEA;margin:22px 0 6px"></div>
+  ${items.map(s=>`<div class="ri" style="display:flex;align-items:center;gap:20px;padding:15px 0;font:700 34px/1.2 M"><span style="flex:none;width:46px;height:46px;border-radius:50%;background:#1E9E5A;color:#fff;display:flex;align-items:center;justify-content:center"><svg style="width:30px;height:30px"><use href="#check"/></svg></span>${s}</div>`).join('')}
+  <div style="border-top:3px dashed #D7DCEA;margin:16px 0 12px"></div>
+  <div class="rt" style="display:flex;justify-content:space-between;align-items:baseline;font:800 40px M"><span>Total</span><b style="font:800 84px U;color:#2141C2;letter-spacing:-.02em">400 €</b></div>
+  <div class="rt2" style="font:800 28px M;color:#1E9E5A;text-align:right;margin-top:4px">Pagamento único · 0 € por mês</div></div>`);
+ at(rc,120,300);K(rc,[[2.35,{o:0,y:500,s:.96}],[2.8,{o:1,y:0,s:1}],[9.2,{o:1}],[9.5,{o:0,y:-80},'io']]);
+ [...rc.querySelectorAll('.ri')].forEach((r,i)=>K(r,[[2.85+i*.5,{o:0,x:-60}],[3.15+i*.5,{o:1,x:0}]]));
+ K(rc.querySelector('.rt'),[[6.5,{o:0,s:.7}],[6.85,{o:1,s:1},'b']]);K(rc.querySelector('.rt2'),[[6.9,{o:0,y:20}],[7.2,{o:1,y:0}]]);
+ caption('E protótipo <span class="y">grátis</span><br>antes de decidir.',1460,7.4,9.2,'h xs');
+ kick2('Precisa de mais?',520,9.55,11.1);
+ bigLine('Reservas online?',610,9.65,11.1);bigLine('<span class="y">Também fazemos.</span>',720,9.95,11.1);
+ const nt=el('<div class="sub">Extra opcional, orçamentado à parte.</div>','c');at(nt,0,880);K(nt,[[10.3,{o:0}],[10.6,{o:1}],[11.1,{o:1}],[11.3,{o:0}]]);
+ cta(11.35,14.4,'Tudo isto por','400 €. Uma vez.','Peça o seu protótipo grátis','SITE',ctaSites);
+ const sf=stdSfx([['pop',1.1],['whoosh',2.3],['impact',2.45]]);items.forEach((_,i)=>sf.push(['tick',2.9+i*.5]));
+ sf.push(['ding',6.85],['pop',7.45],['whoosh',9.45],['impact',9.6],['pop',9.95],['riser',10.8],['impact',11.35],['pop',11.8]);
+ return {sfx:sf,reveal:2.45,prog:0}
+}
+
+/* ======================= R16: edição de reels ======================= */
+function r16(){DUR=14.4;
+ hookL([['Donos de negócios',480,.05,'kick'],['Tem vídeos',570,.1],['no telemóvel',680,.4,'h m'],['<span class="y">que nunca</span>',780,.65,'h m'],['<span class="y">publicou?</span>',880,.9,'h m'],['Nós transformamo-los nisto ↓',1050,1.2,'sub']],2.3);
+ const cols=[['#8a6a55','#3b2a20'],['#5d6b7a','#1f2a36'],['#a08a5a','#4a3b1c'],['#6e5a6e','#2c2030'],['#7a5040','#2a1810'],['#4f6a5a','#1a2a20']];
+ const tiles=Array.from({length:21},(_,i)=>{const [a,b]=cols[(i*5)%6];const d=`0:${String(8+(i*7)%50).padStart(2,'0')}`;return `<div style="aspect-ratio:1;background:linear-gradient(${(i*47)%360}deg,${a},${b});position:relative"><span style="position:absolute;right:8px;bottom:6px;font:800 17px M;color:#fff">${d}</span></div>`}).join('');
+ const G=phone(`<div style="position:absolute;inset:0;background:#fff"><div style="position:absolute;top:58px;left:0;right:0;text-align:center;font:800 24px M;color:#11182E">Galeria · Vídeos</div><div id="cr" style="position:absolute;top:104px;left:4px;right:4px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px">${tiles}</div></div>`);
+ at(G,330,300);G.style.zIndex=2;K(G,[[2.35,{o:0,y:300}],[2.75,{o:1,y:0}],[4.85,{o:1,y:0}],[5.15,{o:0,s:.9}]]);
+ const cr=G.querySelector('#cr');CB.push(t=>{cr.style.transform=`translateY(${-Math.max(0,Math.min(1,(t-2.8)/2.2))*220}px)`});
+ caption('Parados na galeria…',1220,2.9,4.85,'h s');
+ const nt=el('<div class="sub">…e o Instagram sem nada novo.</div>','c');at(nt,0,1330);K(nt,[[3.4,{o:0}],[3.7,{o:1}],[4.85,{o:1}],[5.05,{o:0}]]);
+ lbl('Exemplo ilustrativo',1450,2.9,4.85);
+ flash(5.1);
+ const P=phone('<div id="fb" style="position:absolute;inset:0;background:#000"></div>');at(P,330,300);P.style.zIndex=2;
+ K(P,[[5.1,{o:0,s:1.15}],[5.45,{o:1,s:1},'b'],[8.7,{o:1,s:1}],[9.0,{o:0,y:-80}]]);
+ flip(P.querySelector('#fb'),'a/rg',90,30,5.1,true);
+ chipAt('<svg style="color:#2141C2"><use href="#check"/></svg>Feito por nós',640,300,5.5,8.7,'background:#F4C21A;color:#1B1606');
+ [['Gancho nos 1.ºs segundos',5.8,60,1200],['Textos animados',6.4,560,1200],['Transições suaves',7.0,60,1330],['Para Instagram e TikTok',7.6,470,1330]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,8.7));
+ kick2('Edição de reels',470,9.05,11.1);
+ const pr=el('<div style="font:800 260px/1 U;color:#F4C21A;letter-spacing:-.04em">60 €</div>','c');at(pr,0,560);K(pr,[[9.15,{o:0,s:.5}],[9.5,{o:1,s:1},'b'],[11.1,{o:1}],[11.3,{o:0}]]);
+ const p2=el('<div class="h xs">por reel</div>','c');at(p2,0,840);K(p2,[[9.5,{o:0,y:30}],[9.8,{o:1,y:0}],[11.1,{o:1}],[11.3,{o:0}]]);
+ const p3=el('<div class="sub">Vê uma pré-visualização antes da versão final.<br>Pack mensal? Fale connosco.</div>','c');at(p3,0,960);K(p3,[[9.9,{o:0}],[10.2,{o:1}],[11.1,{o:1}],[11.3,{o:0}]]);
+ cta(11.35,14.4,'Envie os vídeos.','Recebe o reel.','Reel editado: 60 €','REEL',ctaReels);
+ return {sfx:stdSfx([['pop',1.2],['whoosh',2.3],['impact',2.4],['click',2.9],['click',3.5],['buzz',4.3],['riser',4.6],['impact',5.1],['whoosh',5.15],['ding',5.5],['pop',5.8],['pop',6.4],['pop',7.0],['pop',7.6],['whoosh',8.95],['impact',9.15],['ding',9.5],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:2}
+}
+
+/* ======================= R17: teste de 10 segundos no Google ======================= */
+function r17(){DUR=14.4;
+ hookL([['Faça este teste agora',480,.05,'kick'],['Pesquise',570,.1],['<span class="y">o seu negócio</span>',680,.4,'h m'],['no Google.',790,.7],['Leva 10 segundos ↓',970,1.1,'sub']],2.25);
+ const tm=el('<div style="width:170px;height:170px;border-radius:50%;border:12px solid rgba(244,194,26,.25);display:flex;align-items:center;justify-content:center;font:800 76px U;color:#F4C21A" id="tm">10</div>');at(tm,455,190);
+ K(tm,[[2.35,{o:0,s:.5}],[2.7,{o:1,s:1},'b'],[9.4,{o:1}],[9.65,{o:0}]]);
+ const tmi=tm.firstChild;CB.push(t=>{const v=Math.max(0,10-Math.floor(Math.max(0,t-2.7)*1.5));tmi.textContent=v;tmi.style.borderColor=v<=3?'rgba(224,82,90,.55)':'rgba(244,194,26,.25)';tmi.style.color=v<=3?'#FF7A80':'#F4C21A'});
+ const sb=el(`<div class="search"><svg style="width:44px;height:44px;color:#6B7491"><use href="#search"/></svg><span id="q"></span></div>`);at(sb,110,420);K(sb,[[2.45,{o:0,y:40}],[2.8,{o:1,y:0}],[9.4,{o:1}],[9.65,{o:0}]]);
+ CB.push(t=>{const q='o nome do seu negócio';const n=Math.max(0,Math.min(q.length,Math.floor((t-2.8)*26)));sb.querySelector('#q').textContent=q.slice(0,n)+(t<3.8&&Math.floor(t*3)%2?'|':'')});
+ const qs=['Aparece no <span class="y">mapa</span>?','Tem <span class="y">fotos</span> recentes?','O <span class="y">horário</span> está certo?','Tem botão <span class="y">Website</span>?'];
+ qs.forEach((s,i)=>{const e=el(`<div class="step" style="font-size:42px"><span class="n" style="background:transparent;border:5px solid #F4C21A;color:#F4C21A;font-size:40px;line-height:76px">?</span><span>${s}</span></div>`);at(e,110,600+i*175);K(e,[[3.9+i*.75,{o:0,x:140}],[4.25+i*.75,{o:1,x:0}],[9.4,{o:1}],[9.65,{o:0,x:-80}]]);
+  const n=e.querySelector('.n');CB.push(t=>{n.style.transform=`scale(${t>4.3+i*.75&&t<9.4?1+.07*Math.sin(t*7+i):1})`})});
+ caption('Falhou algum?',1330,7.3,9.4,'h m');
+ const s2=el('<div class="sub" style="color:#fff">O cliente escolhe <span class="y" style="font-weight:800">a concorrência.</span></div>','c');at(s2,0,1450);K(s2,[[7.7,{o:0,y:30}],[8.0,{o:1,y:0}],[9.4,{o:1}],[9.65,{o:0}]]);
+ kick2('Nós vemos por si',500,9.7,11.15);
+ bigLine('Análise',600,9.8,11.15,'h');bigLine('<span class="y">grátis</span>',710,10.05,11.15,'h');
+ const nt=el('<div class="sub">ao seu perfil do Google.</div>','c');at(nt,0,860);K(nt,[[10.35,{o:0}],[10.6,{o:1}],[11.15,{o:1}],[11.3,{o:0}]]);
+ cta(11.35,14.4,'Quer saber','como está o seu?','Análise grátis ao seu Google','GOOGLE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.45],['tick',2.7],['type',2.8],['pop',3.9],['pop',4.65],['pop',5.4],['pop',6.15],['tick',6.8],['tick',7.5],['buzz',7.3],['tick',8.2],['tick',8.9],['whoosh',9.6],['impact',9.7],['ding',10.05],['riser',10.9],['impact',11.35],['pop',11.8]]),reveal:2.45,prog:1}
+}
+
+/* ======================= R18: o cliente quer encomendar ======================= */
+function r18(){DUR=14.4;
+ hookL([['Restaurantes e take-away',480,.05,'kick'],['O cliente quer',570,.1,'h m'],['<span class="y">encomendar.</span>',670,.4],['Encontra o seu número?',800,.75,'h xs'],['Se demorar, liga a outro ↓',950,1.1,'sub']],2.25);
+ const ig=phone(`<div class="bar"><b>instagram.com/o_seu_restaurante</b></div><div class="ig"><div class="hd"><div class="pp"></div><div class="ln"><i style="width:70%"></i><i style="width:45%"></i></div></div><div style="padding:0 8px 18px;font:600 20px/1.45 M;color:#4a5370">Frango no carvão · Take-away<br>Encomendas por mensagem</div><div class="gr" id="gr">${'<i></i>'.repeat(24)}</div></div>`);
+ at(ig,330,300);ig.style.zIndex=2;K(ig,[[2.35,{o:0,y:300}],[2.75,{o:1,y:0}],[6.0,{o:1,y:0}],[6.3,{o:0,x:-600,r:-12},'io']]);
+ const gr=ig.querySelector('#gr');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-2.9)/3));gr.style.transform=`translateY(${-Math.sin(p*Math.PI*2.5)*120-p*80}px)`;ig.style.transform+=t>5.2&&t<6.0?` translateX(${Math.sin(t*40)*8}px)`:''});
+ lbl('Exemplo ilustrativo',250,2.8,6.0);
+ [['Sem número',3.3,70,1210],['Sem ementa',3.9,560,1210],['Sem horário',4.5,300,1340]].forEach(([s,t0,x,y])=>chipAt(NO+s,x,y,t0,6.0,RED));
+ caption('…e liga para <span class="y">outro.</span>',1480,5.0,6.0,'h xs');
+ flash(6.35);
+ kick2('Com um site',190,6.35,10.9,'#F4C21A');
+ const st=phone(`<div class="bar"><b>churrasqueiraogabriel.pt</b></div><img src="a/gab_hero.jpg" style="position:absolute;top:96px;left:0;width:100%"><div id="cl" style="position:absolute;inset:0;z-index:7;background:linear-gradient(180deg,#1E9E5A,#0f5c34);color:#fff;text-align:center;padding-top:200px;opacity:0"><div style="width:140px;height:140px;margin:0 auto;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center"><svg style="width:70px;height:70px"><use href="#phone"/></svg></div><div style="font:800 38px M;margin-top:30px">A ligar…</div><div style="font:600 24px M;opacity:.85;margin-top:12px">Encomenda em 1 toque</div></div>`);
+ at(st,330,300);st.style.zIndex=2;K(st,[[6.35,{o:0,x:500,r:12}],[6.8,{o:1,x:0,r:0}],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ const cl=st.querySelector('#cl');CB.push(t=>{cl.style.opacity=t<8.25?0:Math.min(1,(t-8.25)/.2)});
+ const bt=el('<span class="pill" style="font-size:40px;padding:26px 44px"><svg style="width:44px;height:44px"><use href="#phone"/></svg>Ligar e encomendar</span>','c');at(bt,0,1210);bt.style.zIndex=3;
+ K(bt,[[7.0,{o:0,s:.6}],[7.35,{o:1,s:1},'b'],[7.9,{o:1,s:1}],[8.0,{o:1,s:.92}],[8.15,{o:1,s:1}],[10.9,{o:1}],[11.15,{o:0}]]);
+ for(let j=0;j<3;j++){const r=el('','ripple');at(r,540,1260);r.style.zIndex=4;K(r,[[7.95+j*.12,{o:0,s:.3}],[8.0+j*.12,{o:1,s:.6}],[8.55+j*.12,{o:0,s:4}]])}
+ [['Ementa sempre à mão',8.6,60,1380],['Horário e direções',9.2,560,1380]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ lbl('Site real · Churrasqueira O Gabriel',1520,8.9,10.9);
+ cta(11.35,14.4,'Um toque','e o cliente liga.','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.4],['buzz',3.3],['buzz',3.9],['buzz',4.5],['buzz',5.3],['whoosh',6.2],['impact',6.35],['pop',7.0],['tap',7.98],['ding',8.25],['pop',8.6],['pop',9.2],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:3}
+}
+
+/* ======================= R19: salões — mensagens a mais ======================= */
+function r19(){DUR=14.4;
+ hookL([['Cabeleireiros e estética',480,.05,'kick'],['Passa o dia a',570,.1,'h m'],['responder a',670,.35,'h m'],['<span class="y">mensagens?</span>',770,.65,'h m'],['«Quanto é?» «Tem vaga?» «Onde fica?» ↓',940,1.05,'sub']],2.3);
+ const msgs=['Olá! Quanto custa o corte?','Tem vaga no sábado?','Fazem unhas de gel?','Qual é a morada?','Até que horas estão abertos?','E a coloração, quanto é?'];
+ const ch=phone(`<div class="bar"><b>Mensagens</b></div><div style="position:absolute;inset:96px 0 0;background:#ECE5DD;padding:22px 18px">${msgs.map((m,i)=>`<div class="bb" style="max-width:320px;background:#fff;border-radius:20px 20px 20px 6px;padding:14px 18px;font:600 22px/1.3 M;color:#11182E;margin-bottom:14px;box-shadow:0 2px 4px rgba(0,0,0,.08)">${m}<div style="font:600 14px M;color:#8a93ad;text-align:right;margin-top:4px">10:0${i+2}</div></div>`).join('')}</div>`);
+ at(ch,330,300);ch.style.zIndex=2;K(ch,[[2.4,{o:0,y:300}],[2.8,{o:1,y:0}],[6.3,{o:1}],[6.6,{o:0,s:.85}]]);
+ [...ch.querySelectorAll('.bb')].forEach((b,i)=>K(b,[[2.95+i*.5,{o:0,y:30,s:.9}],[3.2+i*.5,{o:1,y:0,s:1},'b']]));
+ const bd=el('<div style="min-width:96px;height:96px;padding:0 20px;border-radius:48px;background:#E0525A;color:#fff;font:800 52px/96px U;text-align:center;box-shadow:0 14px 34px rgba(224,82,90,.45)" id="bd">0</div>');at(bd,680,250);bd.style.zIndex=4;
+ K(bd,[[2.95,{o:0,s:.4}],[3.2,{o:1,s:1},'b'],[6.3,{o:1}],[6.55,{o:0}]]);
+ const bdi=bd.firstChild;CB.push(t=>{const n=Math.max(0,Math.min(6,Math.floor((t-2.95)/.5)+1));bdi.textContent=n;bd.style.transform+=` scale(${1+.12*Math.max(0,1-((t-2.95)%.5)*5)})`});
+ caption('E o trabalho <span class="y">à espera.</span>',1240,5.2,6.3,'h xs');
+ lbl('Exemplo ilustrativo',1360,3.0,6.3);
+ flash(6.65);
+ kick2('Com um site',190,6.65,10.9,'#F4C21A');
+ const sv=[['Corte e brushing','25 €'],['Coloração','desde 40 €'],['Madeixas','desde 55 €'],['Manicure gel','20 €'],['Sobrancelhas','8 €'],['Depilação','desde 6 €']];
+ const site=phone(`<div class="bar"><b>o-seu-salao.pt</b></div><div class="tl" style="position:absolute;top:96px;left:0;right:0;background:#F7EEEA;color:#3A2A2C;padding-bottom:40px">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 26px"><b style="font:italic 400 34px Georgia,serif">Studio Lume</b><span style="width:34px;height:20px;border-top:3px solid #3A2A2C;border-bottom:3px solid #3A2A2C"></span></div>
+  <div style="margin:0 18px;padding:36px 26px;border-radius:26px;background:radial-gradient(70% 60% at 80% 20%,rgba(185,114,127,.35),transparent 70%),#EFDCD5"><div style="font:800 15px M;letter-spacing:.14em;color:#B9727F">CABELEIREIRO · ESTÉTICA</div><div style="font:400 42px/1.05 Georgia,serif;margin-top:12px">Cabelo bonito, sem pressa.</div><div id="mk" style="display:inline-block;margin-top:20px;padding:16px 24px;border-radius:40px;background:#3A2A2C;color:#F7EEEA;font:800 20px M">Marcar por WhatsApp</div></div>
+  <div style="padding:26px 26px 6px;font:800 15px M;letter-spacing:.14em;color:#B9727F">SERVIÇOS E PREÇOS</div>
+  ${sv.map(([a,b])=>`<div style="display:flex;justify-content:space-between;margin:0 26px;padding:15px 0;border-bottom:1px solid rgba(58,42,44,.12);font:700 21px M"><span>${a}</span><b style="color:#B9727F">${b}</b></div>`).join('')}
+  <div style="margin:22px 26px 0;font:700 19px/1.5 M;color:#6b5558">Ter–Sáb · 9h–19h<br>Rua do Exemplo, 12</div></div>`);
+ at(site,330,300);site.style.zIndex=2;K(site,[[6.65,{o:0,x:500,r:12}],[7.1,{o:1,x:0,r:0}],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ const tl=site.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-7.9)/1.8));tl.style.transform=`translateY(${-ez.io(p)*330}px)`});
+ [['Preços à vista',7.4,60,1200],['Marcar com 1 toque',8.0,520,1200],['Horário e morada',8.6,300,1330]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ caption('Menos perguntas.<br><span class="y">Mais marcações.</span>',1460,9.2,10.9,'h xs');
+ lbl('Exemplo ilustrativo',1660,7.2,10.9);
+ cta(11.35,14.4,'Menos mensagens.','Mais marcações.','Peça o seu protótipo grátis','SITE',ctaSites);
+ const sf=stdSfx([['pop',1.05],['whoosh',2.35],['impact',2.45]]);msgs.forEach((_,i)=>sf.push(['ding',3.2+i*.5]));
+ sf.push(['riser',6.2],['impact',6.65],['whoosh',6.7],['pop',7.4],['pop',8.0],['pop',8.6],['ding',9.4],['riser',10.8],['impact',11.35],['pop',11.8]);
+ return {sfx:sf,reveal:2.45,prog:0}
+}
+
+/* ======================= R20: 3 vídeos para gravar hoje ======================= */
+function r20(){DUR=14.4;
+ hookL([['Restaurantes e cafés',480,.05,'kick'],['3 vídeos que',570,.1],['pode gravar',680,.4],['<span class="y">hoje.</span>',790,.7],['Só com o telemóvel. Guarde ↓',970,1.1,'sub']],2.25);
+ const shots=[['a/bg_frango-grelha-macro.jpg','O prato na grelha','De perto. 5 segundos. Sem falar.'],['a/bg_atendimento-balcao.jpg','A equipa a servir','Mostre quem está do outro lado.'],['a/bg_fachada-loja.jpg','A entrada do espaço','Caminhe da rua até ao balcão.']];
+ const T=[2.4,5.05,7.7],L=2.65;
+ const vf=phone(`<div style="position:absolute;inset:0;overflow:hidden;background:#000">${shots.map((s,i)=>`<img class="sh" src="${s[0]}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:${i?0:1}">`).join('')}</div>
+  <div style="position:absolute;inset:0;z-index:4">${[33.3,66.6].map(p=>`<i style="position:absolute;left:${p}%;top:0;bottom:0;width:2px;background:rgba(255,255,255,.35)"></i><i style="position:absolute;top:${p}%;left:0;right:0;height:2px;background:rgba(255,255,255,.35)"></i>`).join('')}
+  <div style="position:absolute;top:64px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:10px;font:800 24px M;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.5)"><span id="rd" style="width:18px;height:18px;border-radius:50%;background:#E0525A"></span><span id="tc">00:00</span></div>
+  <div style="position:absolute;bottom:44px;left:50%;margin-left:-46px;width:92px;height:92px;border-radius:50%;border:6px solid #fff"><div style="margin:10px;width:60px;height:60px;border-radius:14px;background:#E0525A"></div></div></div>`);
+ at(vf,330,300);vf.style.zIndex=2;K(vf,[[2.3,{o:0,y:300}],[2.7,{o:1,y:0}],[10.2,{o:1}],[10.45,{o:0,y:-80}]]);
+ const sh=[...vf.querySelectorAll('.sh')],tc=vf.querySelector('#tc'),rd=vf.querySelector('#rd');
+ CB.push(t=>{let k=t<T[1]?0:t<T[2]?1:2;sh.forEach((im,i)=>{im.style.opacity=i===k?1:0;const p=Math.max(0,(t-T[i])/L);im.style.transform=`scale(${1.05+p*.12}) translate(${(i-1)*p*-18}px,${p*-10}px)`});
+  const s=Math.max(0,t-T[k]);tc.textContent='00:0'+Math.min(9,Math.floor(s*2));rd.style.opacity=Math.floor(t*2.5)%2?1:.25});
+ shots.forEach(([,title,tip],i)=>{const t0=T[i],t1=i<2?T[i+1]-.05:10.2;
+  const hd=el(`<div class="step" style="width:860px;font-size:40px;padding:22px 30px"><span class="n" style="width:70px;height:70px;font:800 38px/70px U">${i+1}</span><span>${title}</span></div>`);at(hd,110,1200);K(hd,[[t0+.1,{o:0,y:60}],[t0+.4,{o:1,y:0}],[t1-.1,{o:1,y:0}],[t1+.15,{o:0,y:-60}]]);
+  const tp=el(`<div class="sub" style="color:#fff">${tip}</div>`,'c');at(tp,0,1360);K(tp,[[t0+.35,{o:0,y:30}],[t0+.65,{o:1,y:0}],[t1-.1,{o:1}],[t1+.15,{o:0}]])});
+ lbl('Fotos: Churrasqueira Bom Gosto',1480,2.8,10.2);
+ kick2('Depois',520,10.4,11.15);bigLine('Envie-nos.',610,10.45,11.15);bigLine('<span class="y">Nós editamos.</span>',720,10.65,11.15);
+ cta(11.35,14.4,'Grave hoje.','Nós editamos.','Reel editado: 60 €','REEL',ctaReels);
+ return {sfx:stdSfx([['whoosh',2.25],['impact',2.4],['click',2.55],['pop',2.6],['whoosh',5.0],['click',5.15],['pop',5.25],['whoosh',7.65],['click',7.8],['pop',7.9],['whoosh',10.35],['impact',10.45],['pop',10.7],['riser',10.9],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:1}
+}
+
+/* ======================= R21: 16 € por cartão ======================= */
+function r21(){DUR=14.1;
+ hookL([['Cartões NFC + QR',480,.05,'kick'],['Quanto custa',570,.1,'h m'],['ter mais avaliações',672,.35,'h s'],['no Google?',760,.6,'h m']],1.45);
+ const big=el('<div style="font:800 280px/1 U;color:#F4C21A;letter-spacing:-.04em">16 €</div>','c');at(big,0,700);K(big,[[1.55,{o:0,s:.4}],[1.85,{o:1,s:1},'b'],[2.55,{o:1}],[2.8,{o:0,s:1.2,b:12},'io']]);
+ const bs=el('<div class="sub" style="color:#fff">por cartão, a partir de 2</div>','c');at(bs,0,1000);K(bs,[[1.85,{o:0}],[2.1,{o:1}],[2.55,{o:1}],[2.75,{o:0}]]);
+ kick2('Preços',260,2.85,6.6);
+ const rows=[['1 cartão','18 €',''],['2 cartões','32 €','16 € cada'],['3 cartões','48 €','16 € cada'],['4 cartões','64 €','16 € cada']];
+ rows.forEach(([a,b,c],i)=>{const e=el(`<div class="price"><span>${a}${c?`<span style="display:block;font:600 26px M;color:#9CA7C6;margin-top:4px">${c}</span>`:''}</span><b>${b}</b></div>`);at(e,130,350+i*165);K(e,[[3.0+i*.45,{o:0,x:-120}],[3.35+i*.45,{o:1,x:0}],[6.6,{o:1}],[6.85,{o:0,x:80}]])});
+ chipAt(OK+'Pagamento único',150,1040,4.9,6.6);chipAt('5 ou mais: orçamento',580,1040,5.2,6.6);
+ const ph=el('<div class="photo" style="width:700px;height:365px"><img src="a/cartoes-reais.jpg"></div>');at(ph,190,1180);K(ph,[[4.0,{o:0,y:100}],[4.4,{o:1,y:0,r:-2}],[6.6,{o:1,r:1},'l'],[6.85,{o:0}]]);
+ kick2('Pode misturar',300,6.95,10.4);
+ bigLine('Google nas mesas,',390,7.05,10.4,'h s');bigLine('<span class="y">Instagram no balcão.</span>',480,7.35,10.4,'h s');
+ const c1=el(cardHTML('k-white','star','Google','Avalie-nos','no Google',1));at(c1,120,650);c1.style.zIndex=2;K(c1,[[7.6,{o:0,y:200,r:-14}],[8.0,{o:1,y:0,r:-6},'b'],[10.4,{o:1,r:-4},'l'],[10.65,{o:0}]]);
+ const c2=el(cardHTML('k-cob','user','Instagram','Siga-nos','no Instagram',0));at(c2,340,1010);c2.style.zIndex=3;K(c2,[[7.9,{o:0,y:200,r:14}],[8.3,{o:1,y:0,r:5},'b'],[10.4,{o:1,r:3},'l'],[10.65,{o:0}]]);
+ caption('Programados e <span class="y">testados.</span>',1480,8.9,10.4,'h xs');
+ cta(10.75,14.1,'A partir de 2:','16 € cada.','Envie mensagem','NFC',ctaCards);
+ return {sfx:[['impact',0],['pop',.1],['pop',.35],['pop',.6],['riser',1.0],['impact',1.55],['ding',1.85],['whoosh',2.75],['impact',2.85],['pop',3.0],['pop',3.45],['pop',3.9],['pop',4.35],['ding',4.9],['pop',5.2],['whoosh',6.85],['impact',6.95],['pop',7.6],['pop',7.9],['ding',8.9],['riser',10.2],['impact',10.75],['pop',11.2]],reveal:1.55,prog:2}
+}
+
+/* ======================= R22: erros que afastam clientes · 1 (site lento) ======================= */
+function r22(){DUR=14.4;
+ hookL([['Erros que afastam clientes · 1',480,.05,'kick'],['O seu site',570,.1],['<span class="y">demora</span>',680,.4],['a abrir?',790,.7],['O cliente não espera ↓',970,1.1,'sub']],2.25);
+ const ld=phone(`<div class="bar"><b>o-seu-site.pt</b></div><div style="position:absolute;top:96px;left:0;right:0;height:8px;background:#E3E6EF;z-index:4"><div id="pb" style="height:100%;width:0;background:#2141C2"></div></div><div style="position:absolute;inset:104px 0 0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px"><div id="sp" style="width:96px;height:96px;border-radius:50%;border:11px solid #E3E6EF;border-top-color:#2141C2"></div><div style="font:700 22px M;color:#9aa1b6">A carregar…</div></div>`);
+ at(ld,330,300);ld.style.zIndex=2;K(ld,[[2.35,{o:0,y:300}],[2.75,{o:1,y:0}],[5.6,{o:1,x:0,r:0}],[6.1,{o:0,x:-700,r:-10},'io']]);
+ const pb=ld.querySelector('#pb'),sp=ld.querySelector('#sp');CB.push(t=>{pb.style.width=Math.min(38,Math.max(0,(t-2.8)*12))+'%';sp.style.transform=`rotate(${t*420}deg)`});
+ const sc=el('<div style="font:800 140px/1 U;letter-spacing:-.03em"><span id="sv">0,0</span> s</div>','c');at(sc,0,1200);K(sc,[[2.8,{o:0,y:30}],[3.1,{o:1,y:0}],[5.6,{o:1}],[5.85,{o:0}]]);
+ CB.push(t=>{const v=Math.max(0,Math.min(4,(t-2.9)*1.4));sc.querySelector('#sv').textContent=v.toFixed(1).replace('.',',');sc.style.color=v>=3?'#FF7A80':'#fff'});
+ caption('Voltou atrás…',1220,5.9,7.0,'h m');
+ const s2=el('<div class="sub" style="color:#fff">…e escolheu <span class="y" style="font-weight:800">outro.</span></div>','c');at(s2,0,1340);K(s2,[[6.2,{o:0,y:30}],[6.5,{o:1,y:0}],[7.0,{o:1}],[7.2,{o:0}]]);
+ lbl('Exemplo ilustrativo',1450,2.9,7.0);
+ flash(7.25);
+ kick2('Feito para telemóvel',190,7.25,10.9,'#F4C21A');
+ const P=phone(`<div class="bar"><b>churrasqueirabomgosto.pt</b></div><div class="tl" style="position:absolute;top:96px;left:0;width:100%"><img src="a/bg_tall_0.jpg" style="display:block;width:100%"><img src="a/bg_tall_1.jpg" style="display:block;width:100%"></div>`);
+ at(P,330,300);P.style.zIndex=2;K(P,[[7.25,{o:0,s:1.12}],[7.55,{o:1,s:1},'b'],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ const tl=P.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-7.9)/2.8));tl.style.transform=`translateY(${-ez.io(p)*3600}px)`});
+ [['Abre logo',7.7,60,1200],['Tudo numa página',8.3,470,1200],['Botão para ligar',8.9,280,1330]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ const nx=el('<div class="sub" style="color:#fff">Na parte 2: <span class="y" style="font-weight:800">o erro das fotos no Google.</span></div>','c');at(nx,0,1480);K(nx,[[9.5,{o:0,y:30}],[9.8,{o:1,y:0}],[10.9,{o:1}],[11.1,{o:0}]]);
+ cta(11.35,14.4,'Siga para','a parte 2.','Peça o seu protótipo grátis','SITE',ctaSites,'Siga para a parte 2');
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.4],['tick',2.9],['tick',3.6],['tick',4.3],['tick',5.0],['buzz',5.0],['whoosh',5.65],['impact',5.9],['riser',6.8],['impact',7.25],['ding',7.55],['pop',7.7],['pop',8.3],['pop',8.9],['ding',9.8],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:3}
+}
+
+/* ======================= R23: mito — os meus clientes não usam o Google ======================= */
+function r23(){DUR=14.4;
+ hookL([['Mito ou verdade?',480,.05,'kick'],['«Os meus clientes',575,.1,'h s'],['<span class="y">não usam</span>',665,.35,'h'],['o Google.»',785,.6,'h s']],2.5);
+ const mt=el('<span style="display:inline-block;font:800 170px/1 U;color:#E0525A;border:12px solid #E0525A;border-radius:30px;padding:16px 44px;letter-spacing:.04em;background:rgba(224,82,90,.08)">MITO</span>','c');at(mt,0,950);
+ K(mt,[[1.5,{o:0,s:2.3,r:-16}],[1.78,{o:1,s:1,r:-8},'o'],[2.5,{o:1,s:1,r:-8}],[2.8,{o:0,s:1.15,r:-8,b:10},'io']]);
+ CB.push(t=>{if(t>1.78&&t<2.05)mt.style.transform+=` translateX(${Math.sin(t*90)*10*(1-(t-1.78)/.27)}px)`});
+ kick2('Até quem já o conhece pesquisa',300,2.9,6.95);
+ [['horário',3.05],['telefone',3.65],['morada',4.25],['aberto hoje',4.85]].forEach(([w,t0],i)=>{const e=el(`<div class="search"><svg style="width:44px;height:44px;color:#6B7491"><use href="#search"/></svg><span>o seu negócio <b style="color:#2141C2">${w}</b></span></div>`);at(e,110,400+i*175);K(e,[[t0,{o:0,x:140}],[t0+.35,{o:1,x:0}],[6.95,{o:1}],[7.2,{o:0,x:-80}]])});
+ caption('Para <span class="y">confirmar</span> antes de ir.',1170,5.5,6.95,'h xs');
+ kick2('E quem não o conhece…',300,7.25,10.4);
+ caption('…escolhe pelas <span class="y">estrelas.</span>',395,7.35,10.4,'h xs');
+ [['Concorrente','★★★★★','4,7 · 320 avaliações',''],['O seu negócio','★★★☆☆','3,9 · 12 avaliações','miss']].forEach(([n,s,m,c],i)=>{const r=el(`<div class="res"${c?' style="border:4px dashed #E0525A"':''}><div class="nm">${n}</div><div class="mt"><span class="st">${s}</span> ${m}</div><div class="bt"><span>Ligar</span><span>Direções</span><span${c?' class="miss"':''}>Website</span></div></div>`);at(r,110,560+i*300);K(r,[[7.6+i*.4,{o:0,y:60}],[7.95+i*.4,{o:1,y:0}],[10.4,{o:1}],[10.65,{o:0}]])});
+ lbl('Exemplo ilustrativo',1180,7.8,10.4);
+ caption('Afinal, <span class="y">usam.</span>',1300,9.0,10.4,'h m');
+ cta(10.75,14.4,'Apareça bem','onde o procuram.','Análise grátis ao seu Google','GOOGLE',ctaSites);
+ return {sfx:[['impact',0],['pop',.1],['pop',.35],['pop',.6],['riser',1.0],['impact',1.5],['buzz',1.78],['whoosh',2.8],['impact',2.9],['type',3.05],['pop',3.4],['pop',4.0],['pop',4.6],['pop',5.2],['ding',5.5],['whoosh',7.15],['impact',7.25],['pop',7.95],['buzz',8.35],['ding',9.0],['riser',10.3],['impact',10.75],['pop',11.2]],reveal:1.5,prog:3}
+}
+
 let INFO;
-function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
+function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
 </script></body></html>

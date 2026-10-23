@@ -4,7 +4,7 @@ r=sys.argv[1]; mode=sys.argv[2]  # 'check' times... or 'video' out
 async def main():
     async with async_playwright() as p:
         b=await p.chromium.launch(); pg=await b.new_page(viewport={'width':1080,'height':1920})
-        await pg.goto(f'file://'+__import__('os').path.dirname(__import__('os').path.abspath(__file__))+'/reels.html?r={r}')
+        await pg.goto('file://'+__import__('os').path.dirname(__import__('os').path.abspath(__file__))+f'/reels.html?r={r}')
         await pg.evaluate("document.fonts.ready"); await pg.evaluate("Promise.all([...document.images].map(i=>i.decode().catch(()=>0)))")
         info=await pg.evaluate("build()"); dur=await pg.evaluate("DUR")
         json.dump({'dur':dur,**info},open(f'r{r}_info.json','w'))

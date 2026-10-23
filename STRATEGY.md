@@ -3,9 +3,29 @@
 Público: donos de pequenos negócios (restaurantes, churrasqueiras, cafés, cabeleireiros, estética, óticas), zona de Lisboa/Odivelas.
 Objetivo: (1) parar o scroll, (2) dar valor/convencer, (3) gerar comentário/mensagem, (4) ganhar seguidores.
 
-## Dados (19/10/2026, primeiras 24 h)
-- Avaliações num toque: 606 views · Um cartão para cada rede: 523 · 3 erros no Google: 479 · Antes/depois: 378 (só 3 h)
-- 0 seguidores → os vídeos chegam a pessoas mas não dão razão para seguir. Prioridade: CTA de seguir + séries.
+## Dados (23/10/2026, Metricool, views TikTok)
+| Vídeo | Views |
+|---|---|
+| Avaliações num toque (18/10) | 607 |
+| Site da Churrasqueira O Gabriel (21/10 16:00) | 598 |
+| Antes/depois de sites (19/10) | 597 |
+| Mensalidade vs pagamento único (22/10 18:00) | 590 |
+| Se não aparece no Google, não existe (20/10 10:00) | 552 |
+| Um cartão para cada rede (18/10) | 525 |
+| 3 erros no Google (18/10) | 482 |
+| Site da Churrasqueira Bom Gosto (21/10 20:30) | 212 |
+| Ementa em PDF (20/10 18:00) | 197 |
+| Avaliação de 1 estrela (21/10 18:00) | 197 |
+| NFC funciona em todos os telemóveis? (22/10 10:00) | 189 |
+
+Conclusões:
+- Funcionam (~550–610): dinheiro/perda ("mensalidade", "não existe"), visibilidade no Google e clientes reais. Fracos (~190–210): FAQ técnica e dicas sem risco/perda. Bom Gosto às 20:30 teve 1/3 do Gabriel às 16:00 com o mesmo formato → evitar horários tardios.
+- Interação quase nula (0–2 gostos, 0–1 comentários, ~2 seguidores): o "Comente X" sozinho não converte. Testar séries com "Parte 1/2" e CTA "Siga para a parte 2", perguntas diretas e desafios ("faça este teste agora").
+- Instagram: "trial reels" exigem ≥1000 seguidores → agendar sempre como REEL normal.
+- Preços atuais: cartões 1 = 18 €, a partir de 2 = 16 € cada (5+ orçamento); site desde 400 €; reel editado 60 €; pack mensal de reels = falar por WhatsApp (sem preço fixo).
+
+## Séries em curso
+- **Erros que afastam clientes**: parte 1 (site lento a abrir, r22) sai a 31/10 e promete a parte 2 = **"o erro das fotos no Google"** → tem de entrar na leva seguinte (1–6/11).
 
 ## Regras de cada vídeo
 1. **Frame 0 já tem texto.** O gancho aparece logo no primeiro fotograma (sem ecrã vazio). Chip amarelo de chamada no topo ("DONOS DE NEGÓCIOS: ATENÇÃO").
