@@ -683,10 +683,10 @@ function r20(){DUR=14.4;
 /* ======================= R21: 16 € por cartão ======================= */
 function r21(){DUR=14.1;
  hookL([['Cartões NFC + QR',480,.05,'kick'],['Quanto custa',570,.1,'h m'],['ter mais avaliações',672,.35,'h s'],['no Google?',760,.6,'h m']],1.45);
- const big=el('<div style="font:800 280px/1 U;color:#F4C21A;letter-spacing:-.04em">16 €</div>','c');at(big,0,700);K(big,[[1.55,{o:0,s:.4}],[1.85,{o:1,s:1},'b'],[2.55,{o:1}],[2.8,{o:0,s:1.2,b:12},'io']]);
+ const big=el('<div style="font:800 280px/1 U;color:#F4C21A;letter-spacing:-.04em">17 €</div>','c');at(big,0,700);K(big,[[1.55,{o:0,s:.4}],[1.85,{o:1,s:1},'b'],[2.55,{o:1}],[2.8,{o:0,s:1.2,b:12},'io']]);
  const bs=el('<div class="sub" style="color:#fff">por cartão, a partir de 2</div>','c');at(bs,0,1000);K(bs,[[1.85,{o:0}],[2.1,{o:1}],[2.55,{o:1}],[2.75,{o:0}]]);
  kick2('Preços',260,2.85,6.6);
- const rows=[['1 cartão','18 €',''],['2 cartões','32 €','16 € cada'],['3 cartões','48 €','16 € cada'],['4 cartões','64 €','16 € cada']];
+ const rows=[['1 cartão','18 €',''],['2 cartões','34 €','17 € cada'],['3 cartões','51 €','17 € cada'],['4 cartões','68 €','17 € cada']];
  rows.forEach(([a,b,c],i)=>{const e=el(`<div class="price"><span>${a}${c?`<span style="display:block;font:600 26px M;color:#9CA7C6;margin-top:4px">${c}</span>`:''}</span><b>${b}</b></div>`);at(e,130,350+i*165);K(e,[[3.0+i*.45,{o:0,x:-120}],[3.35+i*.45,{o:1,x:0}],[6.6,{o:1}],[6.85,{o:0,x:80}]])});
  chipAt(OK+'Pagamento único',150,1040,4.9,6.6);chipAt('5 ou mais: orçamento',580,1040,5.2,6.6);
  const ph=el('<div class="photo" style="width:700px;height:365px"><img src="a/cartoes-reais.jpg"></div>');at(ph,190,1180);K(ph,[[4.0,{o:0,y:100}],[4.4,{o:1,y:0,r:-2}],[6.6,{o:1,r:1},'l'],[6.85,{o:0}]]);
@@ -695,7 +695,7 @@ function r21(){DUR=14.1;
  const c1=el(cardHTML('k-white','star','Google','Avalie-nos','no Google',1));at(c1,120,650);c1.style.zIndex=2;K(c1,[[7.6,{o:0,y:200,r:-14}],[8.0,{o:1,y:0,r:-6},'b'],[10.4,{o:1,r:-4},'l'],[10.65,{o:0}]]);
  const c2=el(cardHTML('k-cob','user','Instagram','Siga-nos','no Instagram',0));at(c2,340,1010);c2.style.zIndex=3;K(c2,[[7.9,{o:0,y:200,r:14}],[8.3,{o:1,y:0,r:5},'b'],[10.4,{o:1,r:3},'l'],[10.65,{o:0}]]);
  caption('Programados e <span class="y">testados.</span>',1480,8.9,10.4,'h xs');
- cta(10.75,14.1,'A partir de 2:','16 € cada.','Envie mensagem','NFC',ctaCards);
+ cta(10.75,14.1,'A partir de 2:','17 € cada.','Envie mensagem','NFC',ctaCards);
  return {sfx:[['impact',0],['pop',.1],['pop',.35],['pop',.6],['riser',1.0],['impact',1.55],['ding',1.85],['whoosh',2.75],['impact',2.85],['pop',3.0],['pop',3.45],['pop',3.9],['pop',4.35],['ding',4.9],['pop',5.2],['whoosh',6.85],['impact',6.95],['pop',7.6],['pop',7.9],['ding',8.9],['riser',10.2],['impact',10.75],['pop',11.2]],reveal:1.55,prog:2}
 }
 

@@ -22,7 +22,7 @@ Conclusões:
 - Funcionam (~550–610): dinheiro/perda ("mensalidade", "não existe"), visibilidade no Google e clientes reais. Fracos (~190–210): FAQ técnica e dicas sem risco/perda. Bom Gosto às 20:30 teve 1/3 do Gabriel às 16:00 com o mesmo formato → evitar horários tardios.
 - Interação quase nula (0–2 gostos, 0–1 comentários, ~2 seguidores): o "Comente X" sozinho não converte. Testar séries com "Parte 1/2" e CTA "Siga para a parte 2", perguntas diretas e desafios ("faça este teste agora").
 - Instagram: "trial reels" exigem ≥1000 seguidores → agendar sempre como REEL normal.
-- Preços atuais: cartões 1 = 18 €, a partir de 2 = 16 € cada (5+ orçamento); site **desde 400 € com orçamento à medida** (pack site + 2 cartões desde 420 €); reel editado 60 €; pack mensal de reels = falar por WhatsApp (sem preço fixo).
+- Preços atuais: cartões 1 = 18 €, a partir de 2 = 17 € cada (5+ orçamento) — desde 24/10; site **desde 400 € com orçamento à medida** (pack site + 2 cartões desde 420 €); reel editado 60 €; pack mensal de reels = falar por WhatsApp (sem preço fixo).
 - Manutenção (desde 23/10): 3 meses de alterações incluídos; depois cada alteração desde 15 € ou plano mensal opcional desde 15 €/mês. **Nunca escrever «manutenção gratuita».** Dizer «sem mensalidades obrigatórias» em vez de «sem mensalidades».
 
 ## Séries em curso
