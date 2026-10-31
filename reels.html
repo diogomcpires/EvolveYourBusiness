@@ -923,6 +923,41 @@ function r32(){DUR=14.4;
 }
 
 
+
+/* ======================= R33: Halloween — pague 2, leve 3 ======================= */
+const PUMPKIN=(w)=>`<svg viewBox="0 0 100 100" style="width:${w}px;height:${w}px"><path d="M50 22c-3-8 2-14 9-16" stroke="#3d6b2a" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="50" cy="60" rx="44" ry="36" fill="#F07A12"/><ellipse cx="50" cy="60" rx="20" ry="36" fill="#F68A24"/><ellipse cx="50" cy="60" rx="44" ry="36" fill="none" stroke="#C85A06" stroke-width="2"/><path d="M28 50l10-9 9 9zM53 50l10-9 9 9z" fill="#2a1200"/><path d="M27 66q23 18 46 0l-6 6-5-5-6 6-5-6-6 6-5-6-6 6z" fill="#2a1200"/></svg>`;
+const BAT=`<svg viewBox="0 0 120 50" style="width:100%;height:100%"><path d="M60 18c-4-8-12-8-14 0-8-12-26-14-40-6 10 2 14 10 12 20 6-6 16-6 20 2 4-6 12-8 16-4l6 6 6-6c4-4 12-2 16 4 4-8 14-8 20-2-2-10 2-18 12-20-14-8-32-6-40 6-2-8-10-8-14 0z" fill="#0b0612"/></svg>`;
+function halloweenBg(){document.documentElement.style.setProperty('--tram','#FF8A1F');S.style.background='radial-gradient(1100px 800px at 50% -10%, #ff7a18 0%, #8a2be2 28%, rgba(20,6,30,0) 68%), radial-gradient(900px 700px at 50% 115%, rgba(240,122,18,.35), transparent 70%), #0d0614';
+ const g=document.getElementById('grid');if(g)g.style.opacity=.35;
+ const moon=el('<div style="width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#fff6d8,#ffd27a 60%,#e8a43c);box-shadow:0 0 120px 40px rgba(255,190,90,.35)"></div>');at(moon,760,120);moon.style.zIndex='0';
+ CB.push(t=>{moon.style.transform=`translateY(${Math.sin(t*.8)*8}px)`});
+ const bats=[[ -160,380,1.0,0.9],[1200,260,1.3,-1.1],[-200,1500,.8,1.2],[1200,1650,1.1,-.8],[-180,900,.7,1.0]];
+ bats.forEach(([x0,y0,sc,dir],i)=>{const b=el(BAT);b.style.width=(140*sc)+'px';b.style.height=(58*sc)+'px';b.style.zIndex='0';b.style.left='0px';b.style.top='0px';
+  CB.push(t=>{const p=((t*0.09*Math.abs(dir)+i*.21)%1);const x=dir>0?-200+p*1500:1200-p*1500;const y=y0+Math.sin(t*3+i)*30;const flap=.6+.4*Math.abs(Math.sin(t*14+i));b.style.transform=`translate(${x}px,${y}px) scale(${dir>0?1:-1},${flap})`;b.style.opacity=.85})});
+}
+function r33(){DUR=14.4;halloweenBg();
+ const pk=el(PUMPKIN(170),'c');at(pk,0,300);K(pk,[[-1,{o:1,s:1}],[2.2,{o:1,s:1}],[2.45,{o:0,s:.6}]]);CB.push(t=>{if(t<2.3)pk.style.transform+=` rotate(${Math.sin(t*5)*6}deg)`});
+ hookL([['Doçura ou travessura?',520,.05,'kick'],['Promoção de',610,.1,'h m'],['<span style="color:#FF8A1F">Halloween</span>',715,.35],['para o seu negócio',845,.65,'h xs'],['Só até domingo ↓',990,1.0,'sub']],2.3);
+ kick2('Cartões NFC + QR',230,2.4,6.6,'#FF8A1F');
+ const t1=el('<div class="h m">Compre 2,</div>','c');at(t1,0,310);K(t1,[[2.45,{o:0,y:40}],[2.75,{o:1,y:0}],[6.6,{o:1}],[6.85,{o:0}]]);
+ const t2=el('<div class="h" style="color:#FF8A1F">o 3.º é grátis.</div>','c');at(t2,0,410);K(t2,[[2.7,{o:0,s:.6}],[3.05,{o:1,s:1},'b'],[6.6,{o:1}],[6.85,{o:0}]]);
+ const cards=[['k-white','star','Google','Avalie-nos','no Google',1,90,640,-10],['k-cob','user','Instagram','Siga-nos','no Instagram',0,230,820,-2],['k-tram','menu','Ementa','Veja a','ementa',0,370,1000,7]];
+ cards.forEach(([k,ic,b,big,sm,st,x,y,r],i)=>{const c=el(cardHTML(k,ic,b,big,sm,st));at(c,x,y);c.style.zIndex=2+i;K(c,[[3.2+i*.35,{o:0,y:220,r:r*2,s:.85}],[3.6+i*.35,{o:1,y:0,r:r,s:.92},'b'],[6.6,{o:1,r:r*.6,s:.94},'l'],[6.85,{o:0,y:-80}]])});
+ const rib=el('<span style="display:inline-block;background:#FF8A1F;color:#1B0A00;font:800 46px/1 U;padding:18px 34px;border-radius:16px;box-shadow:0 14px 40px rgba(255,138,31,.5);letter-spacing:.02em">GRÁTIS</span>');at(rib,700,1000);rib.style.zIndex=9;
+ K(rib,[[4.6,{o:0,s:2.2,r:-20}],[4.9,{o:1,s:1,r:-10},'b'],[6.6,{o:1}],[6.85,{o:0}]]);
+ const pr=el('<div style="font:700 44px M;color:#fff">3 cartões por <b style="font:800 64px U;color:#FF8A1F">34 €</b> <span style="font:600 34px M;color:#b9a6c9;text-decoration:line-through;margin-left:10px">51 €</span></div>','c');at(pr,0,1470);K(pr,[[5.2,{o:0,y:40}],[5.5,{o:1,y:0}],[6.6,{o:1}],[6.85,{o:0}]]);
+ kick2('Um toque e o cliente…',230,6.9,10.3,'#FF8A1F');
+ const ph=el('<div class="photo" style="width:760px;height:396px"><img src="a/cartoes-reais.jpg"></div>');at(ph,160,330);K(ph,[[6.95,{o:0,y:80,r:-4}],[7.35,{o:1,y:0,r:-2}],[10.3,{o:1,r:0},'l'],[10.55,{o:0}]]);
+ [['Avalia no Google',7.6,90,800],['Segue o Instagram',8.1,560,800],['Vê a ementa',8.6,110,930],['Fala no WhatsApp',9.1,520,930]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.3));
+ caption('Sem aplicações.<br><span style="color:#FF8A1F">Programados e testados.</span>',1120,9.4,10.3,'h xs');
+ lbl('Foto real dos nossos cartões',760,7.4,10.3);
+ const dl=el('<div style="display:inline-flex;align-items:center;gap:22px;padding:26px 44px;border-radius:26px;border:4px solid #FF8A1F;background:rgba(255,138,31,.12);font:800 54px/1 U;color:#fff">'+PUMPKIN(80)+'Até domingo, 2/11</div>','c');at(dl,0,1010);dl.style.zIndex=5;
+ K(dl,[[9.9,{o:0,s:.6}],[10.25,{o:1,s:1},'b'],[11.0,{o:1}],[11.25,{o:0}]]);
+ bigLine('Só <span style="color:#FF8A1F">3 dias.</span>',830,10.3,11.1,'h');
+ cta(11.35,14.4,'Pague 2,','leve 3.','Até domingo, 2/11','DOÇURA',ctaCards);
+ return {sfx:[['impact',0],['pop',.1],['pop',.35],['pop',.65],['pop',1.0],['whoosh',2.3],['impact',2.45],['ding',3.05],['pop',3.2],['pop',3.55],['pop',3.9],['impact',4.9],['ding',5.5],['whoosh',6.85],['impact',6.95],['pop',7.6],['pop',8.1],['pop',8.6],['pop',9.1],['ding',9.4],['riser',9.6],['impact',10.25],['riser',10.9],['impact',11.35],['pop',11.8]],reveal:2.45,prog:2}
+}
+
 let INFO;
-function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
+function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
 </script></body></html>
