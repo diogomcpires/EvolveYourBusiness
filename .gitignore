@@ -1,4 +1,6 @@
-out/
-*.wav
-*_silent.mp4
 chk/
+out/
+*_info.json
+*_music.wav
+*_silent.mp4
+rend*.log
