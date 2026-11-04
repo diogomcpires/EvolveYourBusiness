@@ -986,6 +986,183 @@ function r34(){DUR=14.4;halloweenBg();
  return {sfx:sf,reveal:2.45,prog:3}
 }
 
+/* ======================= leva 7–12/11 ======================= */
+function mapsList(rows,hl){return `<div class="bar"><b>google.com/maps</b></div><div style="position:absolute;inset:96px 0 0;background:#fff;color:#11182E;padding:16px 16px">
+ <div style="display:flex;align-items:center;gap:10px;border:2px solid #E3E6EF;border-radius:30px;padding:12px 18px;font:600 19px M;color:#4a5370"><svg style="width:24px;height:24px"><use href="#search"/></svg>${rows.q}</div>
+ ${rows.items.map(([n,m,i])=>`<div style="display:flex;gap:12px;align-items:center;padding:16px 8px;border-bottom:1px solid #EEF0F6;${i===hl?'background:#FFF6D6;border-radius:16px;border:3px solid #F4C21A':''}"><div style="flex:none;width:34px;height:34px;border-radius:50%;background:${i===hl?'#F4C21A':'#E3E6EF'};font:800 18px/34px U;text-align:center">${i+1}</div><div><div style="font:800 20px M;${n?'':'filter:blur(5px);color:#9aa1b6'}">${n||'Concorrente da zona'}</div><div style="font:600 16px M;color:#6B7491;margin-top:4px">${m}</div></div></div>`).join('')}</div>`}
+
+/* R35: erros que afastam clientes · 3 (horário errado) */
+function r35(){DUR=14.4;
+ hookL([['Erros que afastam clientes · 3',480,.05,'kick'],['O horário',570,.1],['no seu Google',680,.4,'h m'],['<span class="y">está certo?</span>',790,.7,'h m'],['Feriados e férias contam ↓',970,1.1,'sub']],2.25);
+ const P=phone(`<div class="bar"><b>google.com/maps</b></div><div style="position:absolute;inset:96px 0 0;background:#fff;color:#11182E;padding:26px 24px"><div style="font:800 30px/1.2 M">O seu restaurante</div><div style="display:inline-block;margin-top:14px;padding:8px 16px;border-radius:12px;background:#E6F6EE;color:#1E9E5A;font:800 22px M">Aberto agora</div><div style="font:600 19px M;color:#6B7491;margin-top:8px">segundo o Google</div><div style="margin-top:30px;font:800 21px M">Horário</div>${['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'].map((d,i)=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #EEF0F6;font:600 19px M"><span>${d}</span><span>${i===0?'Encerrado':'12:00–22:00'}</span></div>`).join('')}</div>`);
+ at(P,330,300);P.style.zIndex=2;K(P,[[2.35,{o:0,y:300}],[2.75,{o:1,y:0}],[5.4,{o:1,x:0,r:0}],[5.75,{o:0,x:-700,r:-10},'io']]);
+ const door=el(`<div style="display:inline-flex;width:420px;height:300px;border-radius:30px;background:linear-gradient(160deg,#2a3150,#141a2e);border:3px solid #3a4266;flex-direction:column;align-items:center;justify-content:center;gap:16px;box-shadow:0 30px 70px rgba(0,0,0,.5)"><div style="font:800 64px U;color:#E0525A;letter-spacing:.04em">FECHADO</div><div style="font:700 26px M;color:#9CA7C6">Fechado para férias</div></div>`,'c');
+ at(door,0,1200);K(door,[[3.6,{o:0,y:60,r:-4}],[3.95,{o:1,y:0,r:-2},'b'],[5.4,{o:1}],[5.7,{o:0}]]);
+ lbl('Exemplo ilustrativo',1560,3.0,5.4);
+ caption('O cliente foi…<br>e encontrou <span class="y">a porta fechada.</span>',1250,5.8,7.2,'h xs');
+ const sub=el('<div class="sub" style="color:#fff">Não volta. E ainda pode deixar <span class="y" style="font-weight:800">1 estrela.</span></div>','c');at(sub,0,1440);K(sub,[[6.2,{o:0,y:30}],[6.5,{o:1,y:0}],[7.2,{o:1}],[7.4,{o:0}]]);
+ kick2('Como evitar',300,7.4,10.9,'#F4C21A');
+ ['Confirme o horário de cada dia','Marque feriados com antecedência','Avise as férias no perfil Google'].forEach((s,i)=>{const e=el(`<div class="step" style="font-size:40px"><span class="n">${i+1}</span><span>${s}</span></div>`);at(e,110,400+i*175);K(e,[[7.55+i*.55,{o:0,x:140}],[7.9+i*.55,{o:1,x:0}],[10.9,{o:1}],[11.15,{o:0,x:-80}]])});
+ caption('Leva 2 minutos.<br><span class="y">Poupa clientes.</span>',1000,9.4,10.9,'h s');
+ const fim=el('<div class="sub" style="color:#fff">Fim da série. <span class="y" style="font-weight:800">Guarde as 3 partes.</span></div>','c');at(fim,0,1250);K(fim,[[9.9,{o:0,y:30}],[10.2,{o:1,y:0}],[10.9,{o:1}],[11.1,{o:0}]]);
+ cta(11.35,14.4,'Verificamos o seu','perfil Google grátis.','Análise grátis ao seu Google','GOOGLE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.4],['tick',3.0],['buzz',3.95],['whoosh',5.7],['impact',5.8],['buzz',6.5],['whoosh',7.3],['impact',7.4],['pop',7.55],['pop',8.1],['pop',8.65],['ding',9.4],['ding',10.2],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:3}
+}
+
+/* R36: dados reais — 1018 negócios analisados */
+function r36(){DUR=14.4;
+ hookL([['Dados reais · Google Maps',480,.05,'kick'],['Analisámos',570,.1,'h m'],['<span class="y">1018 negócios</span>',680,.4],['da nossa zona.',800,.7,'h m'],['O resultado surpreende ↓',970,1.1,'sub']],2.25);
+ kick2('Odivelas · Loures · Amadora · Lisboa Norte',300,2.4,6.5);
+ const dots=el('<div id="dots" style="width:860px;display:grid;grid-template-columns:repeat(20,1fr);gap:10px"></div>');at(dots,110,400);K(dots,[[2.45,{o:0}],[2.8,{o:1}],[6.5,{o:1}],[6.8,{o:0}]]);
+ const dg=dots.firstChild;for(let i=0;i<100;i++){const d=document.createElement('i');d.style.cssText='display:block;aspect-ratio:1;border-radius:50%;background:#2A3558;transition:none';dg.appendChild(d)}
+ const ds=[...dg.children];CB.push(t=>{ds.forEach((d,i)=>{const on=t>2.8+i*.012;d.style.background=!on?'#1a2140':(i<45&&t>4.2?'#E0525A':'#8AA0FF');d.style.transform=`scale(${on?1:.4})`})});
+ caption('Negócios com <span class="y">50 ou mais avaliações</span>',880,3.2,6.5,'h xs');
+ const big=el('<div style="font:800 230px/1 U;color:#E0525A;letter-spacing:-.04em"><span id="pc">0</span>%</div>','c');at(big,0,1000);K(big,[[4.2,{o:0,s:.5}],[4.55,{o:1,s:1},'b'],[6.5,{o:1}],[6.8,{o:0}]]);
+ CB.push(t=>{big.querySelector('#pc').textContent=Math.round(Math.max(0,Math.min(1,(t-4.3)/1.0))*45)});
+ const s2=el('<div class="h s">não têm site próprio.</div>','c');at(s2,0,1250);K(s2,[[4.8,{o:0,y:30}],[5.1,{o:1,y:0}],[6.5,{o:1}],[6.8,{o:0}]]);
+ lbl('Fonte: HarborRank / Google Maps, 30/10/2026',1380,4.8,6.5);
+ kick2('Ou seja',420,6.85,10.9);
+ bigLine('Clientes a elogiar',510,6.95,10.9,'h s');bigLine('<span class="y">e nada para clicar.</span>',610,7.25,10.9,'h s');
+ const r=el(`<div class="res"><div class="nm">Negócio com 900 avaliações</div><div class="mt"><span class="st">★★★★☆</span> 4,3</div><div class="bt"><span>Ligar</span><span>Direções</span><span class="miss">Website</span></div></div>`);at(r,110,820);K(r,[[7.7,{o:0,y:60}],[8.05,{o:1,y:0}],[10.9,{o:1}],[11.15,{o:0}]]);
+ lbl('Exemplo ilustrativo',1110,8.0,10.9);
+ caption('Quem pesquisa não vê<br>a ementa, os preços, as fotos.',1230,8.6,10.9,'h xs');
+ cta(11.35,14.4,'O seu é um','destes 45%?','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.45],['tick',2.9],['tick',3.3],['tick',3.7],['impact',4.2],['ding',4.55],['buzz',5.1],['whoosh',6.8],['impact',6.95],['pop',7.25],['pop',8.05],['ding',8.6],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.45,prog:1}
+}
+
+/* R37: cliente real — Ótica Colinas 3.º no Maps */
+function r37(){DUR=14.4;
+ hookL([['Cliente real · Odivelas',480,.05,'kick'],['Quem pesquisa',570,.1,'h m'],['<span class="y">«ótica Odivelas»</span>',680,.4,'h m'],['encontra-os',790,.7,'h m'],['em 3.º lugar ↓',890,.9,'h m']],2.25);
+ const P=phone(mapsList({q:'ótica Odivelas',items:[['','4,9 · 13 avaliações',0],['','5,0 · 7 avaliações',1],['Ótica Colinas do Cruzeiro','4,8 ★ · 71 avaliações',2],['','4,6 · 14 avaliações',3],['','3,6 · 10 avaliações',4]]},2));
+ at(P,330,300);P.style.zIndex=2;K(P,[[2.35,{o:0,y:300}],[2.75,{o:1,y:0}],[6.4,{o:1}],[6.7,{o:0,s:.9}]]);
+ chipAt('3.º lugar',640,300,3.6,6.4,'background:#F4C21A;color:#1B1606');
+ [['71 avaliações',4.0,70,1200],['Nota 4,8',4.5,560,1200],['À frente de cadeias',5.0,260,1330]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,6.4));
+ lbl('Google Maps, 30/10/2026 · outros nomes desfocados',1470,3.0,6.4);
+ flash(6.75);
+ kick2('O que usam no balcão',190,6.75,10.9,'#F4C21A');
+ const V=phone('<div id="fo" style="position:absolute;inset:0;background:#000"></div>');at(V,330,300);V.style.zIndex=2;K(V,[[6.75,{o:0,s:1.15}],[7.1,{o:1,s:1},'b'],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ flip(V.querySelector('#fo'),'a/ot_ed',45,15,6.75,true);
+ [['Um toque: Google',7.4,70,1200],['Um toque: Instagram',7.9,540,1200]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ caption('Cartões NFC + QR',1340,8.6,10.9,'h xs');
+ const pz=el('<div class="sub" style="color:#fff">1 cartão <span class="y" style="font-weight:800">18 €</span> · a partir de 2, <span class="y" style="font-weight:800">17 € cada</span></div>','c');at(pz,0,1430);K(pz,[[8.9,{o:0}],[9.2,{o:1}],[10.9,{o:1}],[11.1,{o:0}]]);
+ cta(11.35,14.4,'Mais avaliações,','mais visibilidade.','Envie mensagem','CARTÃO',ctaCards);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.4],['ding',3.6],['pop',4.0],['pop',4.5],['pop',5.0],['riser',6.3],['impact',6.75],['whoosh',6.8],['pop',7.4],['pop',7.9],['ding',8.6],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:2}
+}
+
+/* R38: cliente real — Gabriel 377 → 399 avaliações */
+function r38(){DUR=14.4;
+ hookL([['Cliente real · Odivelas',480,.05,'kick'],['Churrasqueira',570,.1,'h m'],['O Gabriel:',670,.35,'h m'],['<span class="y">+22 avaliações</span>',780,.65,'h m'],['Desde que fizemos o site ↓',960,1.1,'sub']],2.25);
+ const ct=el('<div style="text-align:center"><div style="font:800 260px/1 U;color:#fff;letter-spacing:-.04em" id="cv">377</div><div style="font:700 40px M;color:#9CA7C6;margin-top:10px">avaliações no Google</div></div>','c');at(ct,0,420);
+ K(ct,[[2.35,{o:0,s:.7}],[2.7,{o:1,s:1},'b'],[6.2,{o:1}],[6.5,{o:0,y:-80}]]);
+ CB.push(t=>{const v=Math.round(377+22*ez.io(Math.max(0,Math.min(1,(t-3.0)/2.2))));const e=ct.querySelector('#cv');e.textContent=v;e.style.color=v>=399?'#F4C21A':'#fff'});
+ const st=el('<div style="display:flex;gap:10px;justify-content:center">'+[1,2,3,4,5].map(()=>'<svg style="width:70px;height:70px;color:#F4C21A"><use href="#star" fill="currentColor"/></svg>').join('')+'</div>','c');at(st,0,820);K(st,[[2.9,{o:0,y:30}],[3.2,{o:1,y:0}],[6.2,{o:1}],[6.5,{o:0}]]);
+ const nt=el('<div class="sub" style="color:#fff">Nota <span class="y" style="font-weight:800">4,5</span> no Google</div>','c');at(nt,0,930);K(nt,[[3.3,{o:0}],[3.6,{o:1}],[6.2,{o:1}],[6.4,{o:0}]]);
+ const ph=el('<div class="photo" style="width:760px;height:594px"><img src="a/gab_nfc.jpg"></div>');at(ph,160,1060);K(ph,[[4.2,{o:0,y:100}],[4.6,{o:1,y:0,r:-2}],[6.2,{o:1,r:0},'l'],[6.45,{o:0}]]);
+ lbl('Foto real do cartão no balcão',1680,4.6,6.2);
+ kick2('O que fizemos',190,6.55,10.9,'#F4C21A');
+ const P=phone(`<div class="bar"><b>churrasqueiraogabriel.pt</b></div><div class="tl" style="position:absolute;top:96px;left:0;width:100%"><img src="a/gab_tall_0.jpg" style="display:block;width:100%"><img src="a/gab_tall_1.jpg" style="display:block;width:100%"></div>`);at(P,330,300);P.style.zIndex=2;
+ K(P,[[6.55,{o:0,s:1.12}],[6.9,{o:1,s:1},'b'],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ const tl=P.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-7.1)/3.4));tl.style.transform=`translateY(${-ez.io(p)*3000}px)`});
+ [['Site próprio',7.2,70,1200],['Cartão NFC no balcão',7.7,500,1200],['Ligado ao Google',8.2,280,1330]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ lbl('377 quando fizemos o site · 399 a 30/10/2026',1480,7.4,10.9);
+ cta(11.35,14.4,'O próximo','pode ser o seu.','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.4],['tick',3.0],['tick',3.5],['tick',4.0],['tick',4.5],['ding',5.2],['pop',4.6],['whoosh',6.45],['impact',6.55],['pop',7.2],['pop',7.7],['pop',8.2],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:2}
+}
+
+/* R39: cartão para a ementa */
+function r39(){DUR=14.4;
+ hookL([['Restaurantes e cafés',480,.05,'kick'],['A ementa',570,.1],['<span class="y">num toque</span>',680,.4],['na mesa.',790,.7],['Sem papel. Sem PDF ↓',970,1.1,'sub']],2.25);
+ const c=el(cardHTML('k-tram','menu','Ementa','Veja a','nossa ementa',0));at(c,230,1130);c.style.zIndex=2;K(c,[[2.35,{o:0,y:300,r:-8}],[2.75,{o:1,y:0,r:-3},'b'],[6.0,{o:1,r:-1},'l'],[6.3,{o:0,y:200}]]);
+ const P=lockPhone(`<div class="bar"><b>churrasqueiraogabriel.pt/ementa</b></div><img src="a/gab_ementa.jpg" style="position:absolute;top:96px;left:0;width:100%">`,4.05);at(P,330,250);P.style.zIndex=3;
+ K(P,[[2.5,{o:0,y:-200}],[2.9,{o:1,y:0}],[3.7,{o:1,y:0}],[4.0,{o:1,y:90}],[4.3,{o:1,y:0},'b'],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ ripples(540,1140,4.0,4);
+ caption('Abre logo a ementa.',1560,4.6,6.0,'h s');
+ lbl('Site real · Churrasqueira O Gabriel',1680,4.6,10.9);
+ kick2('Vantagens',1140,6.4,10.9,'#F4C21A');
+ [['Preços sempre atualizados',6.6,70,1230],['Sem reimprimir',7.1,560,1230],['Botão para encomendar',7.6,90,1360],['Fotos dos pratos',8.1,560,1360]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ cta(11.35,14.4,'Ementa no site','+ cartão na mesa.','Envie mensagem','EMENTA',ctaCards);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.4],['pop',2.9],['tap',4.0],['ding',4.15],['ding',4.6],['whoosh',6.3],['impact',6.4],['pop',6.6],['pop',7.1],['pop',7.6],['pop',8.1],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:0}
+}
+
+/* R40: 1 € por dia */
+function r40(){DUR=14.4;
+ hookL([['Faça as contas',480,.05,'kick'],['Um site',570,.1],['por cerca de',680,.4,'h m'],['<span class="y">1 € por dia?</span>',780,.7],['Pagamento único ↓',960,1.1,'sub']],2.25);
+ const rc=el(`<div style="width:840px;background:#fff;color:#11182E;border-radius:30px;padding:40px 48px;box-shadow:0 40px 90px rgba(0,0,0,.55)"><div style="font:800 24px M;letter-spacing:.16em;color:#6B7491">AS CONTAS</div><div style="border-top:3px dashed #D7DCEA;margin:20px 0 8px"></div>
+ <div class="ri" style="display:flex;justify-content:space-between;padding:20px 0;font:700 36px M"><span>Site profissional</span><b style="font:800 46px U">400 €</b></div>
+ <div class="ri" style="display:flex;justify-content:space-between;padding:20px 0;font:700 36px M"><span>÷ 365 dias</span><b style="font:800 46px U;color:#2141C2">≈ 1,10 €/dia</b></div>
+ <div class="ri" style="display:flex;justify-content:space-between;padding:20px 0;font:700 36px M"><span>Mensalidades obrigatórias</span><b style="font:800 46px U;color:#1E9E5A">0 €</b></div>
+ <div style="border-top:3px dashed #D7DCEA;margin:12px 0 12px"></div><div style="font:700 26px/1.4 M;color:#6B7491">Pagamento único. Sem mensalidades obrigatórias.<br>Alterações depois dos 3 meses: à parte, só se quiser.</div></div>`);
+ at(rc,120,320);K(rc,[[2.35,{o:0,y:500,s:.96}],[2.8,{o:1,y:0,s:1}],[7.0,{o:1}],[7.3,{o:0,y:-80},'io']]);
+ [...rc.querySelectorAll('.ri')].forEach((r,i)=>K(r,[[2.95+i*.8,{o:0,x:-60}],[3.25+i*.8,{o:1,x:0}]]));
+ caption('Menos do que <span class="y">um café por dia.</span>',1180,5.6,7.0,'h s');
+ kick2('E por esse valor',420,7.35,10.9);
+ ['Clientes encontram-no no Google','Ementa e preços sempre à mão','Botão para ligar e encomendar'].forEach((s,i)=>{const e=el(`<div class="step" style="font-size:40px"><span class="n">${i+1}</span><span>${s}</span></div>`);at(e,110,520+i*175);K(e,[[7.5+i*.55,{o:0,x:140}],[7.85+i*.55,{o:1,x:0}],[10.9,{o:1}],[11.15,{o:0,x:-80}]])});
+ caption('Protótipo <span class="y">grátis</span> antes de decidir.',1120,9.4,10.9,'h xs');
+ cta(11.35,14.4,'Desde 400 €,','uma só vez.','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.45],['tick',3.25],['tick',4.05],['ding',4.85],['ding',5.6],['whoosh',7.25],['impact',7.35],['pop',7.5],['pop',8.05],['pop',8.6],['ding',9.4],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.45,prog:1}
+}
+
+/* R41: 3 erros nos reels */
+function r41(){DUR=14.4;
+ hookL([['Reels para negócios',480,.05,'kick'],['3 erros que',570,.1],['<span class="y">matam</span>',680,.4],['os seus reels.',790,.7,'h m'],['O 1.º é o mais comum ↓',970,1.1,'sub']],2.25);
+ const errs=[['Sem gancho nos 1.ºs segundos','Quem não para nos 2 segundos, passa à frente.'],['Sem legendas','Muita gente vê sem som.'],['Vídeo deitado','No telemóvel, ocupa um terço do ecrã.']];
+ const T=[2.35,4.1,5.85];
+ errs.forEach(([a,b],i)=>{const t0=T[i],t1=i<2?T[i+1]-.05:7.6;
+  const n=el(`<div class="num" style="background:#E0525A;color:#fff;box-shadow:0 0 0 14px rgba(224,82,90,.18)">${i+1}</div>`,'c');n.style.width='150px';n.style.margin='0 auto';at(n,465,420);K(n,[[t0,{o:0,s:.5}],[t0+.3,{o:1,s:1},'b'],[t1,{o:1}],[t1+.15,{o:0}]]);
+  const h=el(`<div class="h s">${a}</div>`,'c');at(h,0,640);K(h,[[t0+.15,{o:0,y:40}],[t0+.45,{o:1,y:0}],[t1,{o:1}],[t1+.15,{o:0,y:-40}]]);
+  const s=el(`<div class="sub" style="color:#fff">${b}</div>`,'c');at(s,0,840);K(s,[[t0+.45,{o:0}],[t0+.75,{o:1}],[t1,{o:1}],[t1+.15,{o:0}]])});
+ const ph=phone('<div style="position:absolute;inset:0;background:#000"><div style="position:absolute;left:0;right:0;top:40%;height:20%;background:linear-gradient(90deg,#5a4030,#2a1810)"></div></div>');at(ph,330,980);ph.style.zIndex=1;ph.style.transformOrigin='50% 0';
+ K(ph,[[5.9,{o:0,s:.55}],[6.2,{o:1,s:.6}],[7.6,{o:1,s:.6}],[7.8,{o:0}]]);
+ flash(7.7);
+ kick2('Como deve ser',190,7.7,10.9,'#F4C21A');
+ const P=phone('<div id="fr" style="position:absolute;inset:0;background:#000"></div>');at(P,330,300);P.style.zIndex=2;K(P,[[7.7,{o:0,s:1.15}],[8.05,{o:1,s:1},'b'],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ flip(P.querySelector('#fr'),'a/rg',90,30,7.7,true);
+ [['Gancho logo no início',8.3,60,1200],['Legendas no ecrã',8.8,560,1200],['Na vertical',9.3,300,1330]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ lbl('Reel feito por nós · Churrasqueira O Gabriel',1470,8.4,10.9);
+ cta(11.35,14.4,'Envie o vídeo.','Nós editamos.','Reel editado: 60 €','REEL',ctaReels);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.35],['buzz',2.65],['whoosh',4.05],['impact',4.1],['buzz',4.4],['whoosh',5.8],['impact',5.85],['buzz',6.15],['riser',7.3],['impact',7.7],['ding',8.05],['pop',8.3],['pop',8.8],['pop',9.3],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.35,prog:3}
+}
+
+/* R42: salões — marcações às 23h */
+function r42(){DUR=14.4;
+ hookL([['Cabeleireiros e estética',480,.05,'kick'],['O cliente quer',570,.1,'h m'],['marcar às',670,.35,'h m'],['<span class="y">23:00.</span>',770,.6],['Quem lhe responde? ↓',950,1.0,'sub']],2.25);
+ const clk=el('<div style="font:800 200px/1 U;color:#fff;letter-spacing:-.03em">23:<span id="mm">00</span></div>','c');at(clk,0,330);K(clk,[[2.35,{o:0,s:.7}],[2.7,{o:1,s:1},'b'],[5.6,{o:1}],[5.9,{o:0}]]);
+ CB.push(t=>{clk.querySelector('#mm').textContent=String(Math.min(59,Math.floor(Math.max(0,t-2.7)*9))).padStart(2,'0')});
+ const b1=bubble('«Olá! Têm vaga amanhã de manhã?»',640,2.9,5.6);
+ caption('Sem resposta…',900,3.7,5.6,'h s');
+ const s2=el('<div class="sub" style="color:#fff">…e marca <span class="y" style="font-weight:800">noutro salão.</span></div>','c');at(s2,0,1010);K(s2,[[4.3,{o:0,y:30}],[4.6,{o:1,y:0}],[5.6,{o:1}],[5.8,{o:0}]]);
+ lbl('Exemplo ilustrativo',1150,3.0,5.6);
+ flash(5.95);
+ kick2('Com marcações no site',190,5.95,10.9,'#F4C21A');
+ const days=['Seg','Ter','Qua','Qui','Sex','Sáb'];const slots=['09:30','10:00','11:30','14:00','15:30','17:00'];
+ const P=phone(`<div class="bar"><b>o-seu-salao.pt/marcar</b></div><div style="position:absolute;inset:96px 0 0;background:#F7EEEA;color:#3A2A2C;padding:24px 22px"><div style="font:400 34px Georgia,serif">Marcar serviço</div><div style="font:700 19px M;color:#B9727F;margin-top:6px">Corte e brushing · 25 €</div>
+ <div style="display:flex;gap:8px;margin-top:22px">${days.map((d,i)=>`<div style="flex:1;text-align:center;padding:12px 0;border-radius:14px;font:800 17px M;${i===1?'background:#3A2A2C;color:#F7EEEA':'background:#fff'}">${d}</div>`).join('')}</div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px">${slots.map((s,i)=>`<div class="sl" data-i="${i}" style="text-align:center;padding:18px 0;border-radius:16px;background:#fff;font:800 22px M">${s}</div>`).join('')}</div>
+ <div id="okb" style="margin-top:26px;text-align:center;padding:20px 0;border-radius:30px;background:#B9727F;color:#fff;font:800 22px M">Confirmar marcação</div><div id="okm" style="margin-top:20px;text-align:center;font:800 22px M;color:#1E9E5A;opacity:0">✓ Marcado: terça, 10:00</div></div>`);
+ at(P,330,300);P.style.zIndex=2;K(P,[[5.95,{o:0,x:500,r:12}],[6.4,{o:1,x:0,r:0}],[10.9,{o:1}],[11.15,{o:0,y:-80}]]);
+ const sl=[...P.querySelectorAll('.sl')],okm=P.querySelector('#okm');CB.push(t=>{sl.forEach((s,i)=>{const on=i===1&&t>7.3;s.style.background=on?'#3A2A2C':'#fff';s.style.color=on?'#F7EEEA':'#3A2A2C'});okm.style.opacity=t>8.2?1:0});
+ ripples(540,640,7.3,4);
+ [['Marca a qualquer hora',8.4,60,1200],['Sem trocar mensagens',8.9,540,1200],['Lembrete automático',9.4,260,1330]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,10.9));
+ lbl('Exemplo ilustrativo',1470,6.5,10.9);
+ cta(11.35,14.4,'Marcações','enquanto dorme.','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['impact',2.35],['tick',2.7],['tick',3.2],['pop',2.9],['buzz',3.7],['buzz',4.6],['riser',5.6],['impact',5.95],['whoosh',6.0],['tap',7.3],['ding',8.2],['pop',8.4],['pop',8.9],['pop',9.4],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.35,prog:0}
+}
+
+/* R43: como fazemos um site em 4 passos */
+function r43(){DUR=14.4;
+ hookL([['Sites para negócios',480,.05,'kick'],['Como fazemos',570,.1,'h m'],['um site em',670,.35,'h m'],['<span class="y">4 passos.</span>',770,.6],['E só paga se gostar ↓',950,1.0,'sub']],2.25);
+ const S4=[['Falamos consigo','O que vende, fotos, ementa, horário.'],['Protótipo grátis','Vê o seu site antes de decidir.'],['Ajustamos ao seu gosto','Cores, textos, fotos: o que quiser.'],['Site online','No Google, no telemóvel e no computador.']];
+ S4.forEach(([a,b],i)=>{const e=el(`<div class="step" style="font-size:40px;flex-wrap:wrap"><span class="n">${i+1}</span><span style="flex:1">${a}<span style="display:block;font:600 27px/1.3 M;color:#9CA7C6;margin-top:6px">${b}</span></span></div>`);at(e,110,330+i*230);K(e,[[2.4+i*.9,{o:0,x:160}],[2.75+i*.9,{o:1,x:0}],[7.2,{o:1}],[7.45,{o:0,x:-80}]])});
+ caption('Pagamento <span class="y">só no fim.</span>',1300,6.0,7.2,'h s');
+ kick2('Resultado real',190,7.5,10.9,'#F4C21A');
+ [['a/gab_hero.jpg','churrasqueiraogabriel.pt',150,-7],['a/bg_hero.jpg','churrasqueirabomgosto.pt',510,7]].forEach(([im,u,x,r],i)=>{const q=phone(`<div class="bar"><b>${u}</b></div><img src="${im}" style="position:absolute;top:96px;left:0;width:100%">`);at(q,x,300);K(q,[[7.55+i*.2,{o:0,y:300,s:.75,r:r*2}],[8.0+i*.2,{o:1,y:0,s:.82,r:r},'b'],[10.9,{o:1,y:-20,s:.85,r:r},'l'],[11.15,{o:0,y:-100}]])});
+ caption('Desde <span class="y">400 €</span>, uma só vez.',1250,8.8,10.9,'h xs');
+ lbl('Sites reais · O Gabriel e Bom Gosto',1380,8.2,10.9);
+ cta(11.35,14.4,'Comece pelo','passo 1.','Peça o seu protótipo grátis','SITE',ctaSites);
+ return {sfx:stdSfx([['whoosh',2.3],['pop',2.4],['pop',3.3],['pop',4.2],['pop',5.1],['ding',6.0],['whoosh',7.45],['impact',7.55],['pop',8.0],['pop',8.2],['ding',8.8],['riser',10.8],['impact',11.35],['pop',11.8]]),reveal:2.4,prog:1}
+}
+
+
 let INFO;
-function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33,r34][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
+function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33,r34,r35,r36,r37,r38,r39,r40,r41,r42,r43][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
 </script></body></html>
