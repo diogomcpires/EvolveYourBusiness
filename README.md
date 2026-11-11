@@ -1,6 +1,6 @@
 # Motor de reels EvolveYourBusiness
 Ramo privado de trabalho (não é servido pelo site).
-- reels.html?r=N  cena N (r1..r52; r15–r23 = leva 26–31/10; r24–r32 = leva 1–6/11; r33–r34 = Halloween; r35–r43 = leva 7–12/11; r44–r52 = leva 13–18/11)
+- reels.html?r=N  cena N (r1..r53; r15–r23 = leva 26–31/10; r24–r32 = leva 1–6/11; r33–r34 = Halloween; r35–r43 = leva 7–12/11; r44–r52 = leva 13–18/11)
 - python3 render.py N check t1 t2 ... | python3 render.py N video out.mp4
 - python3 music_gen.py N  (lê rN_info.json)
 - ./pipe.sh N nome  -> out/nome.mp4
@@ -12,3 +12,4 @@ r24 erros 2 fotos no Google · r25 frase para pedir avaliações · r26 quanto c
 r33 Halloween pague 2 leve 3 · r34 Halloween site + 2 cartões de oferta
 r35 erros 3 horário errado · r36 dados reais 1018 negócios / 45% sem site · r37 Ótica 3.º no Maps · r38 Gabriel +22 avaliações · r39 cartão de ementa na mesa · r40 site ~1 €/dia · r41 3 erros nos reels · r42 salões marcações às 23h · r43 site em 4 passos
 r44 Noruegas ementa do dia no telemóvel · r45 quanto vale um cliente fiel · r46 Natal horário especial no Google · r47 3 churrasqueiras 3 sites · r48 apps de entrega comissão · r49 mito NFC complicados · r50 2 restaurantes mesma rua · r51 encomendas de Natal · r52 Noruegas desde 1983
+r53 vídeo principal 24 s: os 3 serviços (sites, cartões NFC, reels) + clientes reais (11/11, pedido do Pires)

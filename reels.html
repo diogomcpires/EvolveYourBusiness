@@ -1333,6 +1333,52 @@ function r52(){DUR=14.4;
 }
 
 
+/* R53: vídeo principal — os 3 serviços da EvolveYourBusiness */
+function secHead(n,k,title,t0,t1){const e=el(`<div class="kick" style="color:#F4C21A">${n}/3 · ${k}</div><div class="h xs" style="margin-top:16px">${title}</div>`,'c');at(e,0,150);K(e,[[t0,{o:0,y:30}],[t0+.3,{o:1,y:0}],[t1,{o:1}],[t1+.2,{o:0}]]);return e}
+function r53(){DUR=24.3;
+ hookL([['Donos de negócios: atenção',480,.05,'kick'],['O cliente procura-o',575,.1,'h s'],['no telemóvel.',675,.35,'h s'],['<span class="y">O que encontra?</span>',785,.65,'h m']],2.3);
+ // problema
+ [['Sem site',2.45,250],['Poucas avaliações',2.8,170],['Vídeos sem edição',3.15,170]].forEach(([s,t0,x],i)=>{const e=el(`<div class="step" style="font-size:44px;border-color:rgba(224,82,90,.6);background:rgba(224,82,90,.1)"><span class="n" style="background:#E0525A;color:#fff">✕</span><span>${s}</span></div>`);at(e,110,470+i*170);K(e,[[t0,{o:0,x:140}],[t0+.3,{o:1,x:0}],[4.25,{o:1}],[4.45,{o:0,x:-80}]])});
+ caption('<span class="y">Nós tratamos disso.</span>',1040,3.5,4.25,'h s');
+ flash(4.5);
+ // 1 sites
+ const a=4.5,b=9.6;secHead(1,'Sites','Um site que vende por si',a,b);
+ [['a/gab_tall_0.jpg','a/gab_tall_1.jpg','churrasqueiraogabriel.pt',-30,-5],['a/nor_tall_0.jpg','a/nor_tall_1.jpg','noruegas.pt',330,0],['a/bg_tall_0.jpg','a/bg_tall_1.jpg','churrasqueirabomgosto.pt',690,5]].forEach(([i0,i1,u,x,r],i)=>{
+  const P=phone(`<div class="bar"><b>${u}</b></div><div class="tl" style="position:absolute;top:96px;left:0;width:100%"><img src="${i0}" style="display:block;width:100%"><img src="${i1}" style="display:block;width:100%"></div>`);at(P,x,400);P.style.transformOrigin='50% 0';P.style.zIndex=i===1?3:2;
+  K(P,[[a+i*.15,{o:0,y:400,s:.6,r:r*2}],[a+.45+i*.15,{o:1,y:i===1?0:40,s:i===1?.78:.68,r:r},'b'],[b,{o:1}],[b+.25,{o:0,y:-100}]]);
+  const tl=P.querySelector('.tl');CB.push(t=>{const p=Math.max(0,Math.min(1,(t-a-.6)/4.2));tl.style.transform=`translateY(${-ez.io(p)*(i===1?800:1500)}px)`})});
+ [['Ementa e preços',a+1.0,50,1130],['Ligar e encomendar',a+1.5,540,1130],['Protótipo grátis antes de decidir',a+2.0,200,1255]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,b));
+ caption('Desde <span class="y">400 €</span>',1390,a+2.6,b,'h s');
+ const pu=el('<div class="sub" style="color:#fff">Pagamento único · sem mensalidades obrigatórias</div>','c');at(pu,0,1490);K(pu,[[a+2.9,{o:0}],[a+3.2,{o:1}],[b,{o:1}],[b+.2,{o:0}]]);
+ lbl('Sites reais · O Gabriel · Noruegas · Bom Gosto',1580,a+.8,b);
+ flash(b+.2);
+ // 2 cartões
+ const c=9.8,d=14.6;secHead(2,'Cartões NFC','Avaliações num toque',c,d);
+ const ph=el('<div class="photo" style="width:700px;height:547px"><img src="a/gab_nfc.jpg"></div>');at(ph,190,1010);ph.style.zIndex=1;K(ph,[[c,{o:0,y:200}],[c+.4,{o:1,y:0,r:-2}],[d,{o:1,r:0},'l'],[d+.25,{o:0}]]);
+ const T=c+1.5;const P2=lockPhone(REVIEW_PAGE,T+.05);at(P2,330,300);P2.style.zIndex=3;P2.style.transformOrigin='50% 0';
+ K(P2,[[c+.2,{o:0,y:-200,s:.82}],[c+.6,{o:1,y:0,s:.82}],[T-.3,{o:1,y:0,s:.82}],[T,{o:1,y:90,s:.82}],[T+.3,{o:1,y:0,s:.82},'b'],[d,{o:1,s:.82}],[d+.25,{o:0,y:-80,s:.82}]]);
+ ripples(540,1090,T,4);
+ [['Google',T+.6,40,560],['Instagram',T+1.0,40,680],['Ementa',T+1.4,810,560],['WhatsApp',T+1.8,790,680]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,d));
+ const cz=el('<div class="sub" style="color:#fff;font-size:44px">1 cartão <span class="y" style="font-weight:800">18 €</span> · a partir de 2, <span class="y" style="font-weight:800">17 € cada</span></div>','c');at(cz,0,1590);K(cz,[[T+1.2,{o:0,y:30}],[T+1.5,{o:1,y:0}],[d,{o:1}],[d+.2,{o:0}]]);
+ lbl('Foto real · balcão da Churrasqueira O Gabriel',1680,c+.6,d);
+ flash(d+.2);
+ // 3 reels
+ const e0=14.8,f=19.3;secHead(3,'Reels e TikToks','Vídeos que param o scroll',e0,f);
+ const V=phone('<div id="fr3" style="position:absolute;inset:0;background:#000"></div>');at(V,330,320);V.style.zIndex=2;K(V,[[e0,{o:0,s:1.15}],[e0+.35,{o:1,s:1},'b'],[f,{o:1}],[f+.25,{o:0,y:-80}]]);
+ flip(V.querySelector('#fr3'),'a/rg',90,30,e0,true);
+ [['Gancho e legendas',e0+.9,40,1220],['Efeitos e música',e0+1.4,600,1220]].forEach(([s,t0,x,y])=>chipAt(OK+s,x,y,t0,f));
+ caption('Envie o vídeo. <span class="y">Nós editamos.</span>',1360,e0+1.9,f,'h xs');
+ const pz=el('<div class="sub" style="color:#fff"><span class="y" style="font-weight:800">60 €</span> por reel</div>','c');at(pz,0,1450);K(pz,[[e0+2.3,{o:0}],[e0+2.6,{o:1}],[f,{o:1}],[f+.2,{o:0}]]);
+ lbl('Reel feito por nós · Churrasqueira O Gabriel',1540,e0+.6,f);
+ // prova
+ const g=19.5,h=21.3;kick2('Já confiam em nós',400,g,h,'#F4C21A');
+ ['Churrasqueira O Gabriel · Odivelas','Churrasqueira Noruegas · Odivelas','Churrasqueira Bom Gosto · Amadora','Ótica Colinas · Odivelas'].forEach((s,i)=>{const e=el(`<div class="step" style="font-size:38px;padding:24px 32px"><span class="n" style="width:64px;height:64px;line-height:64px;font-size:0;display:flex;align-items:center;justify-content:center"><svg style="width:38px;height:38px;color:#1B1606"><use href="#check"/></svg></span><span>${s}</span></div>`);at(e,110,490+i*140);K(e,[[g+.1+i*.2,{o:0,x:140}],[g+.4+i*.2,{o:1,x:0}],[h,{o:1}],[h+.2,{o:0,x:-80}]])});
+ caption('Clientes reais. <span class="y">Trabalho real.</span>',1100,g+.9,h,'h xs');
+ cta(21.5,24.3,'Evolua','o seu negócio.','Peça o seu protótipo grátis','SITE',ctaSites3);
+ return {sfx:[['impact',0],['pop',.1],['pop',.35],['pop',.65],['buzz',2.45],['buzz',2.8],['buzz',3.15],['ding',3.5],['riser',4.0],['impact',4.5],['whoosh',4.55],['pop',5.5],['pop',6.0],['pop',6.5],['ding',7.1],['riser',9.3],['impact',9.8],['whoosh',9.85],['tap',11.3],['ding',11.45],['pop',11.9],['pop',12.3],['pop',12.7],['pop',13.1],['riser',14.3],['impact',14.8],['pop',15.7],['pop',16.2],['ding',16.7],['whoosh',19.4],['impact',19.5],['pop',19.9],['pop',20.1],['pop',20.3],['pop',20.5],['riser',21.0],['impact',21.5],['pop',21.95]],reveal:4.5,prog:1}
+}
+
+
 let INFO;
-function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33,r34,r35,r36,r37,r38,r39,r40,r41,r42,r43,r44,r45,r46,r47,r48,r49,r50,r51,r52][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
+function build(){INFO=[null,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31,r32,r33,r34,r35,r36,r37,r38,r39,r40,r41,r42,r43,r44,r45,r46,r47,r48,r49,r50,r51,r52,r53][R]();if(R>=5)progressBar();window.DUR=DUR;frame(0);return INFO}
 </script></body></html>
