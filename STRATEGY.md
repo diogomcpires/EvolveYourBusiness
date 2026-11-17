@@ -68,3 +68,4 @@ Conclusões:
 
 ## Horários (Metricool, TikTok PT)
 Melhor: 10:00 e 18:00 em dias úteis; fim de semana mais fraco (preferir 10:00/18:00 também).
+- (17/11) Metricool sem estatísticas TikTok desde 7/11; leva 19–24/11 feita com os dados até 7/11.
